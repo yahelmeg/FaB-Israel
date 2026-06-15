@@ -1,14 +1,14 @@
-import { Listing } from "@/types/Listing"
+import {ConditionType} from "@/types/ConditionType"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 interface ConditionBadgeProps {
-    condition: Listing["condition"];
+    condition: ConditionType
 }
 
-const conditionStyles: Record<string, string> = {
-    "Near Mint": "bg-green-500 text-black border-transparent hover:bg-green-500/90",
-    "Light Played": "bg-orange-300 text-black border-transparent hover:bg-orange-300/90",
+const conditionStyles: Record< ConditionType, string> = {
+    "NM": "bg-green-500 text-black border-transparent hover:bg-green-500/90",
+    "LP": "bg-orange-300 text-black border-transparent hover:bg-orange-300/90",
     "Poor": "bg-red-500 text-black border-transparent hover:bg-red-500/90",
 };
 
@@ -20,7 +20,7 @@ export function ConditionBadge({ condition }: ConditionBadgeProps) {
         <Badge
             variant="outline"
             className={cn(
-                "text-[10px] font-black uppercase tracking-wider px-1.5 py-0.5 shadow-sm",
+                "text-xs w-12 px-0 py-1 font-bold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center",
                 dynamicClass
             )}
         >
