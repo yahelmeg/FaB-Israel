@@ -11,6 +11,10 @@ const MOCK_LISTINGS: Listing[] = [
         condition: "Poor",
         foiling: "GF",
         set: "Welcome to Rathe",
+        cardName: "Ira1",
+        sellerName: "Yahel",
+        sellerPhoneNumber: "972504277103",
+        sellerDiscord: "Dusk",
     },
     {
         id: "2",
@@ -19,39 +23,12 @@ const MOCK_LISTINGS: Listing[] = [
         condition: "NM",
         foiling: "CF",
         set: "Monarch",
+        cardName: "Command and Conquer",
+        sellerName: "Dudu",
+        sellerPhoneNumber: "972522260702",
+        sellerDiscord: "HolySrulink",
     },
-    {
-        id: "3",
-        price: 15.50,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "LP",
-        foiling: "RF",
-        set: "Tales of Aria",
-    },
-    {
-        id: "4",
-        price: 89.99,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "Poor",
-        foiling: "NF",
-        set: "Uprising",
-    },
-    {
-        id: "5",
-        price: 1200.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "NM",
-        foiling: "CF",
-        set: "History Pack 1",
-    },
-    {
-        id: "6",
-        price: 3.25,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "NM",
-        foiling: "NF",
-        set: "Heavy Hitters",
-    }
+
 ];
 
 export default function Example() {
