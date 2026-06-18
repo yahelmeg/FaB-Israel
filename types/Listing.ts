@@ -1,13 +1,13 @@
 
-import {PrintingType} from "./PrintingType";
-import {ConditionType} from "./ConditionType";
+import {PrintingTypes} from "./PrintingTypes";
+import {ConditionTypes} from "./ConditionTypes";
 
 export interface Listing {
     id: string;
     price: number;
     image: string;
-    condition: ConditionType;
-    foiling: PrintingType;
+    condition: ConditionTypes;
+    foiling: PrintingTypes;
     set: string;
     cardName: string;
     sellerName: string;
