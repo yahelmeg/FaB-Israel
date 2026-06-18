@@ -16,8 +16,8 @@ export const printingTitles: Record<PrintingTypes, string> = {
 }
 
 export const printingDescriptions: Record<PrintingTypes, string> = {
-    "GF": "Rarest printing - Cold foil variant with a Gold border.",
-    "CF": "Matte, metallic or frosty foiling usually applied to the card border, weapons and equipment",
-    "RF": "Glossy, chromatic shine that displays a full spectrum of colors when tilted under light",
+    "GF": "Rarest printing - Cold foil variant with a Gold border. Only given out as a prizes for national tournament winners and T3/T4 events finalists.",
+    "CF": "Matte, metallic or frosty foiling usually applied to the card border, weapons and equipment.",
+    "RF": "Glossy, chromatic shine that displays a full spectrum of colors when tilted under light.",
     "NF": "Standard card printing with no foil treatment.",
 }
