@@ -11,7 +11,7 @@ export function TcgPlayerButton({ cardName }: TcgPlayerProps) {
         <Button
             size="sm"
             nativeButton={false}
-            className="group gap-1 cursor-pointer bg-[#0052cc] text-white"
+            className="group gap-1 cursor-pointer bg-blue-700 hover:bg-blue-600/90 text-white"
             render={
                 <a
                     href={buildTcgPlayerUrl(cardName)}

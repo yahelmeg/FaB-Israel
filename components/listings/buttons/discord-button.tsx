@@ -12,7 +12,7 @@ export function DiscordButton({ sellerDiscord }: DiscordButtonProps) {
         <Button
             size="sm"
             className={cn(
-               "cursor-pointer gap-1 bg-[#7289da] hover:bg-[#8499e3] text-black"
+               "cursor-pointer gap-1 bg-indigo-600 hover:bg-indigo-500/90 text-white"
             )}
             onClick={() => navigator.clipboard.writeText(sellerDiscord)}
         >

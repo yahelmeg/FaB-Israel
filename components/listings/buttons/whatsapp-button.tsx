@@ -14,7 +14,7 @@ export function WhatsappButton({ phoneNumber, cardName }: WhatsappButtonProps) {
         <Button
             size="sm"
             className={cn(
-                "cursor-pointer gap-1 bg-green-500 hover:bg-green-400/90 text-black"
+                "cursor-pointer gap-1 bg-lime-400 hover:bg-lime-300/90 text-black"
             )}
             onClick={() => window.open(buildWhatsAppUrl(phoneNumber, cardName), "_blank")}
         >
