@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { SiCardmarket } from "react-icons/si";
 import { buildCardMarketUrl } from "@/lib/format";
@@ -13,7 +14,7 @@ export function CardMarketButton({ cardName }: MarketplaceButtonProps) {
             nativeButton={false}
             className="cursor-pointer gap-1 bg-sky-800 hover:bg-sky-800/80 text-white "
             render={
-                <a
+                <Link
                     href={buildCardMarketUrl(cardName)}
                     target="_blank"
                     rel="noopener noreferrer"
