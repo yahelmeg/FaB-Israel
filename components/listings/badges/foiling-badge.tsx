@@ -7,10 +7,10 @@ interface FoilingBadgeProps {
 }
 
 const foilStyles: Record<FoilingType, string> = {
-    "CF": "bg-gradient-to-r from-slate-500 to-blue-400 text-black border-transparent",
-    "GF": "bg-yellow-400 text-black border-transparent hover:bg-yellow-400/90",
-    "RF": "bg-gradient-to-r from-red-500 via-yellow-400 via-green-400 via-blue-500 to-purple-500 text-black border-transparent",
-    "NF": "bg-background/90 text-foreground border-neutral-300",
+    "CF": "bg-slate-400 text-black border-transparent hover:bg-slate-300/90",
+    "GF": "bg-yellow-400 text-black border-transparent hover:bg-yellow-300/90",
+    "RF": "bg-purple-400 text-black border-transparent hover:bg-purple-300/90",
+    "NF": "bg-neutral-300 text-black border-transparent hover:bg-neutral-200/90",
 }
 
 const foilTitles: Record<FoilingType, string> = {
@@ -28,7 +28,7 @@ export function FoilingBadge({ foiling }: FoilingBadgeProps) {
             title={foilTitles[foiling]}
             variant="outline"
             className={cn(
-                "text-xs w-12 px-0 py-1 font-bold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:text-white dark:border-white/20",
+                "text-xs w-12 px-0 py-1 font-bold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:border-white/20",
                 dynamicClass
             )}
         >
