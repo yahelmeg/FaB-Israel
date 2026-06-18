@@ -1,3 +1,4 @@
+import Link from "next/link"
 import {FoilingType} from "@/types/FoilingType"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
@@ -24,15 +25,17 @@ export function FoilingBadge({ foiling }: FoilingBadgeProps) {
     const dynamicClass = foilStyles[foiling]
 
     return (
-        <Badge
-            title={foilTitles[foiling]}
-            variant="outline"
-            className={cn(
-                "text-xs w-12 px-0 py-1 font-bold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:border-white/20",
-                dynamicClass
-            )}
-        >
-            {foiling}
-        </Badge>
+        <Link href="/foilings">
+            <Badge
+                title={foilTitles[foiling]}
+                variant="outline"
+                className={cn(
+                    "text-xs w-12 px-0 py-1 font-bold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:border-white/20 cursor-pointer",
+                    dynamicClass
+                )}
+            >
+                {foiling}
+            </Badge>
+        </Link>
     )
 }
