@@ -1,5 +1,6 @@
 import Link from "next/link"
 import {ConditionType} from "@/types/ConditionType"
+import {conditionStyles, conditionTitles} from "@/lib/conditions"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
@@ -8,24 +9,13 @@ interface ConditionBadgeProps {
     condition: ConditionType
 }
 
-const conditionStyles: Record< ConditionType, string> = {
-    "NM": "bg-green-500 text-black border-transparent hover:bg-green-400/80",
-    "LP": "bg-orange-500 text-black border-transparent hover:bg-orange-400/90",
-    "PO":"bg-red-500 text-black border-transparent hover:bg-red-400/90",
-};
-
-const conditionTitles: Record<ConditionType, string> = {
-    "NM": "Near Mint",
-    "LP": "Light Played",
-    "PO": "Poor",
-};
 
 export function ConditionBadge({ condition }: ConditionBadgeProps) {
     const dynamicClass = conditionStyles[condition] ||
         "bg-background/90 text-foreground border-neutral-300 dark:border-white/40 backdrop-blur-xs";
 
     return (
-        <Link href={"/conditions"}>
+        <Link href={"/conditions"}  onClick={(e) => e.stopPropagation()} >
             <Badge
                 title={conditionTitles[condition]}
                 variant="outline"
