@@ -1,3 +1,3 @@
 
 
-export type ConditionType = "NM" | "LP" | "Poor";
+export type ConditionType = "NM" | "LP" | "PO";
