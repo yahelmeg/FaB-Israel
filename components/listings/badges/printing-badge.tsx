@@ -1,20 +1,20 @@
 import Link from "next/link"
-import {FoilingType} from "@/types/FoilingType"
-import {foilStyles, foilTitles} from "@/lib/foilings"
+import {PrintingType} from "@/types/PrintingType"
+import {printingStyles, printingTitles} from "@/lib/printings"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 interface FoilingBadgeProps {
-    foiling: FoilingType
+    foiling: PrintingType
 }
 
-export function FoilingBadge({ foiling }: FoilingBadgeProps) {
-    const dynamicClass = foilStyles[foiling]
+export function PrintingBadge({ foiling }: FoilingBadgeProps) {
+    const dynamicClass = printingStyles[foiling]
 
     return (
         <Link href="/foilings" onClick={(e) => e.stopPropagation()}>
             <Badge
-                title={foilTitles[foiling]}
+                title={printingTitles[foiling]}
                 variant="outline"
                 className={cn(
                     "text-xs w-12 px-0 py-1 font-bold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:border-white/20 cursor-pointer",

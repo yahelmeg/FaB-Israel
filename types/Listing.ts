@@ -1,5 +1,5 @@
 
-import {FoilingType} from "./FoilingType";
+import {PrintingType} from "./PrintingType";
 import {ConditionType} from "./ConditionType";
 
 export interface Listing {
@@ -7,7 +7,7 @@ export interface Listing {
     price: number;
     image: string;
     condition: ConditionType;
-    foiling: FoilingType;
+    foiling: PrintingType;
     set: string;
     cardName: string;
     sellerName: string;
