@@ -12,7 +12,6 @@ interface PrintingBadgeProps {
 export function PrintingBadge({ printing, interactive=true }: PrintingBadgeProps) {
     const dynamicClass = printingStyles[printing]
 
-
     const badge = (
         <Badge
             variant="outline"

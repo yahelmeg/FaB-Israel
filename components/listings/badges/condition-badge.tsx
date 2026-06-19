@@ -12,8 +12,7 @@ interface ConditionBadgeProps {
 
 
 export function ConditionBadge({ condition, interactive=true }: ConditionBadgeProps) {
-    const dynamicClass = conditionStyles[condition] ||
-        "bg-background/90 text-foreground border-neutral-300 dark:border-white/40 backdrop-blur-xs";
+    const dynamicClass = conditionStyles[condition]
 
     const badge = (
         <Badge
