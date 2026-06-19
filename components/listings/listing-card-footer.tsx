@@ -1,13 +1,13 @@
 import { formatPrice } from "@/lib/format"
-import { FoilingBadge } from "./foiling-badge"
-import { ConditionBadge } from "./condition-badge"
-import {FoilingType} from "@/types/FoilingType";
-import {ConditionType} from "@/types/ConditionType";
+import { PrintingBadge } from "./badges/printing-badge"
+import { ConditionBadge } from "./badges/condition-badge"
+import {PrintingTypes} from "@/types/PrintingTypes";
+import {ConditionTypes} from "@/types/ConditionTypes";
 
 interface ListingCardFooterProps {
     price: number
-    foiling: FoilingType
-    condition: ConditionType
+    foiling: PrintingTypes
+    condition: ConditionTypes
 }
 
 export function ListingCardFooter({ price, foiling, condition }: ListingCardFooterProps) {
@@ -17,8 +17,8 @@ export function ListingCardFooter({ price, foiling, condition }: ListingCardFoot
                 {formatPrice(price)}
             </div>
             <div className="flex flex-row items-center gap-1 justify-end flex-1">
-                <FoilingBadge foiling={foiling}/>
-                <ConditionBadge condition={condition}/>
+                <PrintingBadge printing={foiling} />
+                <ConditionBadge condition={condition} />
             </div>
         </div>
     )
