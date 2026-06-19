@@ -11,12 +11,12 @@ interface ListingCardProps {
 export function ListingCard({ listing, onClick }: ListingCardProps) {
     return (
         <Card onClick={onClick} className="group relative overflow-hidden rounded-xl border shadow-sm p-0 gap-0 cursor-pointer">
-            <div className="relative aspect-[3/4] w-full bg-white">
+            <div className="relative aspect-[3/4] w-full bg-white dark:bg-black">
                 <Image
                     src={listing.image}
                     alt="Card"
                     fill
-                    loading="lazy"
+                    loading="eager"
                 />
             </div>
             <CardContent className={`p-0`}>
