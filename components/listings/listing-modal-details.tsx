@@ -1,11 +1,12 @@
 import { Listing } from "@/types/Listing"
-import { FoilingBadge } from "./foiling-badge"
-import { ConditionBadge } from "./condition-badge"
+import { PrintingBadge } from "./badges/printing-badge"
+import { ConditionBadge } from "./badges/condition-badge"
 import { formatPrice } from "@/lib/format"
-import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import {WhatsappButton} from "@/components/listings/whatsapp-button";
-import {DiscordButton} from "@/components/listings/discord-button";
+import {WhatsappButton} from "@/components/listings/buttons/whatsapp-button";
+import {DiscordButton} from "@/components/listings/buttons/discord-button";
+import {CardMarketButton} from "@/components/listings/buttons/cardmarket-button";
+import {TcgPlayerButton} from "@/components/listings/buttons/tcgplayer-button";
 
 
 interface ListingModalDetailsProps {
@@ -21,8 +22,8 @@ export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
             </div>
 
             <div className="flex gap-2">
-                <FoilingBadge foiling={listing.foiling} />
-                <ConditionBadge condition={listing.condition} />
+                <PrintingBadge printing={listing.foiling}/>
+                <ConditionBadge condition={listing.condition}/>
             </div>
             <Separator />
             <div>
@@ -30,31 +31,23 @@ export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
                 <p className="text-sm text-muted-foreground mt-1">Sold by {listing.sellerName}</p>
             </div>
 
-            <div className="flex gap-2">
-                {listing.sellerPhoneNumber && (
-                    <WhatsappButton phoneNumber={listing.sellerPhoneNumber} cardName={listing.cardName} />
-                )}
-                {listing.sellerDiscord && (
-                    <DiscordButton sellerDiscord={listing.sellerDiscord} />
-                )}
+            <div className="flex flex-col gap-2">
+                <div className="grid grid-cols-2 gap-2">
+                    {listing.sellerPhoneNumber && (
+                        <WhatsappButton phoneNumber={listing.sellerPhoneNumber} cardName={listing.cardName}/>
+                    )}
+                    {listing.sellerDiscord && (
+                        <DiscordButton sellerDiscord={listing.sellerDiscord}/>
+                    )}
+                </div>
             </div>
-            <Separator />
-            <div className="flex gap-2">
-                <Button
-                    variant="outline"
-                    size="sm"
-                    nativeButton={false}
-                    render={<a href={`https://www.tcgplayer.com/search/flesh-and-blood-tcg/product?q=${encodeURIComponent(listing.cardName)}`} target="_blank" rel="noopener noreferrer" />}
-                >
-                    TCGPlayer
-                </Button>
-                <Button
-                    variant="outline"
-                    size="sm"
-                    nativeButton={false}
-                    render={<a href={`https://www.cardmarket.com/en/FleshAndBlood/Products/Search?searchString=${encodeURIComponent(listing.cardName)}`} target="_blank" rel="noopener noreferrer" />}                >
-                    Cardmarket
-                </Button>
+            <Separator/>
+            <div className="flex flex-col gap-2">
+                <span className="text-sm text-muted-foreground">Compare prices on:</span>
+                <div className="grid grid-cols-2 gap-2">
+                    <CardMarketButton cardName={listing.cardName}/>
+                    <TcgPlayerButton cardName={listing.cardName}/>
+                </div>
             </div>
         </div>
     )
