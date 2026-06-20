@@ -1,6 +1,6 @@
 import { PrintingTypes } from "@/types/PrintingTypes"
 import { printingTitles, printingDescriptions } from "@/lib/printings"
-import { PrintingBadge } from "@/components/listings/badges/printing-badge"
+import { PrintingBadge } from "@/components/general/badges/printing-badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
-import { ListingModalDetails } from "@/components/listings/listing-modal-details";
+import { ListingModalDetails } from "@/components/market/listings/listing-modal-details";
 import { Listing } from "@/types/Listing"
 
 

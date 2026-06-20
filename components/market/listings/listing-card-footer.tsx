@@ -1,6 +1,6 @@
 import { formatPrice } from "@/lib/format"
-import { PrintingBadge } from "./badges/printing-badge"
-import { ConditionBadge } from "./badges/condition-badge"
+import { PrintingBadge } from "@/components/general/badges/printing-badge"
+import { ConditionBadge } from "@/components/general/badges/condition-badge"
 import {PrintingTypes} from "@/types/PrintingTypes";
 import {ConditionTypes} from "@/types/ConditionTypes";
 

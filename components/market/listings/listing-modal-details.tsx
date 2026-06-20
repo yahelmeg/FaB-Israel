@@ -1,12 +1,12 @@
 import { Listing } from "@/types/Listing"
-import { PrintingBadge } from "./badges/printing-badge"
-import { ConditionBadge } from "./badges/condition-badge"
+import { PrintingBadge } from "@/components/general/badges/printing-badge"
+import { ConditionBadge } from "@/components/general/badges/condition-badge"
 import { formatPrice } from "@/lib/format"
 import { Separator } from "@/components/ui/separator"
-import {WhatsappButton} from "@/components/listings/buttons/whatsapp-button";
-import {DiscordButton} from "@/components/listings/buttons/discord-button";
-import {CardMarketButton} from "@/components/listings/buttons/cardmarket-button";
-import {TcgPlayerButton} from "@/components/listings/buttons/tcgplayer-button";
+import {WhatsappButton} from "@/components/market/listings/buttons/whatsapp-button";
+import {DiscordButton} from "@/components/market/listings/buttons/discord-button";
+import {CardMarketButton} from "@/components/market/listings/buttons/cardmarket-button";
+import {TcgPlayerButton} from "@/components/market/listings/buttons/tcgplayer-button";
 
 
 interface ListingModalDetailsProps {

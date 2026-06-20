@@ -1,5 +1,5 @@
 "use client"
-import {ListingGrid} from "@/components/listings/listing-grid";
+import {ListingGrid} from "@/components/market/listings/listing-grid";
 import {Listing} from "@/types/Listing";
 
 
