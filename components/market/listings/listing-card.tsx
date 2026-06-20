@@ -17,6 +17,7 @@ export function ListingCard({ listing, onClick }: ListingCardProps) {
                     alt="Card"
                     fill
                     loading="eager"
+                    sizes = "(max-width: 768px) 100vw, 450px"
                 />
             </div>
             <CardContent className={`p-0`}>
