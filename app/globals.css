@@ -129,3 +129,14 @@
     @apply font-sans;
     }
 }
+
+
+@layer utilities {
+    .nav-link:hover {
+        @apply text-red-500;
+    }
+
+    .nav-link {
+        @apply font-medium;
+    }
+}

@@ -20,14 +20,23 @@ export function Navbar() {
         <NavigationMenu className="fixed top-0 right-0 left-0 z-50 border-b border-border bg-muted/90 backdrop-blur-sm max-w-none px-6 py-0">
             <NavigationMenuList className="w-full">
                 <NavigationMenuItem>
-                    <NavigationMenuLink href="/" className="hover:text-red-500">Home</NavigationMenuLink>
+                    <NavigationMenuLink href="/" className="nav-link">Home</NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuLink href="/market" className="hover:text-red-500">Market</NavigationMenuLink>
+                    <NavigationMenuLink href="/announcements" className="nav-link">Announcements</NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuLink href="/events" className="nav-link">Events</NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationMenuLink href="/market" className="nav-link">Market</NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem className="flex-1" />
                 <NavigationMenuItem>
-                    <Button variant="ghost" className="cursor-pointer hover:text-red-500">
+                    <NavigationMenuLink href="/get-started" className="nav-link">Get started </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <Button variant="ghost" className="cursor-pointer nav-link font-medium">
                         Log in
                     </Button>
                 </NavigationMenuItem>
