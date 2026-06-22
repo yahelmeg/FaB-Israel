@@ -42,7 +42,7 @@ export function Navbar() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                     <Button variant="ghost" size="icon" className="cursor-pointer hover:opacity-70 transition-none" onClick={toggleDark}>
-                        {isDark ? <MdLightMode className="h-5 w-5" /> : <MdDarkMode className="h-5 w-5" />}
+                        {isDark ? <MdLightMode/> : <MdDarkMode />}
                     </Button>
                 </NavigationMenuItem>
             </NavigationMenuList>
