@@ -6,9 +6,9 @@ import { FiSearch } from "react-icons/fi";
 
 export function SearchBar() {
     return (
-        <Field orientation="horizontal">
+        <Field orientation="horizontal" className="w-full max-w-xl">
             <Input type="search" placeholder="Search Flesh and Blood cards..."/>
-            <Button aria-label="Search">
+            <Button variant="outline" aria-label="Search" className="cursor-pointer">
                 <FiSearch />
             </Button>
         </Field>
