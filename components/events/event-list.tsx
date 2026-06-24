@@ -32,16 +32,10 @@ export function EventGrid() {
         return a.time.localeCompare(b.time);
     })
     return (
-        <div className="flex flex-col gap-4 items-center" >
-            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                Upcoming Events
-            </h2>
-            <div
-                className="flex flex-row flex-wrap gap-6 justify-center items-stretch w-full max-w-7xl mx-auto px-4 py-8">
-                {sortedEvents.map((dummyEvent) => (
-                    <EventCard key={dummyEvent.id} event={dummyEvent} />
-                ))}
-            </div>
+        <div className="flex flex-row flex-wrap gap-6 justify-center items-stretch w-full max-w-7xl mx-auto px-4 py-8">
+            {sortedEvents.map((dummyEvent) => (
+                <EventCard key={dummyEvent.id} event={dummyEvent} />
+            ))}
         </div>
     )
 }
