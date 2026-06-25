@@ -147,4 +147,8 @@
     .page-layout {
         @apply flex flex-col gap-6 items-center px-4 py-12;
     }
+
+    .badge-styling {
+        @apply text-xs w-10 px-0 py-1 font-semibold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:border-white/20;
+    }
 }

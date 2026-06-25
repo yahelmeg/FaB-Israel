@@ -16,7 +16,7 @@ export function PrintingBadge({ printing, interactive=true }: PrintingBadgeProps
         <Badge
             variant="outline"
             className={cn(
-                "text-xs w-12 px-0 py-1 font-bold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:border-white/20 cursor-pointer",
+                "badge-styling",
                 dynamicClass,
                 !interactive && "cursor-default"
             )}
