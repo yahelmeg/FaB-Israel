@@ -1,6 +1,7 @@
 
 import {PrintingTypes} from "./PrintingTypes";
 import {ConditionTypes} from "./ConditionTypes";
+import {LanguageTypes} from "@/types/LanguageTypes";
 
 export interface Listing {
     id: string;
@@ -10,6 +11,7 @@ export interface Listing {
     foiling: PrintingTypes;
     set: string;
     cardName: string;
+    language: LanguageTypes;
     sellerName: string;
     sellerPhoneNumber: string;
     sellerDiscord: string;
