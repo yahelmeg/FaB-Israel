@@ -21,7 +21,7 @@ export function ListingCard({ listing, onClick }: ListingCardProps) {
                 />
             </div>
             <CardContent className={`p-0`}>
-            <ListingCardFooter price={listing.price} foiling={listing.foiling} condition={listing.condition} />
+            <ListingCardFooter language={listing.language} price={listing.price} foiling={listing.foiling} condition={listing.condition} />
             </CardContent>
         </Card>
     )
