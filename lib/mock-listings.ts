@@ -1,6 +1,6 @@
 import {Listing} from "@/types/Listing";
 
-const MOCK_LISTINGS: Listing[] = [
+export const MOCK_LISTINGS: Listing[] = [
     {
         id: "1",
         price: 125.00,
@@ -12,6 +12,7 @@ const MOCK_LISTINGS: Listing[] = [
         sellerName: "Yahel",
         sellerPhoneNumber: "972543042596",
         sellerDiscord: "Dusk",
+        language: "EN"
     },
     {
         id: "2",
@@ -24,6 +25,7 @@ const MOCK_LISTINGS: Listing[] = [
         sellerName: "Dudu",
         sellerPhoneNumber: "972522260702",
         sellerDiscord: "HolySrulink",
+        language: "EN"
     },
     {
         id: "3",
@@ -36,6 +38,7 @@ const MOCK_LISTINGS: Listing[] = [
         sellerName: "Dudu",
         sellerPhoneNumber: "972522260702",
         sellerDiscord: "HolySrulink",
+        language: "ES"
     },
     {
         id: "4",
@@ -48,6 +51,7 @@ const MOCK_LISTINGS: Listing[] = [
         sellerName: "Dudu",
         sellerPhoneNumber: "972522260702",
         sellerDiscord: "HolySrulink",
+        language: "DE"
     },
     {
         id: "5",
@@ -60,6 +64,7 @@ const MOCK_LISTINGS: Listing[] = [
         sellerName: "Dudu",
         sellerPhoneNumber: "972522260702",
         sellerDiscord: "HolySrulink",
+        language: "FR"
     },
     {
         id: "6",
@@ -72,6 +77,7 @@ const MOCK_LISTINGS: Listing[] = [
         sellerName: "Dudu",
         sellerPhoneNumber: "972522260702",
         sellerDiscord: "HolySrulink",
+        language: "JA"
     },
     {
         id: "7",
@@ -84,6 +90,7 @@ const MOCK_LISTINGS: Listing[] = [
         sellerName: "Dudu",
         sellerPhoneNumber: "972522260702",
         sellerDiscord: "HolySrulink",
+        language: "IT"
     },
     {
         id: "8",
@@ -96,126 +103,7 @@ const MOCK_LISTINGS: Listing[] = [
         sellerName: "Yahel",
         sellerPhoneNumber: "972543042596",
         sellerDiscord: "Dusk",
-    },
-    {
-        id: "9",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "NM",
-        foiling: "CF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
-    {
-        id: "10",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "EX",
-        foiling: "RF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
-    {
-        id: "11",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "GD",
-        foiling: "NF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
-    {
-        id: "12",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "LP",
-        foiling: "NF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
-    {
-        id: "13",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "PL",
-        foiling: "NF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
-    {
-        id: "14",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "PO",
-        foiling: "NF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
-    {
-        id: "15",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "GD",
-        foiling: "NF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
-    {
-        id: "16",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "LP",
-        foiling: "NF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
-    {
-        id: "17",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "PL",
-        foiling: "NF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
-    {
-        id: "18",
-        price: 450.00,
-        image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
-        condition: "PO",
-        foiling: "NF",
-        set: "Monarch",
-        cardName: "Command and Conquer",
-        sellerName: "Dudu",
-        sellerPhoneNumber: "972522260702",
-        sellerDiscord: "HolySrulink",
-    },
+        language: "EN"
+    }
 
 ];
