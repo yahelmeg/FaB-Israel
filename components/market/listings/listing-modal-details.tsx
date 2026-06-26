@@ -34,14 +34,12 @@ export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
             </div>
 
             <div className="flex flex-wrap gap-2">
-                <div className="grid grid-cols-2 gap-2">
-                    {listing.sellerPhoneNumber && (
-                        <WhatsappButton phoneNumber={listing.sellerPhoneNumber} cardName={listing.cardName}/>
-                    )}
-                    {listing.sellerDiscord && (
-                        <DiscordButton sellerDiscord={listing.sellerDiscord}/>
-                    )}
-                </div>
+                {listing.sellerPhoneNumber && (
+                    <WhatsappButton phoneNumber={listing.sellerPhoneNumber} cardName={listing.cardName}/>
+                )}
+                {listing.sellerDiscord && (
+                    <DiscordButton sellerDiscord={listing.sellerDiscord}/>
+                )}
             </div>
             <Separator/>
             <div className="flex flex-col gap-2">
