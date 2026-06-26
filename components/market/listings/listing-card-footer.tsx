@@ -16,7 +16,7 @@ interface ListingCardFooterProps {
 export function ListingCardFooter({ price, foiling, condition, language }: ListingCardFooterProps) {
     return (
         <div className="flex items-center w-full p-2 gap-2">
-            <div className="font-bold text-foreground text-sm whitespace-nowrap shrink-0">
+            <div className="font-bold text-foreground text-lg whitespace-nowrap shrink-0">
                 {formatPrice(price)}
             </div>
             <div className="flex flex-row items-center gap-1 justify-end flex-1">

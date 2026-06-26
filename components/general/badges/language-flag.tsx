@@ -23,7 +23,7 @@ export function LanguageFlag({ language }: LanguageFlagProps) {
     }
 
     return (
-        <div className="w-4 rounded-sm overflow-hidden ring-1 ring-black/10" >
+        <div className="w-6 rounded-sm overflow-hidden ring-1 ring-black/10" >
             <Flag title={language} className="block w-full"/>
         </div>
     )

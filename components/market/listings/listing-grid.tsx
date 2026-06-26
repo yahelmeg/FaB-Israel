@@ -13,10 +13,7 @@ export function ListingGrid({listings}: ListingGridProps) {
     const [selectedListing, setSelectedListing] = useState<Listing | null>(null);
     return (
         <>
-            <div
-                className="grid gap-x-3 gap-y-4"
-                style={{gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))"}}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
                 {listings.map((listing) => (
                     <ListingCard key={listing.id} listing={listing} onClick={() => setSelectedListing(listing)}/>
                 ))}

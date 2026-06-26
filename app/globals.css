@@ -149,6 +149,6 @@
     }
 
     .badge-styling {
-        @apply text-xs w-10 px-0 py-1 font-semibold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:border-white/20;
+        @apply text-sm w-12 px-0 py-1 font-semibold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:border-white/20;
     }
 }
