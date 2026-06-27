@@ -31,9 +31,6 @@ export function Navbar() {
                 <NavigationMenuItem>
                     <NavigationMenuLink href="/market" className="nav-link">Market</NavigationMenuLink>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <NavigationMenuLink href="/test" className="nav-link">test</NavigationMenuLink>
-                </NavigationMenuItem>
                 <NavigationMenuItem className="flex-1" />
                 <NavigationMenuItem>
                     <NavigationMenuLink href="/get-started" className="nav-link">Get started </NavigationMenuLink>
