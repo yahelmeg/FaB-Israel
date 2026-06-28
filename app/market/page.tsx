@@ -19,7 +19,7 @@ export default async function MarketPage({ searchParams }: MarketPageProps) {
         <div className="page-layout">
             {!hasSearched && (
                 <h2 className="page-heading-text mb-8">
-                    Buy and Sell cards
+                    Search for Cards
                 </h2>
             )}
             <SearchBar defaultValue={query}/>
