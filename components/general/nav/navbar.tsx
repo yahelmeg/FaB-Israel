@@ -1,20 +1,15 @@
 "use client"
 import {NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger, NavigationMenuContent} from "@/components/ui/navigation-menu"
 import { MdDarkMode, MdLightMode  } from "react-icons/md"
-import {useState, useEffect} from "react";
-
 import {Button} from "@/components/ui/button"
 import {MobileNav} from "@/components/general/nav/mobile-nav";
 
 
 export function Navbar() {
-    const [isDark, setIsDark] = useState<boolean>( () =>
-      typeof window !== "undefined" && document.documentElement.classList.contains("dark")
-    );
 
     const toggleDark = () => {
-        document.documentElement.classList.toggle("dark");
-        setIsDark( prev => !prev);
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
     }
 
     return (
@@ -60,7 +55,8 @@ export function Navbar() {
                 </NavigationMenuItem>
                 <NavigationMenuItem className="hidden md:flex">
                     <Button variant="ghost" size="icon" className="cursor-pointer hover:opacity-70 transition-none" onClick={toggleDark}>
-                        {isDark ? <MdLightMode className="size-6"/> : <MdDarkMode className="size-6" />}
+                        <MdDarkMode className="block dark:hidden size-6" />
+                        <MdLightMode className="hidden dark:block size-6" />
                     </Button>
                 </NavigationMenuItem>
             </NavigationMenuList>
