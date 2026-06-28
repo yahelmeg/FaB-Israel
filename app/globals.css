@@ -137,11 +137,11 @@
     }
 
     .nav-link {
-        @apply font-medium;
+        @apply text-xl font-medium;
     }
 
     .page-heading-text {
-        @apply text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white;
+        @apply text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl ;
     }
 
     .page-layout {

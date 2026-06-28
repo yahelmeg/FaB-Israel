@@ -22,12 +22,12 @@ export function SearchBar( {defaultValue = ""} : SearchBarProps ) {
     }
     return (
         <form onSubmit={handleSubmit} className="w-full max-w-3xl flex gap-2">
-            <Field orientation="horizontal" className="bg-muted rounded-sm" >
+            <Field orientation="horizontal" className="bg-muted rounded-lg" >
                 <Input type="search"
                        placeholder="Search Flesh and Blood cards..."
                        value={query}
                        onChange={(e) => setQuery(e.target.value)}
-                       className="h-10 !text-lg"
+                       className="h-10 text-xs md:text-lg"
                 />
             </Field>
             <Button type="submit" variant="outline" aria-label="Search" className="cursor-pointer bg-muted h-10 w-10">
