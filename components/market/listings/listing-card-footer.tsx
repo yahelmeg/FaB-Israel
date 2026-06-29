@@ -1,14 +1,14 @@
 import { formatPrice } from "@/lib/format"
-import { PrintingBadge } from "@/components/general/badges/printing-badge"
+import { FoilingBadge } from "@/components/general/badges/foiling-badge"
 import { ConditionBadge } from "@/components/general/badges/condition-badge"
-import {PrintingTypes} from "@/types/PrintingTypes";
+import {FoilingTypes} from "@/types/FoilingTypes";
 import {ConditionTypes} from "@/types/ConditionTypes";
 import {LanguageFlag} from "@/components/general/badges/language-flag";
 import {LanguageTypes} from "@/types/LanguageTypes";
 
 interface ListingCardFooterProps {
     price: number
-    foiling: PrintingTypes
+    foiling: FoilingTypes
     condition: ConditionTypes
     language: LanguageTypes
 }
@@ -21,7 +21,7 @@ export function ListingCardFooter({ price, foiling, condition, language }: Listi
             </div>
             <div className="flex flex-row items-center gap-1 justify-end flex-1">
                 <LanguageFlag language={language} />
-                <PrintingBadge printing={foiling} />
+                <FoilingBadge foiling={foiling} />
                 <ConditionBadge condition={condition} />
             </div>
         </div>

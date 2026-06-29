@@ -1,5 +1,5 @@
 import { Listing } from "@/types/Listing"
-import { PrintingBadge } from "@/components/general/badges/printing-badge"
+import { FoilingBadge } from "@/components/general/badges/foiling-badge"
 import { ConditionBadge } from "@/components/general/badges/condition-badge"
 import { formatPrice } from "@/lib/format"
 import { Separator } from "@/components/ui/separator"
@@ -23,7 +23,7 @@ export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
             </div>
 
             <div className="flex gap-2 items-center">
-                <PrintingBadge printing={listing.foiling}/>
+                <FoilingBadge foiling={listing.foiling}/>
                 <ConditionBadge condition={listing.condition}/>
                 <LanguageFlag language={listing.language}/>
             </div>

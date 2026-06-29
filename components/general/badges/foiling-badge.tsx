@@ -1,16 +1,16 @@
 import Link from "next/link"
-import {PrintingTypes} from "@/types/PrintingTypes"
-import {printingStyles} from "@/lib/printings"
+import {FoilingTypes} from "@/types/FoilingTypes"
+import {foilingStyles} from "@/lib/foilings"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
-interface PrintingBadgeProps {
-    printing: PrintingTypes
+interface FoilingBadgeProps {
+    foiling: FoilingTypes
     interactive?: boolean
 }
 
-export function PrintingBadge({ printing, interactive=true }: PrintingBadgeProps) {
-    const dynamicClass = printingStyles[printing]
+export function FoilingBadge({ foiling, interactive=true }: FoilingBadgeProps) {
+    const dynamicClass = foilingStyles[foiling]
 
     const badge = (
         <Badge
@@ -21,14 +21,14 @@ export function PrintingBadge({ printing, interactive=true }: PrintingBadgeProps
                 !interactive && "cursor-default"
             )}
         >
-            {printing}
+            {foiling}
         </Badge>
     )
     if (!interactive) {
         return badge
     }
     return (
-        <Link href="/printings" onClick={(e) => e.stopPropagation()}>
+        <Link href="/foilings" onClick={(e) => e.stopPropagation()}>
             {badge}
         </Link>
     )
