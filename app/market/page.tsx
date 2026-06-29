@@ -1,4 +1,4 @@
-import {SearchBar} from "@/components/market/search/search-bar";
+import {MarketSearchBar} from "@/components/market/search/market-search-bar";
 import {ListingGrid} from "@/components/market/listings/listing-grid";
 import {MOCK_LISTINGS} from "@/lib/mock-listings";
 
@@ -22,7 +22,7 @@ export default async function MarketPage({ searchParams }: MarketPageProps) {
                     Search for Cards
                 </h2>
             )}
-            <SearchBar defaultValue={query}/>
+            <MarketSearchBar defaultValue={query}/>
             {hasSearched && <ListingGrid listings={filteredListings}/>}
         </div>
     )

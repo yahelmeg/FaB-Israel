@@ -3,30 +3,25 @@ import {Input} from "@/components/ui/input"
 import {Button} from "@/components/ui/button"
 import {Field} from "@/components/ui/field"
 import { FiSearch } from "react-icons/fi";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation"
+import React from "react";
 
 
 interface SearchBarProps {
-    defaultValue?: string
+    value: string;
+    onChange: (value: string) => void;
+    onSubmit?: (e: React.SubmitEvent) => void;
+    placeholder?: string;
 }
 
-export function SearchBar( {defaultValue = ""} : SearchBarProps ) {
+export function SearchBar( { value, onChange, onSubmit, placeholder } : SearchBarProps ) {
 
-    const [query, setQuery] = useState(defaultValue);
-    const router = useRouter()
-
-    const handleSubmit = (e: React.SubmitEvent ) => {
-        e.preventDefault()
-        router.push(`?q=${encodeURIComponent(query)}`)
-    }
     return (
-        <form onSubmit={handleSubmit} className="w-full max-w-3xl flex gap-2">
+        <form onSubmit={onSubmit} className="w-full max-w-3xl flex gap-2">
             <Field orientation="horizontal" className="bg-muted rounded-lg" >
                 <Input type="search"
-                       placeholder="Search Flesh and Blood cards..."
-                       value={query}
-                       onChange={(e) => setQuery(e.target.value)}
+                       placeholder={placeholder}
+                       value={value}
+                       onChange={ (e) => onChange(e.target.value)}
                        className="h-10 text-xs md:text-lg"
                 />
             </Field>
