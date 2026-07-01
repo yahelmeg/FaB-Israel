@@ -1,20 +1,20 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { findCardPrintings } from "@/lib/fab-utils"
-import type { CardPrinting } from "@/types/CardPrinting"
 import { cn } from "@/lib/utils"
 import {Card} from "@/types/Card"
+import {Printing} from "@flesh-and-blood/types";
 
 interface PrintingPickerProps {
     card: Card
-    onSelect: (printing: CardPrinting) => void
+    onSelect: (printing: Printing) => void
 }
 
 export function PrintingPicker({ card, onSelect }: PrintingPickerProps) {
     const printings = findCardPrintings(card)
-    const [selected, setSelected] = useState<CardPrinting | null>(null)
+    const [selected, setSelected] = useState<Printing | null>(null)
 
-    const handleSelected = (printing: CardPrinting) => {
+    const handleSelected = (printing: Printing) => {
         setSelected(printing)
         onSelect(printing)
     }

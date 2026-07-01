@@ -1,17 +1,13 @@
 import {cards} from "@flesh-and-blood/cards"
-import {CardPrinting} from "@/types/CardPrinting";
 import {Card} from "@/types/Card";
+import {Printing} from "@flesh-and-blood/types";
 
 
-export function findCardPrintings(card: Card) : CardPrinting[] {
+export function findCardPrintings(card: Card) : Printing[] {
     if (!card) {
         return []
     }
-    return card.printings.map( p => ({
-        print: p.print,
-        image: p.image ?? p.identifier
-    }))
-        .sort((a,b) => a.print.localeCompare(b.print))
+    return card.printings.sort((a,b) => a.print.localeCompare(b.print))
 }
 
 export const PITCH_COLORS: Record<number, string> = {
@@ -30,15 +26,20 @@ export function getDisplayName(card: Card): string {
     return card.pitch ? `${card.name} ${PITCH_LETTER[card.pitch]}` : card.name
 }
 
-export function getImageSource(printing: CardPrinting): string {
-    let setCode = printing.image[0] === "U"
-        ? printing.image.slice(0, 5)
-        : printing.image.slice(0, 3);
+export function getImageSource(image: string | undefined): string {
+    if (!image) {
+        return "/cards/webp/placeholder.webp";
+    }
+
+    let setCode = image[0] === "U"
+        ? image.slice(0, 5)
+        : image.slice(0, 3);
 
     if (setCode.toUpperCase() === "CON") {
         setCode = "CONV";
     }
-    return `/cards/webp/${setCode}/${printing.image}.webp`;
+
+    return `/cards/webp/${setCode}/${image}.webp`;
 }
 
 const cardLookupMap = new Map<string, Card>();

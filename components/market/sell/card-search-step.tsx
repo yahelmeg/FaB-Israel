@@ -5,18 +5,17 @@ import {PrintingPicker} from "@/components/market/sell/printing-picker";
 import {Button} from "@/components/ui/button";
 import {Card} from "@/types/Card";
 import {Printing} from "@flesh-and-blood/types";
-import {CardPrinting} from "@/types/CardPrinting";
 import Image from "next/image";
 import {getImageSource} from "@/lib/fab-utils";
 
 interface CardSearchStepProps {
-    onNext: (printing: CardPrinting) => void
+    onNext: (printing: Printing) => void
 }
 
 export function CardSearchStep( {onNext }: CardSearchStepProps) {
 
     const [selectedCard, setSelectedCard] = useState<Card | null >(null)
-    const [selectedPrinting, setSelectedPrinting] = useState<CardPrinting | null>(null)
+    const [selectedPrinting, setSelectedPrinting] = useState<Printing | null>(null)
 
     const handleCardNameSelect = (card: Card | null) => {
         setSelectedCard(card)
@@ -42,11 +41,11 @@ export function CardSearchStep( {onNext }: CardSearchStepProps) {
             {selectedPrinting && (
                 <div className="flex-shrink-0">
                     <Image
-                        src={getImageSource(selectedPrinting)}
+                        src={getImageSource(selectedPrinting.image)}
                         alt={selectedPrinting.print}
                         width={300}
                         height={418}
-                        className="rounded-xl shadow-lg" // Optional: makes TCG cards look great!
+                        className="rounded-xl shadow-lg" //
                     />
                     {selectedPrinting && (
                         <div className="flex justify-end pt-4 items-start">
