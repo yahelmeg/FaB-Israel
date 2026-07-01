@@ -1,60 +1,62 @@
 "use client"
-import type { Release} from "@flesh-and-blood/types";
 import { useState } from "react"
-import {CardPrinting} from "@/types/CardPrinting";
 import {CardPicker} from "@/components/market/sell/card-picker";
 import {PrintingPicker} from "@/components/market/sell/printing-picker";
 import {Button} from "@/components/ui/button";
-
-interface SelectedCard {
-    cardName: string
-    set: Release
-    image: string
-    print: string
-}
-
+import {Card} from "@/types/Card";
+import {Printing} from "@flesh-and-blood/types";
+import {CardPrinting} from "@/types/CardPrinting";
+import Image from "next/image";
+import {getImageSource} from "@/lib/fab-utils";
 
 interface CardSearchStepProps {
-    onNext: (card: SelectedCard) => void
+    onNext: (printing: CardPrinting) => void
 }
-
 
 export function CardSearchStep( {onNext }: CardSearchStepProps) {
 
-    const [selectedName, setSelectedName] = useState<string | null >(null)
+    const [selectedCard, setSelectedCard] = useState<Card | null >(null)
     const [selectedPrinting, setSelectedPrinting] = useState<CardPrinting | null>(null)
 
-    const handleCardNameSelect = (name: string | null) => {
-        setSelectedName(name)
+    const handleCardNameSelect = (card: Card | null) => {
+        setSelectedCard(card)
         setSelectedPrinting(null)
     }
 
     const handleNextClick = () => {
-        if (selectedName && selectedPrinting) {
-            const card: SelectedCard = {
-                cardName: selectedName,
-                set: selectedPrinting.print as Release,
-                image: selectedPrinting.image,
-                print: selectedPrinting.print
-            }
-
-            onNext(card)
+        if (selectedCard && selectedPrinting) {
+            onNext(selectedPrinting)
         }
     }
 
     return (
-        <div className="flex flex-col items-start gap-6 w-full">
-            <CardPicker onSelectName={handleCardNameSelect}/>
-            {selectedName && (
-                <PrintingPicker cardName={selectedName} onSelect={setSelectedPrinting}/>
-            )}
-            <div className="flex justify-end pt-4">
-                {selectedPrinting && (
-                    <Button className="cursor-pointer" onClick={handleNextClick}>
-                        Confirm Selection
-                    </Button>
+        <div className="flex flex-row items-start gap-6 w-full">
+            <div className="flex flex-col gap-6 flex-1">
+                <CardPicker onSelectCard={handleCardNameSelect}/>
+
+                {selectedCard && (
+                    <PrintingPicker card={selectedCard} onSelect={setSelectedPrinting}/>
                 )}
             </div>
+
+            {selectedPrinting && (
+                <div className="flex-shrink-0">
+                    <Image
+                        src={getImageSource(selectedPrinting)}
+                        alt={selectedPrinting.print}
+                        width={300}
+                        height={418}
+                        className="rounded-xl shadow-lg" // Optional: makes TCG cards look great!
+                    />
+                    {selectedPrinting && (
+                        <div className="flex justify-end pt-4 items-start">
+                            <Button className="cursor-pointer" onClick={handleNextClick}>
+                                Confirm Selection
+                            </Button>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     )
 }

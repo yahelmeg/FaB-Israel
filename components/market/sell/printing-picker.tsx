@@ -1,16 +1,17 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { searchCardPrintings } from "@/lib/fab-utils"
+import { findCardPrintings } from "@/lib/fab-utils"
 import type { CardPrinting } from "@/types/CardPrinting"
 import { cn } from "@/lib/utils"
+import {Card} from "@/types/Card"
 
 interface PrintingPickerProps {
-    cardName: string
+    card: Card
     onSelect: (printing: CardPrinting) => void
 }
 
-export function PrintingPicker({ cardName, onSelect }: PrintingPickerProps) {
-    const printings = searchCardPrintings(cardName)
+export function PrintingPicker({ card, onSelect }: PrintingPickerProps) {
+    const printings = findCardPrintings(card)
     const [selected, setSelected] = useState<CardPrinting | null>(null)
 
     const handleSelected = (printing: CardPrinting) => {
@@ -19,21 +20,24 @@ export function PrintingPicker({ cardName, onSelect }: PrintingPickerProps) {
     }
 
     return (
-        <div className="flex flex-col gap-1 w-full max-w-lg">
-            {printings.map(printing => (
-                <Button
-                    key={printing.print}
-                    onClick={() => handleSelected(printing)}
-                    className={cn(
-                        "w-full justify-start text-left px-3 py-2 rounded-md text-sm cursor-pointer transition-colors",
-                        selected?.print === printing.print
-                            ? "bg-primary/10 text-primary"
-                            : "hover:bg-muted text-muted-foreground hover:text-foreground"
-                    )}
-                >
-                    {printing.print}
-                </Button>
-            ))}
+        <div className="flex flex-col gap-2 w-full max-w-lg">
+            {printings.map(printing => {
+                const isSelected = selected?.print === printing.print
+
+                return (
+                    <Button
+                        key={printing.print}
+                        variant={isSelected ? "default" : "outline"}
+                        onClick={() => handleSelected(printing)}
+                        className={cn(
+                            "w-full justify-start text-left px-4 py-2 h-auto transition-colors",
+                            !isSelected && "text-foreground hover:bg-muted/60 border-border/50"
+                        )}
+                    >
+                        {printing.print}
+                    </Button>
+                )
+            })}
         </div>
     )
 }
