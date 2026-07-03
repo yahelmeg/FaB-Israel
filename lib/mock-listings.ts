@@ -3,7 +3,7 @@ import {Listing} from "@/types/Listing";
 export const MOCK_LISTINGS: Listing[] = [
     {
         id: "1",
-        price: 1250.00,
+        price: 12500.00,
         image: "/cards/IRA001-P_EUmBrk0.width-450.webp",
         condition: "MT",
         foiling: "GF",

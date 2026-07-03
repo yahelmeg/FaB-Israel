@@ -42,32 +42,34 @@ export function CardPicker({ onSelectCard }: CardPickerProps) {
     }
 
         return (
-            <Combobox value={selectedCard ? getDisplayName(selectedCard) : ""} onValueChange={handleValueChange}>
-                <ComboboxInput
-                    placeholder="Search for your card..."
-                    showClear={!!selectedCard}
-                    className={`w-full max-w-lg font-medium ${
-                        selectedCard?.pitch ? PITCH_COLORS[selectedCard.pitch] : ""
-                    }`}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <ComboboxContent>
-                    <ComboboxList>
-                        {filteredCards.length === 0 ? (
-                            <ComboboxEmpty>No cards found.</ComboboxEmpty>
-                        ) : (
-                            filteredCards.map(card => (
-                                <ComboboxItem key={card.cardIdentifier} value={getDisplayName(card)}>
-                                    <div className="flex items-center w-full">
-                                        <span className={`font-medium ${card.pitch ? PITCH_COLORS[card.pitch] : "text-foreground"}`}>
-                                            {getDisplayName(card)}
-                                        </span>
-                                    </div>
-                                </ComboboxItem>
-                            ))
-                        )}
-                    </ComboboxList>
-                </ComboboxContent>
-            </Combobox>
+            <div className="space-y-6">
+                <Combobox value={selectedCard ? getDisplayName(selectedCard) : ""} onValueChange={handleValueChange}>
+                    <ComboboxInput
+                        placeholder="Search for your card..."
+                        showClear={!!selectedCard}
+                        className={`w-full max-w-lg font-medium ${
+                            selectedCard?.pitch ? PITCH_COLORS[selectedCard.pitch] : ""
+                        }`}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <ComboboxContent>
+                        <ComboboxList>
+                            {filteredCards.length === 0 ? (
+                                <ComboboxEmpty>No cards found.</ComboboxEmpty>
+                            ) : (
+                                filteredCards.map(card => (
+                                    <ComboboxItem key={card.cardIdentifier} value={getDisplayName(card)}>
+                                        <div className="flex items-center w-full">
+                                            <span className={`font-medium ${card.pitch ? PITCH_COLORS[card.pitch] : "text-foreground"}`}>
+                                                {getDisplayName(card)}
+                                            </span>
+                                        </div>
+                                    </ComboboxItem>
+                                ))
+                            )}
+                        </ComboboxList>
+                    </ComboboxContent>
+                </Combobox>
+            </div>
         )
 }

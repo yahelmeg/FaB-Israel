@@ -151,4 +151,8 @@
     .badge-styling {
         @apply text-sm w-12 px-0 py-1 font-semibold uppercase tracking-wider shadow-sm whitespace-nowrap text-center justify-center dark:border-white/20;
     }
+
+    .sell-page-label {
+        @apply flex items-center gap-1.5 text-base font-medium pb-2
+    }
 }
