@@ -1,6 +1,6 @@
 import {EventFormat} from "@/types/EventFormat";
 import {EventTier} from "@/types/EventTier";
-import {Store} from "@/types/Store";
+import {Stores} from "@/types/Stores";
 
 export interface Event {
     id: string
@@ -8,7 +8,7 @@ export interface Event {
     date: string
     time: string
     address?: string
-    store?: Store
+    store?: Stores
     format: EventFormat
     tier: EventTier
     register_url?: string
