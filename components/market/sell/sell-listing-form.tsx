@@ -4,7 +4,7 @@ import { CardPicker } from "@/components/market/sell/card-picker";
 import { PrintingPicker } from "@/components/market/sell/printing-picker";
 import { ListingDetailsForm } from "@/components/market/sell/listing-details-form";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/types/Card";
+import { Card } from "@flesh-and-blood/types";
 import { Printing } from "@flesh-and-blood/types";
 import { ConditionTypes } from "@/types/ConditionTypes";
 import { LanguageTypes } from "@/types/LanguageTypes";

@@ -2,7 +2,7 @@ import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, 
 import { cards } from "@flesh-and-blood/cards";
 import { useState, useMemo } from "react"
 import { PITCH_COLORS, getDisplayName, getCardFromName } from "@/lib/fab-utils"
-import {Card} from "@/types/Card"
+import {Card} from "@flesh-and-blood/types"
 
 
 interface CardPickerProps {

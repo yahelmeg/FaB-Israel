@@ -1,7 +1,7 @@
 import { useState} from "react"
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
 import { findCardPrintings } from "@/lib/fab-utils"
-import { Card } from "@/types/Card"
+import { Card } from "@flesh-and-blood/types"
 import { Printing } from "@flesh-and-blood/types"
 
 interface PrintingPickerProps {

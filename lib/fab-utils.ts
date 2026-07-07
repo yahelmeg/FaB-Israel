@@ -1,5 +1,5 @@
 import {cards} from "@flesh-and-blood/cards"
-import {Card} from "@/types/Card";
+import {Card} from "@flesh-and-blood/types";
 import {Printing} from "@flesh-and-blood/types";
 
 
@@ -42,6 +42,7 @@ export function getImageSource(image: string | undefined): string {
     return `/cards/webp/${setCode}/${image}.webp`;
 }
 
+// TODO (Optimization): Moving this global Map population loop into an app startup singleton
 const cardLookupMap = new Map<string, Card>();
 
 for (const card of cards) {
