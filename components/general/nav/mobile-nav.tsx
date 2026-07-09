@@ -37,6 +37,7 @@ export function MobileNav() {
                     <Link href="/events" className="nav-link" onClick={() => setOpen(false)}>Events</Link>
                     <Link href="/announcements" className="nav-link" onClick={() => setOpen(false)}>Announcements</Link>
                     <Link href="/get-started" className="nav-link" onClick={() => setOpen(false)}>Get Started</Link>
+                    <Link href="/auth" className="nav-link" onClick={() => setOpen(false)}>Sign in</Link>
                 </nav>
             </SheetContent>
        </Sheet>
