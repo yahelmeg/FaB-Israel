@@ -1,20 +1,21 @@
 import { ProfileForm } from "@/components/auth/profile-form"
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
-import {SellListingForm} from "@/components/market/sell/sell-listing-form";
 
 export default async function OnboardingPage() {
     const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    const { data, error: authError } = await supabase.auth.getClaims()
 
-    if (!user) {
+    if (authError || !data?.claims) {
         redirect("/auth")
     }
+
+    const userId = data.claims.sub
 
     const { data: profile, error: profileError } = await supabase
         .from("profiles")
         .select("display_name, phone_number, discord_username, onboarding_completed")
-        .eq("id", user.id)
+        .eq("id", userId)
         .single()
 
     if (profile?.onboarding_completed) {
