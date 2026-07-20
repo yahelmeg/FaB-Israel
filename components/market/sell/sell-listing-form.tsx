@@ -14,16 +14,8 @@ import { Search, Layers } from "lucide-react";
 import { Label } from "@/components/ui/label";
 
 
-interface SellListingFormProps {
-    onSubmit: (data: {
-        printing: Printing;
-        condition: ConditionTypes;
-        language: LanguageTypes;
-        price: string;
-    }) => void;
-}
+export function SellListingForm() {
 
-export function SellListingForm({ onSubmit }: SellListingFormProps) {
     const [selectedCard, setSelectedCard] = useState<Card | null>(null);
     const [selectedPrinting, setSelectedPrinting] = useState<Printing | null>(null);
     const [condition, setCondition] = useState<ConditionTypes>("NM");
@@ -38,8 +30,11 @@ export function SellListingForm({ onSubmit }: SellListingFormProps) {
     const isListingValid = !!selectedPrinting && price.trim().length > 0 && Number(price) > 0;
 
     const handleCreateListing = () => {
-        if (!selectedPrinting || !isListingValid) return;
-        onSubmit({ printing: selectedPrinting, condition, language, price });
+        if (!selectedPrinting || !isListingValid)  {
+            return;
+        }
+        // TODO: replace with a Server Action to create the listing in Supabase
+        console.log({ printing: selectedPrinting, condition, language, price });
     };
 
     return (
