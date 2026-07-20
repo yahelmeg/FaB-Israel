@@ -1,30 +1,12 @@
 import { ProfileForm } from "@/components/auth/profile-form"
-import { createClient } from "@/lib/supabase/server"
+import { requireProfile } from "@/lib/auth-helpers/require-profile"
 import { redirect } from "next/navigation"
 
 export default async function OnboardingPage() {
-    const supabase = await createClient()
-    const { data, error: authError } = await supabase.auth.getClaims()
-
-    if (authError || !data?.claims) {
-        redirect("/auth")
-    }
-
-    const userId = data.claims.sub
-
-    const { data: profile, error: profileError } = await supabase
-        .from("profiles")
-        .select("display_name, phone_number, discord_username, onboarding_completed")
-        .eq("id", userId)
-        .single()
+    const profile = await requireProfile()
 
     if (profile?.onboarding_completed) {
         redirect("/")
-    }
-
-    if (profileError) {
-        console.error("Failed to load profile:", profileError)
-        redirect("/auth?error=profile")
     }
 
     return (
@@ -43,6 +25,5 @@ export default async function OnboardingPage() {
                 defaultDiscordUsername={profile?.discord_username ?? ""}
             />
         </div>
-
     )
 }
