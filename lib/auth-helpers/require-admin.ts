@@ -9,7 +9,7 @@ export async function requireAdmin()  {
     const supabase = await createClient()
     const {data: adminRow} = await supabase
         .from("admins")
-        .select("id")
+        .select("user_id")
         .eq("user_id", claims.sub)
         .single()
 
