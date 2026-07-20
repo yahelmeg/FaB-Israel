@@ -3,6 +3,7 @@ import { Inter, Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { NavbarWrapper } from "@/components/general/nav/navbar-wrapper";
+import {Footer} from "@/components/general/footer/footer";
 
 const inter = Inter({
     variable: "--font-inter",
@@ -58,6 +59,7 @@ export default function RootLayout({
         <main className="flex-1 pt-16 max-w-screen-2xl mx-auto w-full px-6">
             {children}
         </main>
+        <Footer/>
         </body>
         </html>
     );
