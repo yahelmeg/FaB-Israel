@@ -2,6 +2,7 @@
 
 import {createClient} from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
+import {requireAuth} from "@/lib/auth-helpers/require-auth";
 
 type ProfileFormState = {
     error: string | null
@@ -12,10 +13,8 @@ const ISRAELI_PHONE_REGEX = /^0(5[0-9])\d{7}$/
 
 export async function updateProfile( mode: "onboarding" | "edit", _prevState : ProfileFormState, formData: FormData ): Promise<ProfileFormState> {
     const supabase = await createClient()
-    const {data: {user}} = await supabase.auth.getUser()
-    if (!user)  {
-        redirect("/auth")
-    }
+    const claims = await requireAuth()
+
     const displayName = formData.get("displayName") as string
     if (!displayName?.trim())  {
         return {error: "Display name is required"};
@@ -39,7 +38,7 @@ export async function updateProfile( mode: "onboarding" | "edit", _prevState : P
             discord_username: discordUsername,
             ...(mode === "onboarding" ? { onboarding_completed: true } : {}),
         })
-        .eq("id", user.id)
+        .eq("id", claims.sub)
 
     if (error) {
         return { error: "Failed to save profile. Please try again." }
