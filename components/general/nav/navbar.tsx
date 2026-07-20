@@ -4,9 +4,14 @@ import { MdDarkMode, MdLightMode  } from "react-icons/md"
 import {Button} from "@/components/ui/button"
 import {MobileNav} from "@/components/general/nav/mobile-nav";
 import Link from "next/link";
+import {LogoutButton} from "@/components/auth/logout-button";
 
+interface NavbarProps {
+    isLoggedIn: boolean
+    displayName?: string
+}
 
-export function Navbar() {
+export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
 
     const toggleDark = () => {
         const isDark = document.documentElement.classList.toggle("dark");
@@ -50,7 +55,25 @@ export function Navbar() {
                     <NavigationMenuLink href="/get-started" className="nav-link">Get started </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem className="hidden md:flex">
-                    <Button variant="ghost" className="cursor-pointer nav-link font-medium" nativeButton={false} render={ <Link href="/auth">Sign in</Link>} />
+                    {isLoggedIn ? (
+                        <>
+                            <NavigationMenuTrigger className="nav-link">{displayName ?? "Account"}</NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <ul className="w-48 p-1">
+                                    <li>
+                                        <NavigationMenuLink href="/profile" className="block rounded-md px-3 py-2 text-md hover:bg-accent">
+                                            Profile
+                                        </NavigationMenuLink>
+                                    </li>
+                                    <li>
+                                        <LogoutButton />
+                                    </li>
+                                </ul>
+                            </NavigationMenuContent>
+                        </>
+                    ) : (
+                        <Button variant="ghost" className="cursor-pointer nav-link font-medium" nativeButton={false} render={<Link href="/auth">Sign in</Link>} />
+                    )}
                 </NavigationMenuItem>
                 <NavigationMenuItem className="hidden md:flex">
                     <Button variant="ghost" size="icon" className="cursor-pointer hover:opacity-70 transition-none" onClick={toggleDark}>
