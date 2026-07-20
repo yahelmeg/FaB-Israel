@@ -14,7 +14,7 @@ export default async function EventsPage() {
             </div>
             <EventGrid />
             {userIsAdmin && (
-                <Button className="cursor-pointer" nativeButton={false} render={<Link href="/events/new">Create Event</Link>} />
+                <Button className="cursor-pointer" nativeButton={false} render={<Link href="/events/new">Add new Event</Link>} />
             )}
         </div>
     )
