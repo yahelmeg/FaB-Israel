@@ -12,7 +12,7 @@ import Image from "next/image";
 import {getImageSource, toFoilingType} from "@/lib/fab-utils";
 import { Search, Layers } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import { createListing, ListingFormState } from "@/lib/actions/listings";
+import { createListing, ListingFormState } from "@/lib/actions/create-listing";
 
 const initialState: ListingFormState = { error: null };
 
