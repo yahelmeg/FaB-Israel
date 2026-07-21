@@ -1,6 +1,5 @@
 import {MarketSearchBar} from "@/components/market/search/market-search-bar";
 import {ListingGrid} from "@/components/market/listings/listing-grid";
-import {MOCK_LISTINGS} from "@/lib/mock-listings";
 
 interface MarketPageProps {
     searchParams: Promise<{ q?: string }>
@@ -11,9 +10,6 @@ export default async function MarketPage({ searchParams }: MarketPageProps) {
     const query = q ?? ""
     const hasSearched = q !== undefined
 
-    const filteredListings = MOCK_LISTINGS.filter(
-        listing => listing.cardName.toLowerCase().includes(query.toLowerCase())
-    )
 
     return (
         <div className="page-layout">
@@ -23,7 +19,7 @@ export default async function MarketPage({ searchParams }: MarketPageProps) {
                 </h2>
             )}
             <MarketSearchBar defaultValue={query}/>
-            {hasSearched && <ListingGrid listings={filteredListings}/>}
+            {hasSearched && <ListingGrid/>}
         </div>
     )
 }
