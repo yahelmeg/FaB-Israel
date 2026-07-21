@@ -156,3 +156,15 @@
         @apply flex items-center gap-1.5 text-base font-medium pb-2
     }
 }
+
+input[type="date"]::-webkit-datetime-edit,
+input[type="time"]::-webkit-datetime-edit {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.dark input[type="date"]::-webkit-calendar-picker-indicator,
+.dark input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
