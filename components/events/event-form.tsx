@@ -1,6 +1,6 @@
 "use client"
 import {useActionState, useState} from "react"
-import {createEvent, EventFormState} from "@/lib/actions/events";
+import {createEvent, EventFormState} from "@/lib/actions/create-event";
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
