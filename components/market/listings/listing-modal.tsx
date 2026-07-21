@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { ListingModalDetails } from "@/components/market/listings/listing-modal-details";
 import { Listing } from "@/types/Listing"
+import {getImageSource} from "@/lib/fab-utils";
 
 
 interface ListingModalProps {
@@ -16,7 +17,7 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
                 {listing && (
                     <div className="flex flex-col md:flex-row gap-3 h-full min-h-0">
                         <div className="hidden md:block relative w-80 h-full shrink-0 bg-white dark:bg-black">
-                            <Image src={listing.image} alt={listing.cardName} fill className="object-cover" />
+                            <Image src={getImageSource(listing.image)} alt={listing.cardName} fill className="object-cover" />
                         </div>
                         <div className="flex-1 h-full overflow-y-auto p-0 md:p-6">
                             <ListingModalDetails listing={listing}/>
