@@ -1,7 +1,7 @@
 "use client"
 
 import { useActionState } from "react"
-import { updateProfile } from "@/lib/actions/profile"
+import { updateProfile } from "@/lib/actions/update-profile"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
