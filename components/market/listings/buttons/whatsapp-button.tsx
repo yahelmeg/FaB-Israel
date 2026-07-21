@@ -15,7 +15,7 @@ export function WhatsappButton({ phoneNumber, cardName }: WhatsappButtonProps) {
             size="sm"
             nativeButton={false}
             className={cn(
-                "w-32 cursor-pointer gap-1 bg-lime-400 hover:bg-lime-300/90 text-black dark:hover:bg-lime-200/90"
+                "w-32 cursor-pointer gap-1 !bg-lime-400 hover:!bg-lime-300/90 text-black dark:hover:!bg-lime-200/90"
             )}
             render={
                 <a
@@ -25,7 +25,7 @@ export function WhatsappButton({ phoneNumber, cardName }: WhatsappButtonProps) {
                 />
             }
         >
-            <FaWhatsapp size={12} />
+            <FaWhatsapp size={12}  />
             WhatsApp
         </Button>
     )
