@@ -4,7 +4,7 @@ import { MdDarkMode, MdLightMode  } from "react-icons/md"
 import {Button} from "@/components/ui/button"
 import {MobileNav} from "@/components/general/nav/mobile-nav";
 import Link from "next/link";
-import {LogoutButton} from "@/components/auth/logout-button";
+import {SignoutButton} from "@/components/auth/signout-button";
 
 interface NavbarProps {
     isLoggedIn: boolean
@@ -64,7 +64,7 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
                                         </NavigationMenuLink>
                                     </li>
                                     <li>
-                                        <LogoutButton />
+                                        <SignoutButton />
                                     </li>
                                 </ul>
                             </NavigationMenuContent>

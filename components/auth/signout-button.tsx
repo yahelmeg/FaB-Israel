@@ -1,6 +1,6 @@
-import { signOut } from "@/lib/actions/logout"
+import { signOut } from "@/lib/actions/signout"
 
-export function LogoutButton() {
+export function SignoutButton() {
     return (
         <form action={signOut}>
             <button
