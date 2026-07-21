@@ -2,7 +2,6 @@ import {cards} from "@flesh-and-blood/cards"
 import {Card} from "@flesh-and-blood/types";
 import {Printing} from "@flesh-and-blood/types";
 
-
 export function findCardPrintings(card: Card) : Printing[] {
     if (!card) {
         return []
@@ -26,9 +25,12 @@ export function getDisplayName(card: Card): string {
     return card.pitch ? `${card.name} ${PITCH_LETTER[card.pitch]}` : card.name
 }
 
+
 export function getImageSource(image: string | undefined): string {
+    const r2PublicUrl = process.env.NEXT_PUBLIC_R2_PUBLIC_URL || "";
+
     if (!image) {
-        return "/cards/webp/placeholder.webp";
+        return `${r2PublicUrl}/placeholder.webp`;
     }
 
     let setCode = image[0] === "U"
@@ -39,7 +41,7 @@ export function getImageSource(image: string | undefined): string {
         setCode = "CONV";
     }
 
-    return `/cards/webp/${setCode}/${image}.webp`;
+    return `${r2PublicUrl}/${setCode}/${image}.webp`;
 }
 
 // TODO (Optimization): Moving this global Map population loop into an app startup singleton
@@ -51,4 +53,17 @@ for (const card of cards) {
 
 export function getCardFromName(Identifier: string): Card | undefined {
     return cardLookupMap.get(Identifier);
+}
+
+
+import { Foiling } from "@flesh-and-blood/types"
+import { FoilingTypes } from "@/types/FoilingTypes"
+
+export function toFoilingType(foiling: Foiling | undefined): FoilingTypes {
+    switch (foiling) {
+        case Foiling.Rainbow: return "RF"
+        case Foiling.Cold: return "CF"
+        case Foiling.Gold: return "GF"
+        default: return "NF"
+    }
 }
