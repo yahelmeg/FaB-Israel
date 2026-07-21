@@ -1,4 +1,3 @@
-import {cards} from "@flesh-and-blood/cards"
 import {Card} from "@flesh-and-blood/types";
 import {Printing} from "@flesh-and-blood/types";
 import {PITCH_LETTER} from "@/consts/pitch"
@@ -12,11 +11,9 @@ export function findCardPrintings(card: Card) : Printing[] {
     return card.printings.sort((a,b) => a.print.localeCompare(b.print))
 }
 
-
 export function getDisplayName(card: Card): string {
     return card.pitch ? `${card.name} ${PITCH_LETTER[card.pitch]}` : card.name
 }
-
 
 export function getImageSource(image: string | undefined): string {
     const r2PublicUrl = process.env.NEXT_PUBLIC_R2_PUBLIC_URL || "";
@@ -35,18 +32,6 @@ export function getImageSource(image: string | undefined): string {
 
     return `${r2PublicUrl}/${setCode}/${image}.webp`;
 }
-
-// TODO (Optimization): Moving this global Map population loop into an app startup singleton
-const cardLookupMap = new Map<string, Card>();
-
-for (const card of cards) {
-    cardLookupMap.set(getDisplayName(card), card);
-}
-
-export function getCardFromName(Identifier: string): Card | undefined {
-    return cardLookupMap.get(Identifier);
-}
-
 
 export function toFoilingType(foiling: Foiling | undefined): FoilingTypes {
     switch (foiling) {

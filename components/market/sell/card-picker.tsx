@@ -1,7 +1,8 @@
 import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, ComboboxList } from "@/components/ui/combobox";
 import { cards } from "@flesh-and-blood/cards";
 import { useState, useMemo } from "react"
-import { getDisplayName, getCardFromName } from "@/lib/fab-utils"
+import { getDisplayName } from "@/lib/fab-utils"
+import {getCardFromName} from "@/lib/card-lookup"
 import { PITCH_COLORS,} from "@/consts/pitch"
 
 import {Card} from "@flesh-and-blood/types"
