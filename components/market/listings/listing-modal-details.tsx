@@ -46,7 +46,7 @@ export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
                 <p className="text-lg text-muted-foreground">Compare prices on:</p>
                 <div className="flex flex-wrap gap-2">
                     <CardMarketButton cardName={listing.cardName}/>
-                    <TcgPlayerButton cardName={listing.cardName}/>
+                    <TcgPlayerButton cardName={listing.cardName} tcgPlayerUrl={listing.tcgplayerUrl}/>
                 </div>
             </div>
         </div>
