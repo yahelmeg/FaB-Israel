@@ -1,6 +1,6 @@
 import { EventCard } from "@/components/events/event-card"
 import { getVisibleEvents } from "@/lib/events/get-visible-events"
-import {isAdmin} from "@/lib/auth-helpers/is-admin";
+import {isAdmin} from "@/lib/auth/is-admin";
 
 export async function EventGrid() {
     const [{ events, error }, userIsAdmin] = await Promise.all([

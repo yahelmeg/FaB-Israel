@@ -2,7 +2,7 @@
 
 import {createClient} from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
-import {requireAuth} from "@/lib/auth-helpers/require-auth";
+import {requireAuth} from "@/lib/auth/require-auth";
 
 type ProfileFormState = {
     error: string | null

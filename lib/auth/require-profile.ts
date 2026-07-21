@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import {redirect} from "next/navigation"
-import {requireAuth} from "@/lib/auth-helpers/require-auth";
+import {requireAuth} from "@/lib/auth/require-auth";
 
 export async function requireProfile() {
     const supabase = await createClient()

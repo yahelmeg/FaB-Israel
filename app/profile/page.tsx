@@ -1,5 +1,5 @@
 import { ProfileForm } from "@/components/auth/profile-form"
-import { requireProfile } from "@/lib/auth-helpers/require-profile"
+import { requireProfile } from "@/lib/auth/require-profile"
 
 export default async function ProfilePage() {
     const profile = await requireProfile()

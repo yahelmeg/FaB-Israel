@@ -1,6 +1,6 @@
 "use server"
 import {createClient} from "@/lib/supabase/server"
-import {requireAdmin} from "@/lib/auth-helpers/require-admin"
+import {requireAdmin} from "@/lib/auth/require-admin"
 import { revalidatePath } from "next/cache"
 
 export async function hideEvent(eventId: string):  Promise<{ error: string | null }> {

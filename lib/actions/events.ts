@@ -1,11 +1,11 @@
 "use server"
 
-import {requireAdmin} from "@/lib/auth-helpers/require-admin";
+import {requireAdmin} from "@/lib/auth/require-admin";
 import {createClient} from "@/lib/supabase/server";
 import { redirect } from "next/navigation"
 
 
-type EventFormState = {
+export type EventFormState = {
     error: string | null
 }
 

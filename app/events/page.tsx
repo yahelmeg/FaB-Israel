@@ -1,5 +1,5 @@
 import {EventGrid} from "@/components/events/event-list";
-import {isAdmin} from "@/lib/auth-helpers/is-admin";
+import {isAdmin} from "@/lib/auth/is-admin";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
 

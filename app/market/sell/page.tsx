@@ -1,5 +1,5 @@
 import {SellListingForm} from "@/components/market/sell/sell-listing-form";
-import {requireCompletedProfile} from "@/lib/auth-helpers/require-completed-profile";
+import {requireCompletedProfile} from "@/lib/auth/require-completed-profile";
 
 export default async function MarketSellPage() {
 

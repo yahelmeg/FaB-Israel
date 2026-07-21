@@ -1,4 +1,4 @@
-import {requireAuth} from "@/lib/auth-helpers/require-auth";
+import {requireAuth} from "@/lib/auth/require-auth";
 import {createClient} from "@/lib/supabase/server";
 import { redirect } from "next/navigation"
 

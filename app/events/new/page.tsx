@@ -1,4 +1,4 @@
-import {requireAdmin} from "@/lib/auth-helpers/require-admin";
+import {requireAdmin} from "@/lib/auth/require-admin";
 import {EventForm} from "@/components/events/event-form"
 
 export default async function NewEventPage() {
