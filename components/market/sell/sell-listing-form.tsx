@@ -66,9 +66,10 @@ export function SellListingForm() {
                 <Image
                     src={selectedPrinting ? getImageSource(selectedPrinting.image) : getImageSource(undefined)}
                     alt={selectedPrinting ? selectedPrinting.print : "temporary"}
+                    loading="eager"
                     width={300}
                     height={418}
-                    className="rounded-xl shadow-lg sticky top-8"
+                    className="w-[300px] h-[418px] rounded-xl shadow-lg sticky top-8"
                 />
                 <Button
                     type="submit"

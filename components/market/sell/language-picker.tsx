@@ -5,7 +5,7 @@ import { Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LanguageTypes } from "@/types/LanguageTypes";
 import { LanguageFlag } from "@/components/general/badges/language-flag";
-import {LANGUAGE_COUNTRY_MAP, languageLabels} from "@/lib/languages";
+import {LANGUAGE_COUNTRY_MAP, languageLabels} from "@/consts/languages";
 import {Button} from "@/components/ui/button";
 
 interface LanguagePickerProps {

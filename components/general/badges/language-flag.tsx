@@ -1,14 +1,14 @@
-import { LANGUAGE_COUNTRY_MAP } from "@/lib/languages"
+import { LANGUAGE_COUNTRY_MAP } from "@/consts/languages"
 import type { LanguageTypes } from "@/types/LanguageTypes"
 
-import GB from "country-flag-icons/react/3x2/GB"
+import US from "country-flag-icons/react/3x2/US"
 import DE from "country-flag-icons/react/3x2/DE"
 import FR from "country-flag-icons/react/3x2/FR"
 import IT from "country-flag-icons/react/3x2/IT"
 import ES from "country-flag-icons/react/3x2/ES"
 import JP from "country-flag-icons/react/3x2/JP"
 
-const FLAG_COMPONENTS = { GB, DE, FR, IT, ES, JP }
+const FLAG_COMPONENTS = { US, DE, FR, IT, ES, JP }
 
 interface LanguageFlagProps {
     language: LanguageTypes

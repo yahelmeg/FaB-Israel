@@ -1,5 +1,5 @@
 import { FoilingTypes } from "@/types/FoilingTypes"
-import { foilingTitles } from "@/lib/foilings"
+import { foilingTitles } from "@/consts/foilings"
 import { FoilingCard } from "./foiling-card"
 
 

@@ -1,6 +1,6 @@
 import Link from "next/link"
 import {ConditionTypes} from "@/types/ConditionTypes"
-import {conditionStyles} from "@/lib/conditions"
+import {conditionStyles} from "@/consts/conditions"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 

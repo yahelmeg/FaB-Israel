@@ -1,6 +1,6 @@
 import Link from "next/link"
 import {FoilingTypes} from "@/types/FoilingTypes"
-import {foilingStyles} from "@/lib/foilings"
+import {foilingStyles} from "@/consts/foilings"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 

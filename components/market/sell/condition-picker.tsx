@@ -3,7 +3,7 @@
 import { Label } from "@/components/ui/label";
 import { Tag } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ConditionTypes } from "@/types/ConditionTypes";
+import { ConditionTypes, CONDITION_TYPES } from "@/types/ConditionTypes";
 import {Button} from "@/components/ui/button";
 
 interface ConditionPickerProps {
@@ -11,7 +11,6 @@ interface ConditionPickerProps {
     onChange: (value: ConditionTypes) => void;
 }
 
-const conditions: ConditionTypes[] = ["MT", "NM", "EX", "GD", "LP", "PL", "PO"];
 
 const conditionMeta: Record<ConditionTypes, { name: string; dot: string; ring: string; text: string; bg: string }> = {
     MT: { name: "Mint",         dot: "bg-sky-400",    ring: "border-sky-400",    text: "text-sky-600 dark:text-sky-400",       bg: "bg-sky-400/10" },
@@ -31,7 +30,7 @@ export function ConditionPicker({ value, onChange }: ConditionPickerProps) {
                 Choose the card&apos;s condition
             </Label>
             <div className="flex flex-wrap gap-2">
-                {conditions.map((c) => {
+                {CONDITION_TYPES.map((c) => {
                     const meta = conditionMeta[c];
                     const selected = c === value;
                     return (

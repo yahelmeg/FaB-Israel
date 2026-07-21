@@ -1,5 +1,5 @@
 import { ConditionTypes } from "@/types/ConditionTypes"
-import { conditionTitles, conditionDescriptions } from "@/lib/conditions"
+import { conditionTitles, conditionDescriptions } from "@/consts/conditions"
 import { ConditionBadge } from "@/components/general/badges/condition-badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"

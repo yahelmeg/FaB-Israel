@@ -1,5 +1,5 @@
 import { FoilingTypes } from "@/types/FoilingTypes"
-import { foilingTitles, foilingDescriptions } from "@/lib/foilings"
+import { foilingTitles, foilingDescriptions } from "@/consts/foilings"
 import { FoilingBadge } from "@/components/general/badges/foiling-badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"

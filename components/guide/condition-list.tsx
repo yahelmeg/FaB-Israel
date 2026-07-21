@@ -1,5 +1,5 @@
 import { ConditionTypes } from "@/types/ConditionTypes"
-import { conditionTitles } from "@/lib/conditions"
+import { conditionTitles } from "@/consts/conditions"
 import { ConditionCard } from "./condition-card"
 
 
