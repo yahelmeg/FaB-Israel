@@ -1,40 +1,25 @@
-import { EventCard } from "@/components/events/event-card";
-import { Event } from "@/types/Event"
+import { EventCard } from "@/components/events/event-card"
+import { getVisibleEvents } from "@/lib/events/get-visible-events"
+import {isAdmin} from "@/lib/auth-helpers/is-admin";
 
+export async function EventGrid() {
+    const [{ events, error }, userIsAdmin] = await Promise.all([
+        getVisibleEvents(),
+        isAdmin(),
+    ])
 
-const dummyEvents: Event[] = [
-    {
-        id: "1",
-        title: "Weekly Armory Night",
-        date: "2025-08-31",
-        time: "18:00",
-        store: "Sirolynia",
-        format: "Blitz",
-        tier: "Armory",
-    },
-    {
-        id: "2",
-        title: "Summer Skirmish",
-        date: "2026-07-05",
-        time: "14:00",
-        address: "David Saharov 19, Rishon LeZion",
-        format: "Classic Constructed",
-        tier: "Skirmish",
-    },
+    if (error) {
+        return <p className="text-muted-foreground text-center py-8">{error}</p>
+    }
 
-]
+    if (!events || events.length === 0) {
+        return <p className="text-muted-foreground text-center py-8">No upcoming events yet.</p>
+    }
 
-
-export function EventGrid() {
-    const sortedEvents = dummyEvents.sort((a,b) => {
-        const dateCompare = a.date.localeCompare(b.date);
-        if(dateCompare !== 0 ) return dateCompare;
-        return a.time.localeCompare(b.time);
-    })
     return (
         <div className="flex flex-row flex-wrap gap-6 justify-center items-stretch w-full max-w-7xl mx-auto px-4 py-8">
-            {sortedEvents.map((dummyEvent) => (
-                <EventCard key={dummyEvent.id} event={dummyEvent} />
+            {events.map((event) => (
+                <EventCard key={event.id} event={event} isAdmin={userIsAdmin}/>
             ))}
         </div>
     )
