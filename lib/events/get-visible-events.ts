@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server"
-import { Event } from "@/types/Event"
+import { Event } from "@/types/events/Event"
 
 export async function getVisibleEvents(): Promise<{ events: Event[] | null; error: string | null }> {
     const supabase = await createClient()

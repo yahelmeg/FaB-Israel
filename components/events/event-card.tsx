@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Event } from "@/types/Event"
+import { Event } from "@/types/events/Event"
 import { Calendar, Clock, MapPin } from "lucide-react"
 import {storeAddresses} from "@/lib/store";
 import {HideEventButton} from "@/components/events/hide-event-button";

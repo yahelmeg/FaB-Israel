@@ -1,5 +1,5 @@
-import {EventFormat} from "@/types/EventFormat";
-import {EventTier} from "@/types/EventTier";
+import {EventFormat} from "@/types/events/EventFormat";
+import {EventTier} from "@/types/events/EventTier";
 import {Stores} from "@/types/Stores";
 
 export interface Event {

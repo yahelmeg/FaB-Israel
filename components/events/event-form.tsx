@@ -4,8 +4,8 @@ import {createEvent, EventFormState} from "@/lib/actions/events";
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
-import { EVENT_FORMATS } from "@/types/EventFormat"
-import { EVENT_TIERS } from "@/types/EventTier"
+import { EVENT_FORMATS } from "@/types/events/EventFormat"
+import { EVENT_TIERS } from "@/types/events/EventTier"
 import { STORES } from "@/types/Stores"
 import {Button} from "@/components/ui/button"
 
