@@ -48,12 +48,10 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
                     <NavigationMenuLink href="/events" className="nav-link">Events</NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem className="hidden md:flex">
-                    <NavigationMenuLink href="/announcements" className="nav-link">Announcements</NavigationMenuLink>
+                    <NavigationMenuLink href="/community" className="nav-link"> Community  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem className="flex-1"/>
-                <NavigationMenuItem className="hidden md:flex">
-                    <NavigationMenuLink href="/get-started" className="nav-link">Get started </NavigationMenuLink>
-                </NavigationMenuItem>
+
                 <NavigationMenuItem className="hidden md:flex">
                     {isLoggedIn ? (
                         <>
