@@ -63,7 +63,7 @@ export function SellListingForm() {
                 />
             </div>
 
-            <div className="flex flex-col gap-10 flex-shrink-0">
+            <div className="flex flex-col gap-18 flex-shrink-0">
                 <Image
                     src={selectedPrinting ? getImageSource(selectedPrinting.image) : getImageSource(undefined)}
                     alt={selectedPrinting ? selectedPrinting.print : "temporary"}

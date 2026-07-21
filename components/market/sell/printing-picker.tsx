@@ -34,7 +34,7 @@ export function PrintingPicker({ card, onSelect }: PrintingPickerProps) {
                 onValueChange={handleValueChange}
                 disabled={!card}
             >
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="text-center text-lg !h-12 w-full">
                     <SelectValue placeholder="Select a printing..." />
                 </SelectTrigger>
                 <SelectContent alignItemWithTrigger={false} sideOffset={4}>

@@ -47,9 +47,8 @@ export function CardPicker({ onSelectCard }: CardPickerProps) {
                     <ComboboxInput
                         placeholder="Search for your card..."
                         showClear={!!selectedCard}
-                        className={`w-full max-w-lg font-medium ${
-                            selectedCard?.pitch ? PITCH_COLORS[selectedCard.pitch] : ""
-                        }`}
+                        className="w-full max-w-lg h-12 "
+                        inputClassName={`!text-xl ${selectedCard?.pitch ? PITCH_COLORS[selectedCard.pitch] : ""}`}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <ComboboxContent>

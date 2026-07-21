@@ -51,6 +51,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
 
 function ComboboxInput({
   className,
+                         inputClassName,
   children,
   disabled = false,
   showTrigger = true,
@@ -59,11 +60,12 @@ function ComboboxInput({
 }: ComboboxPrimitive.Input.Props & {
   showTrigger?: boolean
   showClear?: boolean
+  inputClassName?: string
 }) {
   return (
     <InputGroup className={cn("w-auto", className)}>
       <ComboboxPrimitive.Input
-        render={<InputGroupInput disabled={disabled} />}
+        render={<InputGroupInput disabled={disabled} className={inputClassName}/>}
         {...props}
       />
       <InputGroupAddon align="inline-end">
