@@ -6,7 +6,9 @@ import { Separator } from "@/components/ui/separator"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Listing } from "@/types/Listing"
 import { updateMyListingPrice } from "@/lib/listings/update-my-listing-price"
+import { updateMyListingQuantity } from "@/lib/listings/update-my-listing-quantity"
 import { markMyListingFulfilled, removeMyListing } from "@/lib/listings/update-my-listing-status"
+import { QuantityInput } from "@/components/market/sell/quantity-input"
 
 interface MyListingActionsDialogProps {
     listing: Listing
@@ -16,14 +18,20 @@ interface MyListingActionsDialogProps {
 
 export function MyListingCardModal({ listing, open, onClose }: MyListingActionsDialogProps) {
     const [price, setPrice] = useState(listing.price.toString())
+    const [quantity, setQuantity] = useState(listing.quantity.toString())
     const [isSaving, setIsSaving] = useState(false)
 
+    const priceChanged = price !== listing.price.toString()
+    const quantityChanged = quantity !== listing.quantity.toString()
 
-    const handleSavePrice = async () => {
+    const handleSave = async () => {
         setIsSaving(true)
-        const { error } = await updateMyListingPrice(listing.id, Number(price))
+        const results = await Promise.all([
+            priceChanged ? updateMyListingPrice(listing.id, Number(price)) : Promise.resolve({ error: null }),
+            quantityChanged ? updateMyListingQuantity(listing.id, Number(quantity)) : Promise.resolve({ error: null }),
+        ])
         setIsSaving(false)
-        if (!error) {
+        if (!results[0].error && !results[1].error) {
             onClose()
         }
     }
@@ -56,10 +64,14 @@ export function MyListingCardModal({ listing, open, onClose }: MyListingActionsD
                                 className="pl-7"
                             />
                         </div>
-                        <Button size="sm" onClick={handleSavePrice} disabled={isSaving}>
-                            {isSaving ? "Saving..." : "Save price"}
-                        </Button>
                     </div>
+
+                    <QuantityInput quantity={quantity} onQuantityChange={setQuantity} />
+
+                    <Button size="sm" onClick={handleSave} disabled={isSaving}>
+                        {isSaving ? "Saving..." : "Save changes"}
+                    </Button>
+
                     <Separator />
 
                     <div className="flex flex-col gap-2">
