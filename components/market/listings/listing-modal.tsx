@@ -17,7 +17,13 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
                 {listing && (
                     <div className="flex flex-col md:flex-row gap-3 h-full min-h-0">
                         <div className="hidden md:block relative w-80 h-full shrink-0 bg-white dark:bg-black">
-                            <Image src={getImageSource(listing.image)} alt={listing.cardName} fill className="object-cover" />
+                            <Image
+                                src={getImageSource(listing.image)}
+                                alt={listing.cardName}
+                                fill
+                                className="object-cover"
+                                sizes="320px"
+                            />
                         </div>
                         <div className="flex-1 h-full overflow-y-auto p-0 md:p-6">
                             <ListingModalDetails listing={listing}/>
