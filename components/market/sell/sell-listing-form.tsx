@@ -24,6 +24,7 @@ export function SellListingForm() {
     const [condition, setCondition] = useState<ConditionTypes>("NM");
     const [language, setLanguage] = useState<LanguageTypes>("EN");
     const [price, setPrice] = useState("");
+    const [quantity, setQuantity] = useState("");
 
     const handleCardSelect = (card: Card | null) => {
         setSelectedCard(card);
@@ -52,9 +53,11 @@ export function SellListingForm() {
                     condition={condition}
                     language={language}
                     price={price}
+                    quantity={quantity}
                     onConditionChange={setCondition}
                     onLanguageChange={setLanguage}
                     onPriceChange={setPrice}
+                    onQuantityChange={setQuantity}
                 />
 
                 {state.error && (
@@ -88,6 +91,8 @@ export function SellListingForm() {
             <input type="hidden" name="foiling" value={selectedPrinting ? toFoilingType(selectedPrinting.foiling) : ""}/>
             <input type="hidden" name="language" value={language}/>
             <input type="hidden" name="tcgplayerUrl" value={selectedPrinting?.tcgplayer?.url ?? ""}/>
+            <input type="hidden" name="quantity" value={quantity}/>
+
         </form>
     );
 }
