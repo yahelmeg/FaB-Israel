@@ -51,7 +51,6 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
                     <NavigationMenuLink href="/community" className="nav-link"> Community  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem className="flex-1"/>
-
                 <NavigationMenuItem className="hidden md:flex">
                     {isLoggedIn ? (
                         <>
@@ -64,6 +63,11 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
                                         </NavigationMenuLink>
                                     </li>
                                     <li>
+                                        <NavigationMenuLink href="/my-listings" className="block rounded-md px-3 py-2 text-md hover:bg-accent">
+                                            My Listings
+                                        </NavigationMenuLink>
+                                    </li>
+                                    <li>
                                         <SignoutButton />
                                     </li>
                                 </ul>
@@ -73,6 +77,7 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
                         <Button variant="ghost" className="cursor-pointer nav-link font-medium" nativeButton={false} render={<Link href="/auth">Sign in</Link>} />
                     )}
                 </NavigationMenuItem>
+
                 <NavigationMenuItem className="hidden md:flex">
                     <Button variant="ghost" size="icon" className="cursor-pointer hover:opacity-70 transition-none" onClick={toggleDark}>
                         <MdDarkMode className="block dark:hidden size-6" />
