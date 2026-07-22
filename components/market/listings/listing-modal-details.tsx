@@ -29,7 +29,12 @@ export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
             </div>
             <Separator />
             <div>
-                <div className="text-2xl font-bold">{formatPrice(listing.price)}</div>
+                <div className="text-2xl font-bold">
+                    {formatPrice(listing.price)}
+                </div>
+                <div className="text-xl">
+                    {listing.quantity} copies
+                </div>
                 <p className="text-lg text-muted-foreground">Sold by {listing.sellerName}</p>
             </div>
 

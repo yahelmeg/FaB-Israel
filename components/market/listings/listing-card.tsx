@@ -22,6 +22,11 @@ export function ListingCard({ listing, onClick, className }: ListingCardProps) {
                     loading="eager"
                     sizes="(max-width: 768px) 100vw, 450px"
                 />
+                {listing.quantity > 1 && (
+                    <div className="absolute top-2 right-2 rounded-full bg-white/90 text-slate-900 dark:bg-black/70 dark:text-white text-xs font-semibold px-3 py-0.5 backdrop-blur-sm shadow-sm">
+                        ×{listing.quantity}
+                    </div>
+                )}
             </div>
             <CardContent className={`p-0`}>
                 <ListingCardFooter language={listing.language} price={listing.price} foiling={listing.foiling} condition={listing.condition} />
