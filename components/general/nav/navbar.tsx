@@ -22,7 +22,7 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
         <NavigationMenu className="fixed top-0 right-0 left-0 z-50 border-b border-border bg-muted/90 backdrop-blur-sm max-w-none px-6 py-2">
             <NavigationMenuList className="w-full">
                 <NavigationMenuItem className="md:hidden">
-                    <MobileNav />
+                    <MobileNav isLoggedIn={isLoggedIn} displayName={displayName} />
                 </NavigationMenuItem>
                 <NavigationMenuItem className="hidden md:flex">
                     <NavigationMenuLink href="/" className="nav-link">Home</NavigationMenuLink>
@@ -68,7 +68,7 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
                                         </NavigationMenuLink>
                                     </li>
                                     <li>
-                                        <SignoutButton />
+                                        <SignoutButton className="block rounded-md px-3 py-2 text-md hover:bg-accent" />
                                     </li>
                                 </ul>
                             </NavigationMenuContent>
