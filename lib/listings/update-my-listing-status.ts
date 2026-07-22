@@ -19,7 +19,7 @@ async function updateListingStatus(listingId: string, claims: { sub: string }, s
     }
 
     revalidatePath("/market")
-    revalidatePath("/user/listings")
+    revalidatePath("/user/my-listings")
     return { error: null }
 }
 
