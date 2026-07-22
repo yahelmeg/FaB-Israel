@@ -16,7 +16,7 @@ interface ListingModalDetailsProps {
 
 export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
     return (
-        <div className="flex flex-col gap-4 p-6 pl-0 flex-1">
+        <div className="flex flex-col gap-3 p-6 pl-0 flex-1">
             <div className="flex flex-col gap-1">
                 <h2 className="text-xl font-bold">{listing.cardName}</h2>
                 <p className="text-lg text-muted-foreground">{listing.set}</p>
@@ -32,9 +32,11 @@ export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
                 <div className="text-2xl font-bold">
                     {formatPrice(listing.price)}
                 </div>
-                <div className="text-xl">
-                    {listing.quantity} copies
-                </div>
+                {listing.quantity > 1 && (
+                    <div className="text-xl">
+                        {listing.quantity} copies
+                    </div>
+                )}
                 <p className="text-lg text-muted-foreground">Sold by {listing.sellerName}</p>
             </div>
 
