@@ -1,3 +1,5 @@
+"use server"
+
 import {createClient} from "@/lib/supabase/server"
 import { requireAuth } from "@/lib/auth/require-auth"
 import { revalidatePath } from "next/cache"
