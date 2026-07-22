@@ -13,6 +13,15 @@ export function ListingGridClient({listings}: ListingGridClientProps) {
 
     const [selectedListing, setSelectedListing] = useState<Listing | null>(null);
 
+    if (!listings || listings.length === 0) {
+        return (
+            <div className="flex flex-col items-center justify-center py-24 text-center gap-2">
+                <p className="page-heading-text">No listings found</p>
+                <p className="text-muted-foreground">Please check back later.</p>
+            </div>
+        )
+    }
+
     return (
         <>
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
