@@ -64,11 +64,10 @@ export async function createListing(_prevState: ListingFormState, formData: Form
         foiling,
         language,
         tcgplayer_url: tcgplayerUrl || null,
-
+        status: "active",
     })
 
     if (error) {
-        console.error("Failed to create listing:", error)
         return {
             error: "Failed to create listing. Please try again."
         }

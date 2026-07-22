@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server"
 import { Listing } from "@/types/Listing"
 
-export async function getVisibleListings(): Promise<{ listings: Listing[] | null; error: string | null }> {
+export async function getActiveListings(): Promise<{ listings: Listing[] | null; error: string | null }> {
     const supabase = await createClient()
     const { data, error } = await supabase
         .from("listings")
@@ -21,11 +21,12 @@ export async function getVisibleListings(): Promise<{ listings: Listing[] | null
                 discord_username
             )
         `)
-        .eq("is_visible", true)
+        .eq("status", "active")
 
     if (error) {
-        console.error("Failed to load listings:", error)
-        return { listings: null, error: "Couldn't load listings. Please try again later." }
+        return {
+            listings: null, error: "Couldn't load listings. Please try again later."
+        }
     }
 
     const listings: Listing[] = data.map((row) => {
