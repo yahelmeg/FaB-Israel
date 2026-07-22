@@ -12,7 +12,7 @@ async function getMyListingsByStatus(
 ): Promise<{ listings: Listing[] | null; error: string | null }> {
     const { data, error } = await supabase
         .from("listings")
-        .select(`id, price, image, condition, foiling, set_code, card_name, language, tcgplayer_url`)
+        .select(`id, price, image, condition, foiling, set_code, card_name, language, tcgplayer_url, quantity`)
         .eq("seller_id", claims.sub)
         .eq("status", status)
 
@@ -34,6 +34,7 @@ async function getMyListingsByStatus(
         sellerName: "",
         sellerPhoneNumber: "",
         sellerDiscord: "",
+        quantity: row.quantity
     }))
 
     return { listings, error: null }

@@ -17,6 +17,7 @@ export async function getActiveListings(): Promise<{ listings: Listing[] | null;
             card_name,
             language,
             tcgplayer_url,
+            quantity,
             profiles (
                 display_name,
                 phone_number,
@@ -46,6 +47,7 @@ export async function getActiveListings(): Promise<{ listings: Listing[] | null;
             sellerPhoneNumber: profile?.phone_number ?? "",
             sellerDiscord: profile?.discord_username ?? "",
             tcgplayerUrl: row.tcgplayer_url ?? undefined,
+            quantity: row.quantity
 
         }
     })
