@@ -24,7 +24,7 @@ export function SellListingForm() {
     const [condition, setCondition] = useState<ConditionTypes>("NM");
     const [language, setLanguage] = useState<LanguageTypes>("EN");
     const [price, setPrice] = useState("");
-    const [quantity, setQuantity] = useState("");
+    const [quantity, setQuantity] = useState("1");
 
     const handleCardSelect = (card: Card | null) => {
         setSelectedCard(card);
