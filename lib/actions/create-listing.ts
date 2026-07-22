@@ -21,6 +21,7 @@ export async function createListing(_prevState: ListingFormState, formData: Form
     const foiling = formData.get("foiling") as string
     const language = formData.get("language") as string
     const tcgplayerUrl = (formData.get("tcgplayerUrl") as string)?.trim()
+    const quantity = formData.get("quantity") as string
 
 
     if (!cardName) {
@@ -53,6 +54,11 @@ export async function createListing(_prevState: ListingFormState, formData: Form
             error: "Language is required"
         }
     }
+    if (!quantity || Number(quantity) < 1) {
+        return {
+            error: "Enter a valid quantity"
+        }
+    }
 
     const { error } = await supabase.from("listings").insert({
         seller_id: claims.sub,
@@ -65,6 +71,8 @@ export async function createListing(_prevState: ListingFormState, formData: Form
         language,
         tcgplayer_url: tcgplayerUrl || null,
         status: "active",
+        quantity: Number(quantity),
+
     })
 
     if (error) {
