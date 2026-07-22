@@ -1,0 +1,1 @@
+alter table listings add column quantity integer not null default 1 check (quantity >= 1 and quantity <= 99);

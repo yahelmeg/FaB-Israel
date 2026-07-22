@@ -16,4 +16,5 @@ export interface Listing {
     sellerPhoneNumber: string;
     sellerDiscord: string;
     tcgplayerUrl?: string;
+    quantity: number;
 }
