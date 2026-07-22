@@ -3,7 +3,11 @@
 
 export default function HomePage() {
     return (
-        <h1> home page </h1>
+        <div className="page-layout">
+            <h2 className="page-heading-text mb-8">
+                Work in Progress
+            </h2>
+        </div>
     )
 }
 
