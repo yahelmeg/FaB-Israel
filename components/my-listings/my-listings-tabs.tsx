@@ -1,8 +1,8 @@
 "use client"
 import { useState } from "react"
 import { Listing } from "@/types/Listing"
-import { ListingGridClient } from "@/components/market/listings/listing-grid-client"
 import { Button } from "@/components/ui/button"
+import {MyListingsGrid} from "@/components/my-listings/my-listing-grid";
 
 interface MyListingsTabsProps {
     active: Listing[]
@@ -45,8 +45,9 @@ export function MyListingsTabs({ active, sold, error }: MyListingsTabsProps) {
                     Sold
                 </Button>
             </div>
-            <ListingGridClient
+            <MyListingsGrid
                 listings={tab === "active" ? active : sold}
+                interactive={tab === "active" }
                 emptyTitle={"No listings found"}
                 emptyMessage={
                     tab === "active"
