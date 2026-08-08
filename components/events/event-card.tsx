@@ -3,7 +3,8 @@ import { Badge } from "@/components/ui/badge"
 import { Event } from "@/types/events/Event"
 import { Calendar, Clock, MapPin } from "lucide-react"
 import {storeAddresses} from "@/consts/store";
-import {HideEventButton} from "@/components/events/hide-event-button";
+import {EventActionsMenu} from "@/components/events/event-actions-menu";
+import {EditEventButton} from "@/components/events/edit-event-button";
 
 interface EventCardProps {
     event: Event
@@ -20,7 +21,12 @@ export function EventCard({ event, isAdmin }: EventCardProps) {
 
     return (
         <Card className="group relative rounded-2xl border bg-card text-card-foreground shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-5 flex flex-col justify-between h-full w-full max-w-md overflow-hidden">
-            {isAdmin && <HideEventButton eventId={event.id} />}
+            {isAdmin && (
+                <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <EditEventButton eventId={event.id} />
+                    <EventActionsMenu eventId={event.id} />
+                </div>
+            )}
             <div className="flex flex-col gap-4">
                 <div className="flex flex-wrap gap-2">
                     <Badge variant="outline" className="font-medium tracking-wide text-foreground">
