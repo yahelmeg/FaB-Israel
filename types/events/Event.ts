@@ -11,5 +11,5 @@ export interface Event {
     store?: Stores
     format: EventFormat
     tier: EventTier
-    register_url?: string
+    registerUrl?: string
 }
