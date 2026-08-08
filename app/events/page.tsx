@@ -7,7 +7,7 @@ export default async function EventsPage() {
     const userIsAdmin = await isAdmin();
     return (
         <div className="page-layout">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-between">
                 <h2 className="page-heading-text">
                     Upcoming Events
                 </h2>
