@@ -1,32 +1,69 @@
 "use client"
-import {useActionState, useState} from "react"
-import {createEvent, EventFormState} from "@/lib/actions/create-event";
+import { useActionState, useState, useEffect, useRef } from "react"
+import { createEvent, updateEvent, EventFormState } from "@/app/actions/events.actions"
+import {toast}  from "sonner";
+import { useRouter } from "next/navigation"
+import { Event } from "@/types/events/Event"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import { EVENT_FORMATS } from "@/types/events/EventFormat"
 import { EVENT_TIERS } from "@/types/events/EventTier"
 import { STORES } from "@/types/Stores"
-import {Button} from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 
-const initialState: EventFormState = { error: null }
+const initialState: EventFormState = { fieldErrors: null }
 
-export function EventForm() {
+interface EventFormProps {
+    mode?: "create" | "edit"
+    event?: Event
+}
 
-    const [state, formAction, isPending] = useActionState(createEvent, initialState)
-    const [title, setTitle] = useState("")
-    const [date, setDate] = useState("")
-    const [time, setTime] = useState("")
-    const [format, setFormat] = useState<string | null >("")
-    const [tier, setTier] = useState<string | null >("")
-    const [locationType, setLocationType] = useState<"store" | "address">("store")
-    const [address, setAddress] = useState("")
-    const [store, setStore] = useState<string | null>("")
-    const [registerUrl, setRegisterUrl] = useState("")
+export function EventForm({ mode = "create", event }: EventFormProps) {
+
+    const router = useRouter()
+
+    const action =
+        mode === "edit" && event
+            ? updateEvent.bind(null, event.id)
+            : createEvent
+
+    const hasSubmitted = useRef(false)
+
+    const [state, formAction, isPending] = useActionState(action, initialState)
+    const [title, setTitle] = useState(event?.title ?? "")
+    const [date, setDate] = useState(event?.date ?? "")
+    const [time, setTime] = useState(event?.time ?? "")
+    const [format, setFormat] = useState<string | null>(event?.format ?? null)
+    const [tier, setTier] = useState<string | null>(event?.tier ?? null)
+    const [locationType, setLocationType] = useState<"store" | "address">(
+        event ? (event.store ? "store" : "address") : "store"
+    )
+    const [address, setAddress] = useState(event?.address ?? "")
+    const [store, setStore] = useState<string | null>(event?.store ?? null)
+    const [registerUrl, setRegisterUrl] = useState(event?.registerUrl ?? "")
+
+    useEffect(() => {
+        if (!hasSubmitted.current) {
+            return
+        }
+
+        if (state.fieldErrors === null) {
+            toast.success(mode === "edit" ? "Event updated." : "Event created.")
+            router.push("/events")
+        } else if (state.fieldErrors.db) {
+            toast.error(state.fieldErrors.db)
+        }
+    }, [state, mode, router])
+
+    const handleSubmit = (formData: FormData) => {
+        hasSubmitted.current = true
+        formAction(formData)
+    }
 
     return (
         <div className="flex flex-row gap-8 w-full items-center justify-center ">
-            <form action={formAction} className="flex flex-col gap-4 w-full max-w-xl">
+            <form action={handleSubmit} noValidate className="flex flex-col gap-4 w-full max-w-xl">
                 <div className="space-y-1 flex-1">
                     <Label className="text-base font-medium pb-2 ">
                         Event&apos;s title
@@ -38,6 +75,9 @@ export function EventForm() {
                         onChange={(e) => setTitle(e.target.value)}
                         className="text-lg h-12"
                     />
+                    {state.fieldErrors?.title && (
+                        <p className="text-sm text-destructive">{state.fieldErrors.title}</p>
+                    )}
                 </div>
                 <div className="flex gap-3">
                     <div className="space-y-1 flex-1">
@@ -51,6 +91,9 @@ export function EventForm() {
                             onChange={(e) => setDate(e.target.value)}
                             className="text-center text-lg h-12"
                         />
+                        {state.fieldErrors?.date && (
+                            <p className="text-sm text-destructive">{state.fieldErrors.date}</p>
+                        )}
                     </div>
                     <div className="space-y-1 flex-1">
                         <Label className="text-base font-medium pb-2">
@@ -63,6 +106,9 @@ export function EventForm() {
                             onChange={(e) => setTime(e.target.value)}
                             className="text-center text-lg h-12"
                         />
+                        {state.fieldErrors?.time && (
+                            <p className="text-sm text-destructive">{state.fieldErrors.time}</p>
+                        )}
                     </div>
                 </div>
                 <div className="flex gap-3">
@@ -80,6 +126,9 @@ export function EventForm() {
                                 ))}
                             </SelectContent>
                         </Select>
+                        {state.fieldErrors?.format && (
+                            <p className="text-sm text-destructive">{state.fieldErrors.format}</p>
+                        )}
                     </div>
                     <div className="space-y-1 flex-1">
                         <Label className="text-base font-sm pb-2">
@@ -95,6 +144,9 @@ export function EventForm() {
                                 ))}
                             </SelectContent>
                         </Select>
+                        {state.fieldErrors?.tier && (
+                            <p className="text-sm text-destructive">{state.fieldErrors.tier}</p>
+                        )}
                     </div>
                 </div>
 
@@ -138,6 +190,9 @@ export function EventForm() {
                                 ))}
                             </SelectContent>
                         </Select>
+                        {state.fieldErrors?.store && (
+                            <p className="text-sm text-destructive">{state.fieldErrors.store}</p>
+                        )}
                     </div>
                 ) : (
                     <div className="space-y-1">
@@ -151,6 +206,9 @@ export function EventForm() {
                             onChange={(e) => setAddress(e.target.value)}
                             className="text-lg h-12"
                         />
+                        {state.fieldErrors?.address && (
+                            <p className="text-sm text-destructive">{state.fieldErrors.address}</p>
+                        )}
                     </div>
                 )}
 
@@ -166,10 +224,13 @@ export function EventForm() {
                         onChange={(e) => setRegisterUrl(e.target.value)}
                         className="text-lg h-12"
                     />
+                    {state.fieldErrors?.register_url && (
+                        <p className="text-sm text-destructive">{state.fieldErrors.register_url}</p>
+                    )}
                 </div>
 
-                {state.error && (
-                    <p className="text-sm text-destructive">{state.error}</p>
+                {state.fieldErrors?.db && (
+                    <p className="text-sm text-destructive">{state.fieldErrors.db}</p>
                 )}
 
                 <Button
@@ -177,11 +238,11 @@ export function EventForm() {
                     disabled={isPending}
                     className="cursor-pointer"
                 >
-                    {isPending ? "Creating..." : "Create event"}
+                    {isPending
+                        ? mode === "edit" ? "Saving..." : "Creating..."
+                        : mode === "edit" ? "Save changes" : "Create event"}
                 </Button>
-
             </form>
         </div>
     )
-
 }
