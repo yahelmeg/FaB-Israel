@@ -4,6 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 import { NavbarWrapper } from "@/components/general/nav/navbar-wrapper";
 import {Footer} from "@/components/general/footer/footer";
+import { Toaster } from "@/components/ui/sonner";
+
 
 const inter = Inter({
     variable: "--font-inter",
@@ -60,6 +62,7 @@ export default function RootLayout({
             {children}
         </main>
         <Footer/>
+        <Toaster/>
         </body>
         </html>
     );
