@@ -57,12 +57,12 @@ export default function RootLayout({
             `,
             }}
         />
+        <Toaster/>
         <NavbarWrapper />
         <main className="flex-1 pt-16 max-w-screen-2xl mx-auto w-full px-6">
             {children}
         </main>
         <Footer/>
-        <Toaster/>
         </body>
         </html>
     );
