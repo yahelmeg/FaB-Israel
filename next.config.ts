@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "pub-685502d84c2a432aa847dc33baf6aa6b.r2.dev",
+                hostname: "images.fab-israel.com",
                 pathname: "/**",
             },
         ],
