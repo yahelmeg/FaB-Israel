@@ -1,8 +1,4 @@
-"use client"
-
-
 import {LoginSuccessToast} from "@/components/auth/login-success-toast";
-import {toast} from "sonner";
 
 export default function HomePage() {
     return (
