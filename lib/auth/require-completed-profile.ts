@@ -1,20 +1,14 @@
 import {requireAuth} from "@/lib/auth/require-auth";
-import {createClient} from "@/lib/supabase/server";
 import { redirect } from "next/navigation"
+import {getProfile} from "@/lib/services/profiles.service";
+
 
 export async function requireCompletedProfile() {
 
     const claims = await requireAuth()
-    const supabase = await createClient()
+    const profile = await getProfile(claims.sub)
 
-
-    const {data: profiles} = await supabase
-        .from("profiles")
-        .select("onboarding_completed")
-        .eq("id", claims.sub)
-        .single()
-
-    if (!profiles?.onboarding_completed) {
+    if (!profile?.onboardingCompleted) {
         redirect("/onboarding")
     }
 
