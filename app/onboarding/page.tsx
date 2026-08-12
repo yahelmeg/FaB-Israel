@@ -2,6 +2,15 @@ import { ProfileForm } from "@/components/auth/profile-form"
 import { requireProfile } from "@/lib/auth/require-profile"
 import { redirect } from "next/navigation"
 import {LoginSuccessToast} from "@/components/auth/login-success-toast";
+import type {Metadata} from "next";
+import { noIndex } from "@/lib/metadata";
+
+
+export const metadata: Metadata = {
+    title: "Complete Your Profile",
+    description: "Finish setting up your FaB-Israel account.",
+    robots: noIndex
+};
 
 export default async function OnboardingPage() {
     const profile = await requireProfile()

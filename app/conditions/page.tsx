@@ -1,5 +1,10 @@
 import {ConditionList} from "@/components/guide/condition-list";
+import type {Metadata} from "next";
 
+export const metadata: Metadata = {
+    title: "Card Condition Guide",
+    description: "Understand card condition grades used for listings on FaB-Israel.",
+};
 
 export default function ConditionsPage() {
     return (

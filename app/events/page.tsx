@@ -2,6 +2,12 @@ import {EventGrid} from "@/components/events/event-list";
 import {isAdmin} from "@/lib/auth/is-admin";
 import {Button} from "@/components/ui/button";
 import Link from "next/link";
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: "Events",
+    description: "Find upcoming Flesh and Blood tournaments, meetups, and events in Israel.",
+};
 
 export default async function EventsPage() {
     const userIsAdmin = await isAdmin();

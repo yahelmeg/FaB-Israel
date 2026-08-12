@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/general/section";
 
 export const metadata: Metadata = {
-    title: "Terms of Service | FaB-Israel",
+    title: "Terms of Service",
     description: "Terms of Service for fab-israel.com",
 };
 
@@ -65,10 +65,9 @@ export default function TermsOfServicePage() {
 
                 <Section title="6. Events">
                     <p>
-                        If the Service allows creation of or registration for community events, event organizers
-                        (whether fab-israel or third-party users) are responsible for the accuracy of event details.
-                        fab-israel is not responsible for the conduct of event organizers or attendees, or for any
-                        issues arising at or from events.
+                        event organizers (whether fab-israel or third-party users) are responsible for the accuracy of
+                        event details. fab-israel is not responsible for the conduct of event organizers or attendees,
+                        or for any issues arising at or from events.
                     </p>
                 </Section>
 

@@ -4,7 +4,7 @@ import { SubHeading } from "@/components/general/sub-heading";
 import { Section } from "@/components/general/section";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | FaB-Israel",
+    title: "Privacy Policy",
     description: "Privacy Policy for fab-israel.com",
 };
 
@@ -33,16 +33,12 @@ export default function PrivacyPolicyPage() {
                             email address, and profile picture from Google.
                         </li>
                         <li>
-                            <strong>Profile information:</strong> Display name, contact details (e.g. WhatsApp number,
+                            <strong>Profile information:</strong> Display name, contact details (e.g. Phone number,
                             if you choose to add one), and any other information you add to your profile.
                         </li>
                         <li>
                             <strong>Listings and content:</strong> Card listings, prices, descriptions, condition, and
                             images you upload when creating marketplace listings.
-                        </li>
-                        <li>
-                            <strong>Event information:</strong> Event details you create or RSVP to, if the Service
-                            includes an events feature.
                         </li>
                     </ul>
 
@@ -74,8 +70,7 @@ export default function PrivacyPolicyPage() {
                     <ul className="list-disc space-y-1 pl-5">
                         <li>Create and manage your account</li>
                         <li>Enable you to create, browse, and manage marketplace listings</li>
-                        <li>Facilitate communication between buyers and sellers (e.g. via WhatsApp, if you provide a number)</li>
-                        <li>Display event information and manage registrations</li>
+                        <li>Facilitate communication between buyers and sellers (e.g. via WhatsApp, if you provide a phone number)</li>
                         <li>Maintain the security and integrity of the Service</li>
                         <li>Improve and develop the Service</li>
                         <li>Communicate with you about your account or the Service, when necessary</li>
@@ -90,7 +85,7 @@ export default function PrivacyPolicyPage() {
                     <ul className="list-disc space-y-1 pl-5">
                         <li>
                             <strong>Other users:</strong> Your display name, profile picture, listings, and any
-                            contact information you choose to add (e.g. WhatsApp number) are visible to other users of
+                            contact information you choose to add (e.g. phone number) are visible to other users of
                             the Service, since this is a marketplace intended to connect buyers and sellers.
                         </li>
                         <li>

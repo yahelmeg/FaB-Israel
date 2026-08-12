@@ -7,6 +7,7 @@ import {Footer} from "@/components/general/footer/footer";
 import { Toaster } from "@/components/ui/sonner";
 
 
+
 const inter = Inter({
     variable: "--font-inter",
     subsets: ["latin"],
@@ -23,7 +24,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "FaB-Israel",
+    title: {
+        default: "FaB-Israel",
+        template: "%s | FaB-Israel",
+    },
+    description: "Israeli community marketplace and event hub for Flesh and Blood TCG players.",
 };
 
 export default function RootLayout({

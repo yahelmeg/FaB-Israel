@@ -1,7 +1,12 @@
 import {FoilingList} from "@/components/guide/foiling-list";
+import type {Metadata} from "next";
 
+export const metadata: Metadata = {
+    title: "Foiling Guide",
+    description: "Learn about the different foiling types and rarities for Flesh and Blood cards.",
+};
 
-export default function ConditionsPage() {
+export default function FoilingPage() {
     return (
         <div className="flex flex-col items-center gap-6 py-10 px-6">
             <div className="text-center">

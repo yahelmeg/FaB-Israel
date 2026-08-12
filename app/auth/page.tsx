@@ -1,5 +1,11 @@
 import { AuthForm } from "@/components/auth/auth-form"
+import type {Metadata} from "next";
 
+
+export const metadata: Metadata = {
+    title: "Sign In",
+    description: "Sign in to FaB-Israel with your Google account to buy, sell, and trade cards.",
+};
 
 interface AuthPageProps {
     searchParams: Promise<{ error?: string }>
