@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 export default async function OnboardingPage() {
     const profile = await requireProfile()
 
-    if (profile?.onboarding_completed) {
+    if (profile?.onboardingCompleted) {
         redirect("/")
     }
 
@@ -20,9 +20,7 @@ export default async function OnboardingPage() {
             </p>
             <ProfileForm
                 mode="onboarding"
-                defaultDisplayName={profile?.display_name ?? ""}
-                defaultPhoneNumber={profile?.phone_number ?? ""}
-                defaultDiscordUsername={profile?.discord_username ?? ""}
+                profile={profile}
             />
         </div>
     )
