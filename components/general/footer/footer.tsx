@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-
 export function Footer() {
     return (
         <footer className="border-t border-border bg-muted/50 px-6 py-6 text-center text-sm text-muted-foreground">
@@ -16,6 +15,15 @@ export function Footer() {
                 ™ is a registered trademark of Legend Story Studios. Flesh and Blood™ and all
                 associated images are copyright © Legend Story Studios. All rights reserved.
             </p>
+            <p className="mt-2">
+                <Link href="/privacy-policy" className="underline hover:text-foreground">
+                    Privacy Policy
+                </Link>
+                {" · "}
+                <Link href="/terms-of-service" className="underline hover:text-foreground">
+                    Terms of Service
+                </Link>
+            </p>
         </footer>
-    )
+    );
 }
