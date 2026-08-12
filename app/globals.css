@@ -19,13 +19,13 @@
     font-weight: 500 !important;
 }
 
-/*[data-sonner-toast][data-type="success"] {*/
-/*    background-color: var(--success) !important;*/
-/*    color: var(--success-foreground) !important;*/
-/*    border-color: var(--success) !important;*/
-/*}*/
-
 [data-sonner-toast][data-type="success"] {
+    background-color: var(--success) !important;
+    color: var(--success-foreground) !important;
+    border-color: var(--success) !important;
+}
+
+[data-sonner-toast][data-type="error"] {
     background-color: var(--destructive) !important;
     color: var(--primary-foreground) !important;
     border-color: var(--destructive) !important;
