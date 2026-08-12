@@ -14,9 +14,7 @@ export default async function ProfilePage() {
             </p>
             <ProfileForm
                 mode="edit"
-                defaultDisplayName={profile?.display_name ?? ""}
-                defaultPhoneNumber={profile?.phone_number ?? ""}
-                defaultDiscordUsername={profile?.discord_username ?? ""}
+                profile={profile}
             />
         </div>
     )

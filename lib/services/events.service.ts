@@ -2,7 +2,7 @@ import { requireAdmin } from "@/lib/auth/require-admin"
 import * as eventsRepository from "@/lib/repositories/events.repository"
 import {Event} from "@/types/events/Event"
 import {CreateEventInput, UpdateEventInput} from "@/lib/validators/events.validator"
-import { toEvent } from "@/lib/mappers/event.mapper"
+import { toEvent } from "@/lib/mappers/events.mapper"
 
 
 export async function getEvents(): Promise<Event[]> {

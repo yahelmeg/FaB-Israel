@@ -1,19 +1,19 @@
-import { createClient } from "@/lib/supabase/server"
-import {redirect} from "next/navigation"
-import {requireAuth} from "@/lib/auth/require-auth";
+import { redirect } from "next/navigation"
+import { requireAuth } from "@/lib/auth/require-auth"
+import { getProfile } from "@/lib/services/profiles.service"
 
 export async function requireProfile() {
-    const supabase = await createClient()
     const claims = await requireAuth()
 
-    const { data: profile, error: profileError } = await supabase
-        .from("profiles")
-        .select("display_name, phone_number, discord_username, onboarding_completed")
-        .eq("id", claims.sub)
-        .single()
+    let profile
+    try {
+        profile = await getProfile(claims.sub)
+    } catch (error) {
+        console.error("Failed to load profile:", error)
+        redirect("/auth?error=profile")
+    }
 
-    if (profileError) {
-        console.error("Failed to load profile:", profileError)
+    if (!profile) {
         redirect("/auth?error=profile")
     }
 

@@ -1,6 +1,10 @@
 import { createServerClient } from "@supabase/ssr"
 import { NextResponse, type NextRequest } from "next/server"
 
+
+const PROTECTED_PATHS = ["/onboarding", "/market/sell", "/profile", "/my-listings"]
+const ADMIN_PATHS = ["/admin"]
+
 export async function updateSession(request: NextRequest) {
     let supabaseResponse = NextResponse.next({ request })
 
@@ -25,7 +29,24 @@ export async function updateSession(request: NextRequest) {
         }
     )
 
-    await supabase.auth.getClaims()
+    const {data} = await supabase.auth.getClaims()
+    const claims = data?.claims
+
+    const pathname = request.nextUrl.pathname
+    const isProtectedPath = PROTECTED_PATHS.some((path) => pathname.startsWith(path))
+    const isAdminPath = ADMIN_PATHS.some((path) => pathname.startsWith(path))
+
+    if (isAdminPath && (!claims || !claims?.is_admin)) {
+        return NextResponse.rewrite(new URL("/404", request.url))
+    }
+
+    if (isProtectedPath && !claims) {
+        const url = request.nextUrl.clone()
+        url.pathname = "/auth"
+        url.searchParams.set("redirect", pathname)
+        url.searchParams.set("message", "auth_required")
+        return NextResponse.redirect(url)
+    }
 
     return supabaseResponse
 }

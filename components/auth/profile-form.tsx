@@ -1,31 +1,55 @@
 "use client"
 
-import { useActionState } from "react"
-import { updateProfile } from "@/lib/actions/update-profile"
+import { useActionState, useState, useEffect, useRef } from "react"
+import { updateProfile, ProfileFormState } from "@/app/actions/profiles.actions"
+import {Profile} from "@/types/Profile"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { User, Phone, MessageCircle } from "lucide-react"
+import { toast } from "sonner";
+import { useRouter } from "next/navigation"
 
-type ProfileFormProps = {
-    mode: "onboarding" | "edit"
-    defaultDisplayName?: string
-    defaultPhoneNumber?: string
-    defaultDiscordUsername?: string
+
+interface ProfileFormProps {
+    mode?: "onboarding" | "edit"
+    profile?: Profile | null
 }
 
-type ProfileFormState = {
-    error: string | null
-}
+const initialState: ProfileFormState = { fieldErrors: null }
 
-export function ProfileForm({ mode, defaultDisplayName = "", defaultPhoneNumber = "", defaultDiscordUsername = "" }: ProfileFormProps) {
-    const [state, formAction, isPending] = useActionState(
-        (prevState: ProfileFormState, formData: FormData) => updateProfile(mode, prevState, formData),
-        { error: null }
-    )
+export function ProfileForm({ mode= "edit", profile }: ProfileFormProps) {
+
+    const router = useRouter()
+    const hasSubmitted = useRef(false)
+    const action = updateProfile.bind(null, mode)
+    const [state, formAction, isPending] = useActionState(action, initialState)
+
+    const [displayName, setDisplayName] = useState(profile?.displayName ?? "")
+    const [phoneNumber, setPhoneNumber] = useState(profile?.phoneNumber ?? "")
+    const [discordUsername, setDiscordUsername] = useState(profile?.discordUsername ?? "")
+
+    useEffect(() => {
+        if (!hasSubmitted.current) {
+            return
+        }
+
+        if(state.fieldErrors === null) {
+            toast.success(mode === "onboarding" ? "Profile setup complete!" : "Profile updated.")
+            router.push("/")
+        } else if (state.fieldErrors?.db) {
+            toast.error(state.fieldErrors.db)
+        }
+
+    }, [state,mode,router])
+
+    const handleSubmit = (formData: FormData) => {
+        hasSubmitted.current = true
+        formAction(formData)
+    }
 
     return (
-        <form action={formAction} className="space-y-6 w-full max-w-xl">
+        <form action={handleSubmit} className="space-y-6 w-full max-w-xl">
             <div className="space-y-2">
                 <Label htmlFor="displayName" className="sell-page-label">
                     <User className="h-5 w-5 text-muted-foreground" />
@@ -34,11 +58,16 @@ export function ProfileForm({ mode, defaultDisplayName = "", defaultPhoneNumber 
                 <Input
                     id="displayName"
                     name="displayName"
-                    defaultValue={defaultDisplayName}
+                    value={displayName}
+                    onChange={(e) => setDisplayName(e.target.value)}
                     required
                     className="h-11"
                 />
+                {state.fieldErrors?.displayName && (
+                    <p className="text-sm text-destructive">{state.fieldErrors.displayName}</p>
+                )}
             </div>
+
 
             <div className="space-y-2">
                 <Label htmlFor="phoneNumber" className="sell-page-label">
@@ -49,10 +78,14 @@ export function ProfileForm({ mode, defaultDisplayName = "", defaultPhoneNumber 
                     id="phoneNumber"
                     name="phoneNumber"
                     type="tel"
-                    defaultValue={defaultPhoneNumber}
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     placeholder="05X-XXXXXXX"
                     className="h-11"
                 />
+                {state.fieldErrors?.phoneNumber && (
+                    <p className="text-sm text-destructive">{state.fieldErrors.phoneNumber}</p>
+                )}
             </div>
 
             <div className="space-y-2">
@@ -63,14 +96,19 @@ export function ProfileForm({ mode, defaultDisplayName = "", defaultPhoneNumber 
                 <Input
                     id="discordUsername"
                     name="discordUsername"
-                    defaultValue={defaultDiscordUsername}
+                    value={discordUsername}
+                    onChange={(e) => setDiscordUsername(e.target.value)}
                     placeholder="username"
                     className="h-11"
                 />
+                {state.fieldErrors?.discordUsername && (
+                    <p className="text-sm text-destructive">{state.fieldErrors.discordUsername}</p>
+                )}
             </div>
 
-            {state.error && (
-                <p className="text-sm text-destructive">{state.error}</p>
+
+            {state.fieldErrors?.db && (
+                <p className="text-sm text-destructive">{state.fieldErrors.db}</p>
             )}
 
             <Button variant="default" type="submit" className="cursor-pointer w-full" disabled={isPending}>
