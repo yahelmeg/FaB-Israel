@@ -17,4 +17,7 @@ export interface Listing {
     sellerDiscord: string;
     tcgplayerUrl?: string;
     quantity: number;
+    status: "active" | "fulfilled"
 }
+
+export type ListingBase = Omit<Listing, "sellerName" | "sellerPhoneNumber" | "sellerDiscord">
