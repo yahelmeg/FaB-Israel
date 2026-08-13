@@ -21,7 +21,7 @@ export default async function MarketPage({ searchParams }: MarketPageProps) {
     return (
         <div className="page-layout">
             <MarketSearchBar defaultValue={query}/>
-            <ListingGrid/>
+            <ListingGrid search={query}/>
         </div>
     )
 }
