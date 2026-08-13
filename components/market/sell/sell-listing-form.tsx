@@ -1,5 +1,7 @@
 "use client";
-import { useActionState, useState } from "react";
+import { useActionState, useState, useEffect, useRef } from "react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import { CardPicker } from "@/components/market/sell/card-picker";
 import { PrintingPicker } from "@/components/market/sell/printing-picker";
 import { ListingDetailsForm } from "@/components/market/sell/listing-details-form";
@@ -12,12 +14,15 @@ import Image from "next/image";
 import {getImageSource, toFoilingType} from "@/lib/fab-utils";
 import { Search, Layers } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import { createListing, ListingFormState } from "@/lib/actions/create-listing";
+import { createListingAction, ListingFormState } from "@/app/actions/listings.actions";
 
-const initialState: ListingFormState = { error: null };
+const initialState: ListingFormState = { fieldErrors: null };
 
 export function SellListingForm() {
-    const [state, formAction, isPending] = useActionState(createListing, initialState)
+    const router = useRouter();
+    const hasSubmitted = useRef(false);
+
+    const [state, formAction, isPending] = useActionState(createListingAction, initialState)
 
     const [selectedCard, setSelectedCard] = useState<Card | null>(null);
     const [selectedPrinting, setSelectedPrinting] = useState<Printing | null>(null);
@@ -33,8 +38,26 @@ export function SellListingForm() {
 
     const isListingValid = !!selectedPrinting && price.trim().length > 0 && Number(price) > 0;
 
+    useEffect(() => {
+        if (!hasSubmitted.current) {
+            return;
+        }
+
+        if (state.fieldErrors === null) {
+            toast.success("Listing created.");
+            router.push("/market");
+        } else if (state.fieldErrors.db) {
+            toast.error(state.fieldErrors.db);
+        }
+    }, [state, router]);
+
+    const handleSubmit = (formData: FormData) => {
+        hasSubmitted.current = true;
+        formAction(formData);
+    };
+
     return (
-        <form action={formAction} className="flex flex-row gap-8">
+        <form action={handleSubmit} className="flex flex-row gap-8">
             <div className="flex flex-col gap-2 w-full max-w-xl">
                 <Label className="sell-page-label">
                     <Search className="h-5 w-5 text-muted-foreground"/>
@@ -60,8 +83,10 @@ export function SellListingForm() {
                     onQuantityChange={setQuantity}
                 />
 
-                {state.error && (
-                    <p className="text-sm text-destructive">{state.error}</p>
+                {state.fieldErrors && (
+                    <p className="text-sm text-destructive">
+                        {Object.values(state.fieldErrors)[0]}
+                    </p>
                 )}
             </div>
 
