@@ -58,7 +58,7 @@ export function MobileNav({ isLoggedIn, displayName }: MobileNavProps) {
                                 <AccordionContent className="no-underline">
                                     <div className="flex flex-col gap-3 ml-4 border-l border-border pl-4">
                                         <Link href="/profile" className="nav-link" onClick={() => setOpen(false)}>Profile</Link>
-                                        <Link href="/my-listings" className="nav-link" onClick={() => setOpen(false)}>My Listings</Link>
+                                        <Link href="/listings/mine" className="nav-link" onClick={() => setOpen(false)}>My Listings</Link>
                                         <SignoutButton onClick={() => setOpen(false)} className="nav-link" />
                                     </div>
                                 </AccordionContent>

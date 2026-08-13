@@ -63,7 +63,7 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
                                         </NavigationMenuLink>
                                     </li>
                                     <li>
-                                        <NavigationMenuLink href="/my-listings" className="block rounded-md px-3 py-2 text-md hover:bg-accent">
+                                        <NavigationMenuLink href="/listings/mine" className="block rounded-md px-3 py-2 text-md hover:bg-accent">
                                             My Listings
                                         </NavigationMenuLink>
                                     </li>
