@@ -1,4 +1,5 @@
 import {z} from "zod"
+import {collectFieldErrors, FieldErrors} from "@/lib/validators/collect-field-errors";
 
 const ISRAELI_PHONE_REGEX = /^0(5[0-9])\d{7}$/
 
@@ -22,23 +23,11 @@ export type UpdateProfileInput = {
     discordUsername: string | null
 }
 
-export type ProfileFieldErrors = Record<string, string>
+export type ProfileFieldErrors = FieldErrors
 
 export type ProfileValidationResult =
     | { success: true; data: UpdateProfileInput }
     | { success: false; error: ProfileFieldErrors }
-
-function collectFieldErrors(issues: z.core.$ZodIssue[]): ProfileFieldErrors {
-    const errors: ProfileFieldErrors = {}
-    for (const issue of issues) {
-        const fieldName = issue.path[0]?.toString()
-        if (fieldName && !errors[fieldName]) {
-            errors[fieldName] = fieldName
-        }
-    }
-
-    return errors
-}
 
 export function parseAndValidateProfileForm(formData: FormData): ProfileValidationResult {
     const raw = Object.fromEntries(formData.entries())

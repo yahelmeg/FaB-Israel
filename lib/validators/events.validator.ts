@@ -1,4 +1,5 @@
 import {z} from "zod";
+import {collectFieldErrors, FieldErrors} from "@/lib/validators/collect-field-errors";
 
 const baseEventSchema =  z.object({
     title: z.string().trim().min(1, "Title is required"),
@@ -67,7 +68,7 @@ export type UpdateEventInput = Partial<CreateEventInput> & {
     status?: "upcoming" | "completed" | "cancelled"
 }
 
-export type EventFieldErrors = Record<string, string>
+export type EventFieldErrors = FieldErrors
 
 export type EventValidationResult =
     | { success: true; data: CreateEventInput }
@@ -76,17 +77,6 @@ export type EventValidationResult =
 export type UpdateEventValidationResult  =
     | { success: true; data: UpdateEventInput }
     | { success: false; error: EventFieldErrors }
-
-function collectFieldErrors (issues: z.core.$ZodIssue[]): EventFieldErrors {
-    const errors: EventFieldErrors = {}
-    for (const issue of issues) {
-        const fieldName = issue.path[0]?.toString();
-        if (fieldName && !errors[fieldName]) {
-            errors[fieldName] = issue.message
-        }
-    }
-    return errors
-}
 
 export function parseAndValidateEventForm(formData: FormData): EventValidationResult {
     const raw = Object.fromEntries(formData.entries())
