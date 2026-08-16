@@ -1,4 +1,4 @@
-import { Listing } from "@/types/Listing"
+import { Listing } from "@/types/listings/Listing"
 import { FoilingBadge } from "@/components/general/badges/foiling-badge"
 import { ConditionBadge } from "@/components/general/badges/condition-badge"
 import { formatPrice } from "@/lib/format"

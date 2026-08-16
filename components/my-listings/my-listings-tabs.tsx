@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { Listing } from "@/types/Listing"
+import { Listing } from "@/types/listings/Listing"
 import { Button } from "@/components/ui/button"
 import {MyListingsGrid} from "@/components/my-listings/my-listing-grid";
 

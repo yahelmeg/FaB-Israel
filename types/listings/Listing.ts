@@ -1,6 +1,6 @@
 
-import {FoilingTypes} from "./FoilingTypes";
-import {ConditionTypes} from "./ConditionTypes";
+import {FoilingTypes} from "../FoilingTypes";
+import {ConditionTypes} from "../ConditionTypes";
 import {LanguageTypes} from "@/types/LanguageTypes";
 
 export interface Listing {

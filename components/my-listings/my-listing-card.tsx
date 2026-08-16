@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { ListingCard } from "@/components/market/listings/listing-card"
-import { Listing } from "@/types/Listing"
+import { Listing } from "@/types/listings/Listing"
 import { MyListingCardModal } from "@/components/my-listings/my-listing-card-modal"
 
 interface MyListingCardProps {

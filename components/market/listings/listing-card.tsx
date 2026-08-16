@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
-import { Listing } from "@/types/Listing"
+import { Listing } from "@/types/listings/Listing"
 import { ListingCardFooter } from "./listing-card-footer"
 import { getImageSource } from "@/lib/fab-utils";
 import { cn } from "@/lib/utils"

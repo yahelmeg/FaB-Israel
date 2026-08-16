@@ -1,4 +1,4 @@
-import {Listing, ListingBase} from "@/types/Listing"
+import {Listing, ListingBase} from "@/types/listings/Listing"
 import {ConditionTypes} from "@/types/ConditionTypes";
 import {FoilingTypes} from "@/types/FoilingTypes";
 import {LanguageTypes} from "@/types/LanguageTypes";

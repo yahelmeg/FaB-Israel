@@ -2,7 +2,7 @@
 import { useState} from "react";
 import { ListingCard } from "@/components/market/listings/listing-card";
 import {ListingModal} from "@/components/market/listings/listing-modal";
-import {Listing} from "@/types/Listing"
+import {Listing} from "@/types/listings/Listing"
 
 
 interface ListingGridClientProps {

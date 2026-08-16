@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { ListingModalDetails } from "@/components/market/listings/listing-modal-details";
-import { Listing } from "@/types/Listing"
+import { Listing } from "@/types/listings/Listing"
 import {getImageSource} from "@/lib/fab-utils";
 
 

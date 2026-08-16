@@ -1,6 +1,6 @@
 "use client"
 import { MyListingCard } from "./my-listing-card"
-import { Listing } from "@/types/Listing"
+import { Listing } from "@/types/listings/Listing"
 
 interface MyListingsGridProps {
     listings: Listing[]

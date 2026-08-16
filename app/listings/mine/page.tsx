@@ -2,7 +2,7 @@ import * as listingService from "@/lib/services/listings.service"
 import { MyListingsTabs } from "@/components/my-listings/my-listings-tabs"
 import type {Metadata} from "next";
 import { noIndex } from "@/lib/metadata";
-import { Listing } from "@/types/Listing"
+import { Listing } from "@/types/listings/Listing"
 
 
 export const metadata: Metadata = {

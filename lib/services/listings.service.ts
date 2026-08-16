@@ -1,5 +1,5 @@
 
-import {Listing, ListingBase} from "@/types/Listing"
+import {Listing, ListingBase} from "@/types/listings/Listing"
 import * as listingRepository from "@/lib/repositories/listings.repository"
 import {toListing, toListingBase} from "@/lib/mappers/listings.mapper";
 import {CreateListingInput} from "@/lib/validators/listings.validator";
