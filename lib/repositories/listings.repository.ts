@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { CreateListingInput, UpdateListingInput } from "@/lib/validators/listings.validator"
+import {ListingSortField} from "@/types/listings/ListingSortField";
 
 export type ListingRowBase = {
     id: string
@@ -14,6 +15,7 @@ export type ListingRowBase = {
     quantity: number
     status: "active" | "fulfilled"
     seller_id: string
+    created_at: string
 }
 
 export type ListingRow = ListingRowBase & {
@@ -46,6 +48,8 @@ function mapRowWithProfile({ profiles, ...baseRow }: ListingRowWithProfileJoin):
 
 export type ListingFilters = {
     search?: string
+    sortBy?: ListingSortField
+    sortOrder?: "asc" | "desc"
 }
 
 const LISTING_WITH_SELLER_SELECT = `*, profiles (display_name, phone_number, discord_username)`
@@ -60,6 +64,12 @@ export async function getActive(filters: ListingFilters = {}): Promise<ListingRo
     if (filters.search) {
         query = query.ilike("card_name", `%${filters.search}%`)
     }
+
+
+    const sortBy = filters.sortBy ?? "created_at"
+    const sortOrder = filters.sortOrder ?? "desc"
+    query = query.order(sortBy, {ascending: sortOrder !== "desc"})
+
 
     const { data, error } = await query
 
