@@ -1,14 +1,18 @@
 import { ListingGridClient } from "@/components/market/listings/listing-grid-client"
 import * as listingService from "@/lib/services/listings.service"
-import { Listing } from "@/types/Listing"
+import {ListingSortField} from "@/types/listings/ListingSortField";
+import {SortOrder} from "@/types/listings/ListingSortOption";
+
 
 type ListingGridProps = {
-    search?: string
+    query?: string
+    sortBy?: ListingSortField
+    sortOrder?: SortOrder
 }
 
-async function loadListings(search?: string): Promise<{ listings: Listing[]; error: string | null }> {
+async function loadListings( {query, sortBy, sortOrder}: ListingGridProps) {
     try {
-        const listings = await listingService.getListings({ search })
+        const listings = await listingService.getListings({ search:query, sortBy, sortOrder })
         return { listings, error: null }
     } catch (err) {
         console.error("Failed to load listings:", err)
@@ -16,8 +20,8 @@ async function loadListings(search?: string): Promise<{ listings: Listing[]; err
     }
 }
 
-export async function ListingGrid({ search }: ListingGridProps) {
-    const { listings, error } = await loadListings(search)
+export async function ListingGrid({ query, sortBy, sortOrder }: ListingGridProps) {
+    const { listings, error } = await loadListings({query, sortBy, sortOrder})
 
     if (error) {
         return <p role="alert">{error}</p>
