@@ -1,5 +1,8 @@
-import type {Metadata} from "next";
-
+import type { Metadata } from "next";
+import { Separator } from "@/components/ui/separator";
+import { WhatIsFabSection } from "@/components/community/what-is-fab-section";
+import { ChooseYourHeroSection } from "@/components/community/choose-your-hero-section";
+import { FindUsSection } from "@/components/community/find-us-section";
 
 export const metadata: Metadata = {
     title: "Community",
@@ -8,10 +11,12 @@ export const metadata: Metadata = {
 
 export default function CommunityPage() {
     return (
-        <div className="page-layout">
-            <h2 className="page-heading-text mb-8">
-                Work in Progress
-            </h2>
+        <div className="page-layout max-w-4xl mx-auto flex flex-col gap-16">
+            <WhatIsFabSection />
+            <Separator />
+            <ChooseYourHeroSection />
+            <Separator />
+            <FindUsSection />
         </div>
     )
 }
