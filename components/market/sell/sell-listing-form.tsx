@@ -24,6 +24,8 @@ export function SellListingForm() {
 
     const [state, formAction, isPending] = useActionState(createListingAction, initialState)
 
+
+    const [formKey, setFormKey] = useState(0);
     const [selectedCard, setSelectedCard] = useState<Card | null>(null);
     const [selectedPrinting, setSelectedPrinting] = useState<Printing | null>(null);
     const [condition, setCondition] = useState<ConditionTypes>("NM");
@@ -38,6 +40,14 @@ export function SellListingForm() {
 
     const isListingValid = !!selectedPrinting && price.trim().length > 0 && Number(price) > 0;
 
+    const resetForm = () => {
+        setSelectedCard(null);
+        setSelectedPrinting(null);
+        setPrice("");
+        setQuantity("1");
+        setFormKey((k) => k + 1);
+    };
+
     useEffect(() => {
         if (!hasSubmitted.current) {
             return;
@@ -45,7 +55,7 @@ export function SellListingForm() {
 
         if (state.fieldErrors === null) {
             toast.success("Listing created.");
-            router.push("/market");
+            resetForm();
         } else if (state.fieldErrors.db) {
             toast.error(state.fieldErrors.db);
         }
@@ -58,7 +68,7 @@ export function SellListingForm() {
 
     return (
         <form action={handleSubmit} className="flex flex-row gap-8">
-            <div className="flex flex-col gap-2 w-full max-w-xl">
+            <div className="flex flex-col gap-2 w-full max-w-xl" key={formKey}>
                 <Label className="sell-page-label">
                     <Search className="h-5 w-5 text-muted-foreground"/>
                     Search for your card
