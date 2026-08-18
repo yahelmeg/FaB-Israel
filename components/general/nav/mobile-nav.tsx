@@ -47,7 +47,7 @@ export function MobileNav({ isLoggedIn, displayName }: MobileNavProps) {
                         </AccordionItem>
                     </Accordion>
                     <Link href="/events" className="nav-link" onClick={() => setOpen(false)}>Events</Link>
-                    <Link href="/community" className="nav-link" onClick={() => setOpen(false)}>Get Started</Link>
+                    <Link href="/community" className="nav-link" onClick={() => setOpen(false)}>Community</Link>
 
                     {isLoggedIn ? (
                         <Accordion>
