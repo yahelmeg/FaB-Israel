@@ -17,7 +17,7 @@ export function ListingCardFooter({ price, foiling, condition, language }: Listi
     const digitCount = Math.floor(Math.abs(price)).toString().length
 
     return (
-        <div className="flex items-center w-full p-2 gap-2">
+        <div className="flex items-center w-full min-w-0 p-2 gap-2">
             <div className={`font-bold text-foreground whitespace-nowrap shrink-0 max-w-[45%] truncate ${
                 digitCount > 5 ? "text-sm" : "text-lg"
             }`}>
