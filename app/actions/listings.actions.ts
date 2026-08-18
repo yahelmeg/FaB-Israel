@@ -21,6 +21,8 @@ export async function createListingAction(_prevState:ListingFormState, formData:
     }
 
     revalidatePath("/market")
+    revalidatePath("/listings/mine")
+
     return { fieldErrors: null }
 }
 
