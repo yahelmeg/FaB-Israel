@@ -1,6 +1,7 @@
 import { FaDiscord } from "react-icons/fa";
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { toast } from "sonner"
 
 
 interface DiscordButtonProps {
@@ -8,13 +9,23 @@ interface DiscordButtonProps {
 }
 
 export function DiscordButton({ sellerDiscord }: DiscordButtonProps) {
+
+    const handleClick = async () => {
+        try {
+            await navigator.clipboard.writeText(sellerDiscord)
+            toast.success("Discord successfully copied!")
+        } catch (error) {
+            console.error("Failed to copy Discord username:", error)
+            toast.error("Couldn't copy to clipboard")
+        }
+    }
     return (
         <Button
             size="sm"
             className={cn(
                "w-32 cursor-pointer gap-1 bg-indigo-600 hover:bg-indigo-500/90 text-white dark:hover:bg-indigo-400/90"
             )}
-            onClick={() => navigator.clipboard.writeText(sellerDiscord)}
+            onClick={handleClick}
         >
             <FaDiscord size={12} />
             Discord
