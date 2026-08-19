@@ -1,7 +1,7 @@
 import { FaDiscord } from "react-icons/fa";
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
+import {SharedMarketButton} from "@/components/market/listings/buttons/shared-marketplace-button";
 
 
 interface DiscordButtonProps {
@@ -20,15 +20,12 @@ export function DiscordButton({ sellerDiscord }: DiscordButtonProps) {
         }
     }
     return (
-        <Button
-            size="sm"
-            className={cn(
-               "w-32 cursor-pointer gap-1 !bg-discord hover:!bg-discord-hover !text-white dark:!text-white"
-            )}
+        <SharedMarketButton
+            className="!bg-discord hover:!bg-discord-hover !text-white dark:!text-white"
             onClick={handleClick}
         >
             <FaDiscord size={12} />
             Discord
-        </Button>
+        </SharedMarketButton>
     )
 }

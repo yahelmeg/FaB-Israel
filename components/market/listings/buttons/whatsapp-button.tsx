@@ -1,8 +1,8 @@
 
-import { Button } from "@/components/ui/button"
 import { FaWhatsapp } from "react-icons/fa"
 import { buildWhatsAppUrl } from "@/lib/format"
-import { cn } from "@/lib/utils"
+import Link from "next/link";
+import {SharedMarketButton} from "@/components/market/listings/buttons/shared-marketplace-button";
 
 interface WhatsappButtonProps {
     phoneNumber: string
@@ -11,14 +11,10 @@ interface WhatsappButtonProps {
 
 export function WhatsappButton({ phoneNumber, cardName }: WhatsappButtonProps) {
     return (
-        <Button
-            size="sm"
-            nativeButton={false}
-            className={cn(
-                "w-32 cursor-pointer gap-1 !bg-whatsapp hover:!bg-whatsapp-hover !text-black dark:!text-black"
-            )}
+        <SharedMarketButton
+            className="!bg-whatsapp hover:!bg-whatsapp-hover !text-black dark:!text-black"
             render={
-                <a
+                <Link
                     href={buildWhatsAppUrl(phoneNumber, cardName)}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -27,7 +23,7 @@ export function WhatsappButton({ phoneNumber, cardName }: WhatsappButtonProps) {
         >
             <FaWhatsapp size={12}  />
             WhatsApp
-        </Button>
+        </SharedMarketButton>
     )
 }
 

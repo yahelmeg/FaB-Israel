@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { SiCardmarket } from "react-icons/si";
 import { buildCardMarketUrl } from "@/lib/format";
+import {SharedMarketButton} from "@/components/market/listings/buttons/shared-marketplace-button";
 
 interface MarketplaceButtonProps {
     cardName: string;
@@ -9,10 +9,8 @@ interface MarketplaceButtonProps {
 
 export function CardMarketButton({ cardName }: MarketplaceButtonProps) {
     return (
-        <Button
-            size="sm"
-            nativeButton={false}
-            className="w-32 cursor-pointer gap-1 !bg-cardmarket hover:!bg-cardmarket-hover text-white"
+        <SharedMarketButton
+            className="!bg-cardmarket hover:!bg-cardmarket-hover text-white"
             render={
                 <Link
                     href={buildCardMarketUrl(cardName)}
@@ -23,6 +21,6 @@ export function CardMarketButton({ cardName }: MarketplaceButtonProps) {
         >
             <SiCardmarket size={12} />
             CardMarket
-        </Button>
+        </SharedMarketButton>
     );
 }
