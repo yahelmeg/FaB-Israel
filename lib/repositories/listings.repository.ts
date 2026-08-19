@@ -80,6 +80,21 @@ export async function getActive(filters: ListingFilters = {}): Promise<ListingRo
     return data.map(mapRowWithProfile)
 }
 
+export async function getRecentListings(limit = 100): Promise<ListingRowBase[]> {
+    const supabase = await createClient()
+    const {data, error} = await supabase
+        .from("listings")
+        .select("*")
+        .eq("status", "active")
+        .order("created_at", {ascending: false})
+        .limit(limit)
+
+    if (error) {
+        throw new Error(`Failed to fetch listings: ${error.message}`)
+    }
+    return data
+}
+
 export async function getById(id: string): Promise<ListingRow | null> {
     const supabase = await createClient()
     const { data, error } = await supabase
