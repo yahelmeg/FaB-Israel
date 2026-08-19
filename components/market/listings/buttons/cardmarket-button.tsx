@@ -12,7 +12,7 @@ export function CardMarketButton({ cardName }: MarketplaceButtonProps) {
         <Button
             size="sm"
             nativeButton={false}
-            className="w-32 cursor-pointer gap-1 bg-sky-800 hover:bg-sky-800/80 text-white dark:hover:bg-sky-600/90"
+            className="w-32 cursor-pointer gap-1 !bg-cardmarket hover:!bg-cardmarket-hover text-white"
             render={
                 <Link
                     href={buildCardMarketUrl(cardName)}

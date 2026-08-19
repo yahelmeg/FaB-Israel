@@ -75,6 +75,16 @@
     --radius-4xl: calc(var(--radius) * 2.6);
     --color-success: var(--success);
     --color-success-foreground: var(--success-foreground);
+    --color-whatsapp: var(--whatsapp);
+    --color-whatsapp-hover: var(--whatsapp-hover);
+    --color-discord: var(--discord);
+    --color-discord-hover: var(--discord-hover);
+    --color-youtube: var(--youtube);
+    --color-youtube-hover: var(--youtube-hover);
+    --color-cardmarket: var(--cardmarket);
+    --color-cardmarket-hover: var(--cardmarket-hover);
+    --color-tcgplayer: var(--tcgplayer);
+    --color-tcgplayer-hover: var(--tcgplayer-hover);
 }
 
 :root {
@@ -112,6 +122,16 @@
     --sidebar-ring: oklch(0.708 0 0);
     --success: oklch(0.6 0.15 145);
     --success-foreground: oklch(0.985 0 0);
+    --whatsapp: #25D366;
+    --whatsapp-hover: #20BD5C;
+    --discord: #5865F2;
+    --discord-hover: #4752C4;
+    --youtube: #DF0000;
+    --youtube-hover: #C90000;
+    --cardmarket: #003366;
+    --cardmarket-hover: #002244;
+    --tcgplayer: #E03C31;
+    --tcgplayer-hover: #C53027;
 }
 
 .dark {

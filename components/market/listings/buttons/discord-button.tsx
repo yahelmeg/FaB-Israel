@@ -23,7 +23,7 @@ export function DiscordButton({ sellerDiscord }: DiscordButtonProps) {
         <Button
             size="sm"
             className={cn(
-               "w-32 cursor-pointer gap-1 bg-indigo-600 hover:bg-indigo-500/90 text-white dark:hover:bg-indigo-400/90"
+               "w-32 cursor-pointer gap-1 !bg-discord hover:!bg-discord-hover !text-white dark:!text-white"
             )}
             onClick={handleClick}
         >

@@ -13,7 +13,7 @@ export function TcgPlayerButton({ cardName, tcgPlayerUrl }: TcgPlayerProps) {
         <Button
             size="sm"
             nativeButton={false}
-            className="w-32 group gap-1 cursor-pointer bg-blue-700 hover:bg-blue-600/90 text-white dark:hover:bg-blue-500/90"
+            className="w-32 group gap-1 cursor-pointer !bg-tcgplayer hover:!bg-tcgplayer-hover text-white"
             render={
                 <Link
                     href={href}
