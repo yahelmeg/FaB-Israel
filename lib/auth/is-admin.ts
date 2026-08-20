@@ -1,9 +1,9 @@
-import {requireAuth} from "@/lib/auth/require-auth";
 import { checkIsAdmin } from "@/lib/services/admins.service"
+import {getOptionalClaims} from "@/lib/auth/get-optional-claims";
 
 
 export async function isAdmin() {
-    const claims = await requireAuth()
+    const claims = await getOptionalClaims()
 
     if (!claims) {
         return false
