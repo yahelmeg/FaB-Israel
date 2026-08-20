@@ -19,6 +19,7 @@ export function ListingCard({ listing, onClick, className }: ListingCardProps) {
                     src={getImageSource(listing.image)}
                     alt={listing.cardName}
                     fill
+                    unoptimized
                     loading="eager"
                     sizes="(max-width: 768px) 100vw, 450px"
                 />

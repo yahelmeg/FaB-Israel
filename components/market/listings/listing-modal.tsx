@@ -21,6 +21,7 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
                                 src={getImageSource(listing.image)}
                                 alt={listing.cardName}
                                 fill
+                                unoptimized
                                 className="object-cover"
                                 sizes="320px"
                             />

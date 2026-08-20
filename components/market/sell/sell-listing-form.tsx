@@ -105,6 +105,7 @@ export function SellListingForm() {
                     src={selectedPrinting ? getImageSource(selectedPrinting.image) : getImageSource(undefined)}
                     alt={selectedPrinting ? selectedPrinting.print : "temporary"}
                     loading="eager"
+                    unoptimized
                     width={300}
                     height={418}
                     className="w-[300px] h-[418px] rounded-xl shadow-lg sticky top-8"
