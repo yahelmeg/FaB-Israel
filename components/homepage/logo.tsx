@@ -12,7 +12,7 @@ export function Logo({ className }: { className?: string }) {
                 </h1>
             </div>
             <p className="text-lg text-muted-foreground">
-                Buy, sell, and trade Flesh and Blood TCG cards with the Israeli community
+                The home for Flesh and Blood TCG players in Israel - buy, sell, trade, find events, and connect with the community
             </p>
         </div>
     );
