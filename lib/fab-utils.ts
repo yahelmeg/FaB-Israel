@@ -22,15 +22,7 @@ export function getImageSource(image: string | undefined): string {
         return `${r2PublicUrl}/placeholder.webp`;
     }
 
-    let setCode = image[0] === "U"
-        ? image.slice(0, 5)
-        : image.slice(0, 3);
-
-    if (setCode.toUpperCase() === "CON") {
-        setCode = "CONV";
-    }
-
-    return `${r2PublicUrl}/${setCode}/${image}.webp`;
+    return `${r2PublicUrl}/${image}.webp`;
 }
 
 export function toFoilingType(foiling: Foiling | undefined): FoilingTypes {
