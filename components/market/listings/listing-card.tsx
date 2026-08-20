@@ -17,7 +17,7 @@ export function ListingCard({ listing, onClick, className }: ListingCardProps) {
             <div className="relative aspect-[3/4] w-full bg-white dark:bg-black">
                 <Image
                     src={getImageSource(listing.image)}
-                    alt="Card"
+                    alt={listing.cardName}
                     fill
                     loading="eager"
                     sizes="(max-width: 768px) 100vw, 450px"
