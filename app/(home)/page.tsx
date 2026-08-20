@@ -3,6 +3,7 @@ import type {Metadata} from "next";
 import {RecentListingsCarousel} from "@/components/homepage/recent-listings-carousel";
 import {getListingsForHomepageCarousel} from "@/lib/services/listings.service";
 import {shuffle} from "@/lib/shuffle";
+import {Logo} from "@/components/homepage/logo";
 
 export const metadata: Metadata = {
     title: "Home Page",
@@ -15,7 +16,8 @@ export default async function HomePage() {
     return (
         <>
             <LoginSuccessToast/>
-            <div className="pt-40">
+            <Logo/>
+            <div>
                 <RecentListingsCarousel listings={shuffledListings}/>
             </div>
         </>
