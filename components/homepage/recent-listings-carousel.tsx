@@ -39,7 +39,7 @@ export function RecentListingsCarousel( {listings} : RecentListingsCarouselProps
         >
             <CarouselContent>
                 {listings.map((listing) => (
-                    <CarouselItem key={listing.id} className="basis-[240px] shrink-0">
+                    <CarouselItem key={listing.id} className="pl-3 sm:pl-4 basis-[42%] xs:basis-[38%] sm:basis-[220px] shrink-0">
                         <ListingCard
                             listing={listing}
                             onClick={() => {

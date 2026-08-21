@@ -1,5 +1,6 @@
 import { LANGUAGE_COUNTRY_MAP } from "@/consts/languages"
 import type { LanguageTypes } from "@/types/LanguageTypes"
+import {cn} from "@/lib/utils"
 
 import US from "country-flag-icons/react/3x2/US"
 import DE from "country-flag-icons/react/3x2/DE"
@@ -23,7 +24,12 @@ export function LanguageFlag({ language }: LanguageFlagProps) {
     }
 
     return (
-        <div className="w-6 rounded-sm overflow-hidden" >
+        <div
+            className={cn(
+                "w-6 rounded-sm overflow-hidden",
+                countryCode === "JP" && "border border-border"
+            )}
+        >
             <Flag title={language} className="block w-full"/>
         </div>
     )
