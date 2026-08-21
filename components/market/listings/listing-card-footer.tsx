@@ -11,9 +11,10 @@ interface ListingCardFooterProps {
     foiling: FoilingTypes
     condition: ConditionTypes
     language: LanguageTypes
+    variant?: "grid" | "carousel"
 }
 
-export function ListingCardFooter({ price, foiling, condition, language }: ListingCardFooterProps) {
+export function ListingCardFooter({ price, foiling, condition, language, variant }: ListingCardFooterProps) {
     const digitCount = Math.floor(Math.abs(price)).toString().length
 
     return (
@@ -25,8 +26,8 @@ export function ListingCardFooter({ price, foiling, condition, language }: Listi
             </div>
             <div className="flex flex-row items-center gap-1 justify-end flex-1 min-w-0">
                 <LanguageFlag language={language} />
-                <FoilingBadge foiling={foiling} />
-                <ConditionBadge condition={condition} />
+                {variant !== "carousel" && <FoilingBadge foiling={foiling} />}
+                {variant !== "carousel" && <ConditionBadge condition={condition} />}
             </div>
         </div>
     )

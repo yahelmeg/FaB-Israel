@@ -9,9 +9,10 @@ interface ListingCardProps {
     listing: ListingBase;
     onClick: () => void;
     className?: string;
+    variant?: "grid" | "carousel"
 }
 
-export function ListingCard({ listing, onClick, className }: ListingCardProps) {
+export function ListingCard({ listing, onClick, className, variant="grid" }: ListingCardProps) {
     return (
         <Card onClick={onClick} className={cn("group relative overflow-hidden rounded-xl border shadow-sm p-0 gap-0 cursor-pointer", className)}>
             <div className="relative aspect-[3/4] w-full bg-white dark:bg-black">
@@ -30,7 +31,7 @@ export function ListingCard({ listing, onClick, className }: ListingCardProps) {
                 )}
             </div>
             <CardContent className={`p-0`}>
-                <ListingCardFooter language={listing.language} price={listing.price} foiling={listing.foiling} condition={listing.condition} />
+                <ListingCardFooter language={listing.language} price={listing.price} foiling={listing.foiling} condition={listing.condition} variant={variant} />
             </CardContent>
         </Card>
     )

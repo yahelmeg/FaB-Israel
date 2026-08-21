@@ -46,6 +46,7 @@ export function RecentListingsCarousel( {listings} : RecentListingsCarouselProps
                                 const params = new URLSearchParams({ q: listing.cardName });
                                 router.push(`/market?${params.toString()}`);
                             }}
+                            variant="carousel"
                         />
                     </CarouselItem>
                 ))}
