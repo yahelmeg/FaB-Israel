@@ -12,22 +12,31 @@ interface ListingCardFooterProps {
     condition: ConditionTypes
     language: LanguageTypes
     variant?: "grid" | "carousel"
+
 }
 
 export function ListingCardFooter({ price, foiling, condition, language, variant }: ListingCardFooterProps) {
     const digitCount = Math.floor(Math.abs(price)).toString().length
+    const isCarousel = variant === "carousel"
+    const priceSize = isCarousel
+        ? (digitCount > 5 ? "text-xs sm:text-sm" : "text-sm sm:text-lg")
+        : (digitCount > 5 ? "text-sm" : "text-lg")
 
     return (
         <div className="flex items-center w-full min-w-0 p-2 gap-2">
-            <div className={`font-bold text-foreground whitespace-nowrap shrink-0 max-w-[45%] truncate ${
-                digitCount > 5 ? "text-sm" : "text-lg"
-            }`}>
+            <div className={`font-bold text-foreground whitespace-nowrap shrink-0 max-w-[45%] truncate ${priceSize}`}>
                 {formatPrice(price)}
             </div>
             <div className="flex flex-row items-center gap-1 justify-end flex-1 min-w-0">
-                <LanguageFlag language={language} />
-                {variant !== "carousel" && <FoilingBadge foiling={foiling} />}
-                {variant !== "carousel" && <ConditionBadge condition={condition} />}
+                <LanguageFlag language={language}/>
+                <FoilingBadge
+                    foiling={foiling}
+                    className={variant === "carousel" ? "hidden sm:flex" : undefined}
+                />
+                <ConditionBadge
+                    condition={condition}
+                    className={variant === "carousel" ? "hidden sm:flex" : undefined}
+                />
             </div>
         </div>
     )
