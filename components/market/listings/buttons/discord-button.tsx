@@ -12,7 +12,7 @@ export function DiscordButton({ sellerDiscord }: DiscordButtonProps) {
     const handleClick = async () => {
         try {
             await navigator.clipboard.writeText(sellerDiscord)
-            toast.success("Discord successfully copied!")
+            toast.success("Discord username successfully copied!")
         } catch (error) {
             console.error("Failed to copy Discord username:", error)
             toast.error("Couldn't copy to clipboard")
