@@ -8,10 +8,11 @@ import { cn } from "@/lib/utils"
 interface ConditionBadgeProps {
     condition: ConditionTypes
     interactive?: boolean
+    className?: string
 }
 
 
-export function ConditionBadge({ condition, interactive=true }: ConditionBadgeProps) {
+export function ConditionBadge({ condition, interactive=true, className}: ConditionBadgeProps) {
     const dynamicClass = conditionStyles[condition]
 
     const badge = (
@@ -20,7 +21,8 @@ export function ConditionBadge({ condition, interactive=true }: ConditionBadgePr
             className={cn(
                 "badge-styling",
                 dynamicClass,
-                !interactive && "cursor-default"
+                !interactive && "cursor-default",
+                interactive && className
             )}
         >
             {condition}

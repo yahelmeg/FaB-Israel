@@ -7,9 +7,10 @@ import { cn } from "@/lib/utils"
 interface FoilingBadgeProps {
     foiling: FoilingTypes
     interactive?: boolean
+    className?: string
 }
 
-export function FoilingBadge({ foiling, interactive=true }: FoilingBadgeProps) {
+export function FoilingBadge({ foiling, interactive=true, className}: FoilingBadgeProps) {
     const dynamicClass = foilingStyles[foiling]
 
     const badge = (
@@ -18,7 +19,8 @@ export function FoilingBadge({ foiling, interactive=true }: FoilingBadgeProps) {
             className={cn(
                 "badge-styling",
                 dynamicClass,
-                !interactive && "cursor-default"
+                !interactive && "cursor-default",
+                interactive && className
             )}
         >
             {foiling}
