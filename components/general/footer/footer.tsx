@@ -27,22 +27,24 @@ export function Footer() {
                     </Link>
                 </p>
                 <Link href="https://ko-fi.com/fabisrael" target="_blank" rel="noopener noreferrer">
-                    <Image
-                        src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_dark.png"
-                        alt="Support us on Ko-fi"
-                        width={180}
-                        height={40}
-                        className="block dark:hidden"
-                        unoptimized
-                    />
-                    <Image
-                        src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_beige.png"
-                        alt="Support us on Ko-fi"
-                        width={180}
-                        height={40}
-                        className="hidden dark:block"
-                        unoptimized
-                    />
+                    <div className="relative w-[180px] h-[36px] dark:hidden">
+                        <Image
+                            src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_dark.png"
+                            alt="Support us on Ko-fi"
+                            fill
+                            className="object-contain"
+                            unoptimized
+                        />
+                    </div>
+                    <div className="relative hidden w-[180px] h-[36px] dark:block">
+                        <Image
+                            src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_beige.png"
+                            alt="Support us on Ko-fi"
+                            fill
+                            className="object-contain"
+                            unoptimized
+                        />
+                    </div>
                 </Link>
             </div>
         </footer>
