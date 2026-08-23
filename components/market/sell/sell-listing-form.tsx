@@ -1,7 +1,6 @@
 "use client";
-import { useActionState, useState, useEffect, useRef } from "react";
+import { useActionState, useState } from "react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import { CardPicker } from "@/components/market/sell/card-picker";
 import { PrintingPicker } from "@/components/market/sell/printing-picker";
 import { ListingDetailsForm } from "@/components/market/sell/listing-details-form";
@@ -19,11 +18,6 @@ import { createListingAction, ListingFormState } from "@/app/actions/listings.ac
 const initialState: ListingFormState = { fieldErrors: null };
 
 export function SellListingForm() {
-    const router = useRouter();
-    const hasSubmitted = useRef(false);
-
-    const [state, formAction, isPending] = useActionState(createListingAction, initialState)
-
 
     const [formKey, setFormKey] = useState(0);
     const [selectedCard, setSelectedCard] = useState<Card | null>(null);
@@ -33,13 +27,6 @@ export function SellListingForm() {
     const [price, setPrice] = useState("");
     const [quantity, setQuantity] = useState("1");
 
-    const handleCardSelect = (card: Card | null) => {
-        setSelectedCard(card);
-        setSelectedPrinting(null);
-    };
-
-    const isListingValid = !!selectedPrinting && price.trim().length > 0 && Number(price) > 0;
-
     const resetForm = () => {
         setSelectedCard(null);
         setSelectedPrinting(null);
@@ -48,26 +35,29 @@ export function SellListingForm() {
         setFormKey((k) => k + 1);
     };
 
-    useEffect(() => {
-        if (!hasSubmitted.current) {
-            return;
+    const [state, formAction, isPending] = useActionState(
+        async(prevState: ListingFormState, formData: FormData) => {
+            const nextState = await createListingAction(prevState, formData)
+            if (nextState.fieldErrors === null) {
+                toast.success("Listing created.");
+                resetForm();
+            } else if (nextState.fieldErrors.db) {
+                toast.error(nextState.fieldErrors.db);
+            }
+            return nextState;
         }
+        , initialState
+    );
 
-        if (state.fieldErrors === null) {
-            toast.success("Listing created.");
-            resetForm();
-        } else if (state.fieldErrors.db) {
-            toast.error(state.fieldErrors.db);
-        }
-    }, [state, router]);
-
-    const handleSubmit = (formData: FormData) => {
-        hasSubmitted.current = true;
-        formAction(formData);
+    const handleCardSelect = (card: Card | null) => {
+        setSelectedCard(card);
+        setSelectedPrinting(null);
     };
 
+    const isListingValid = !!selectedPrinting && price.trim().length > 0 && Number(price) > 0;
+
     return (
-        <form action={handleSubmit} className="flex flex-row gap-8">
+        <form action={formAction} className="flex flex-row gap-8">
             <div className="flex flex-col gap-2 w-full max-w-xl" key={formKey}>
                 <Label className="sell-page-label">
                     <Search className="h-5 w-5 text-muted-foreground"/>
