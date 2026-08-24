@@ -14,6 +14,8 @@ import {getImageSource, toFoilingType} from "@/lib/fab-utils";
 import { Search, Layers } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { createListingAction, ListingFormState } from "@/app/actions/listings.actions";
+import {CardMarketButton} from "@/components/market/listings/buttons/cardmarket-button";
+import {TcgPlayerButton} from "@/components/market/listings/buttons/tcgplayer-button";
 
 const initialState: ListingFormState = { fieldErrors: null };
 
@@ -70,6 +72,11 @@ export function SellListingForm() {
                         Choose your card&apos;s printing
                     </Label>
                     <PrintingPicker card={selectedCard} onSelect={setSelectedPrinting}/>
+                    <div className="flex flex-wrap gap-2 pt-1">
+                        <CardMarketButton cardName={selectedCard?.name ?? ""} disabled={!selectedPrinting}/>
+                        <TcgPlayerButton cardName={selectedCard?.name ?? ""} tcgPlayerUrl={selectedPrinting?.tcgplayer?.url}
+                                         disabled={!selectedPrinting}/>
+                    </div>
                 </div>
 
                 <ListingDetailsForm
@@ -90,7 +97,7 @@ export function SellListingForm() {
                 )}
             </div>
 
-            <div className="flex flex-col gap-18 flex-shrink-0">
+            <div className="flex flex-col gap-24 flex-shrink-0">
                 <Image
                     src={selectedPrinting ? getImageSource(selectedPrinting.image) : getImageSource(undefined)}
                     alt={selectedPrinting ? selectedPrinting.print : "temporary"}
