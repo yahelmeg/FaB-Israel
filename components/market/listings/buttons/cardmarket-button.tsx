@@ -5,11 +5,13 @@ import {SharedMarketButton} from "@/components/market/listings/buttons/shared-ma
 
 interface MarketplaceButtonProps {
     cardName: string;
+    disabled?: boolean;
 }
 
-export function CardMarketButton({ cardName }: MarketplaceButtonProps) {
+export function CardMarketButton({ cardName, disabled }: MarketplaceButtonProps) {
     return (
         <SharedMarketButton
+            disabled={disabled}
             className="!bg-cardmarket hover:!bg-cardmarket-hover text-white"
             render={
                 <Link

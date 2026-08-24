@@ -7,16 +7,22 @@ interface SharedMarketButtonProps {
     className?: string;
     render?: ReactElement;
     onClick?: () => void;
+    disabled?: boolean;
 }
 
-export function SharedMarketButton({children, className, render, onClick}: SharedMarketButtonProps) {
+export function SharedMarketButton({children, className, render, onClick, disabled}: SharedMarketButtonProps) {
     const isNative = render === undefined;
     return (
         <Button
             size="sm"
             nativeButton={isNative}
             onClick={onClick}
-            className={cn("w-32 cursor-pointer gap-1 text-white", className)}
+            disabled={disabled}
+            className={cn(
+                "w-32 gap-1 text-white",
+                disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
+                className
+            )}
             render={render}
         >
             {children}

@@ -20,7 +20,7 @@ interface ListingDetailsFormProps {
 
 export function ListingDetailsForm({ condition, language, price,quantity, onConditionChange, onLanguageChange, onPriceChange, onQuantityChange }: ListingDetailsFormProps) {
     return (
-        <div className="space-y-6 pt-6">
+        <div className="space-y-6 pt-4">
             <ConditionPicker value={condition} onChange={onConditionChange} />
             <LanguagePicker value={language} onChange={onLanguageChange} />
             <div className="flex flex-row gap-6">
