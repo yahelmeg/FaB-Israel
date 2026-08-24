@@ -16,7 +16,7 @@ interface SearchBarProps {
 }
 
 const DEFAULT_SORT_BY = "created_at"
-const DEFAULT_SORT_ORDER = "asc"
+const DEFAULT_SORT_ORDER = "desc"
 
 export function MarketSearchBar( {defaultValue = "" , defaultSortBy=DEFAULT_SORT_BY, defaultSortOrder= DEFAULT_SORT_ORDER} : SearchBarProps ) {
 

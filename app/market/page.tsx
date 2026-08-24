@@ -18,7 +18,7 @@ export default async function MarketPage({ searchParams }: MarketPageProps) {
     const {q, sortBy, sortOrder} = await searchParams
     const query = q ?? ""
     const validSortBy = isListingSortField(sortBy) ? sortBy : "created_at"
-    const validSortOrder = isSortOrder(sortOrder) ? sortOrder : "asc"
+    const validSortOrder = isSortOrder(sortOrder) ? sortOrder : "desc"
 
     return (
         <div className="page-layout">
