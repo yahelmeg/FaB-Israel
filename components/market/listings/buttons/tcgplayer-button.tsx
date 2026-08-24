@@ -5,12 +5,14 @@ import {SharedMarketButton} from "@/components/market/listings/buttons/shared-ma
 interface TcgPlayerProps {
     cardName: string;
     tcgPlayerUrl: string | undefined;
+    disabled?: boolean;
 }
 
-export function TcgPlayerButton({ cardName, tcgPlayerUrl }: TcgPlayerProps) {
+export function TcgPlayerButton({ cardName, tcgPlayerUrl, disabled }: TcgPlayerProps) {
     const href = tcgPlayerUrl ?? buildTcgPlayerUrl(cardName)
     return (
         <SharedMarketButton
+            disabled={disabled}
             className="!bg-tcgplayer hover:!bg-tcgplayer-hover text-white"
             render={
                 <Link
