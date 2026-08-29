@@ -29,7 +29,7 @@ export function ConditionPicker({ value, onChange }: ConditionPickerProps) {
                 <Tag className="h-5 w-5 text-muted-foreground" />
                 Choose the card&apos;s condition
             </Label>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-nowrap sm:flex-wrap gap-1 sm:gap-2 overflow-x-auto sm:overflow-visible pt-1.5 pb-1 sm:pt-0 sm:pb-0 -mx-1 px-1 sm:mx-0 sm:px-0">
                 {CONDITION_TYPES.map((c) => {
                     const meta = conditionMeta[c];
                     const selected = c === value;
@@ -42,12 +42,12 @@ export function ConditionPicker({ value, onChange }: ConditionPickerProps) {
                             aria-label={meta.name}
                             onClick={() => onChange(c)}
                             className={cn(
-                                "flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-base font-medium transition-colors",
+                                "flex items-center gap-1 sm:gap-1.5 rounded-lg border px-2 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-base font-medium transition-colors shrink-0",
                                 selected
-                                    && cn("ring-2 ring-offset-background", meta.ring, meta.bg, meta.text)
+                                && cn("ring-2 ring-offset-background", meta.ring, meta.bg, meta.text)
                             )}
                         >
-                            <span className={cn("h-2 w-2 rounded-full", meta.dot)} />
+                            <span className={cn("h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full shrink-0", meta.dot)} />
                             {c}
                         </Button>
                     );

@@ -13,11 +13,11 @@ export function PriceInput({ value, onChange }: PriceInputProps) {
     return (
         <div className="space-y-2">
             <Label htmlFor="price-input" className="sell-page-label">
-                <Banknote className="5 w-5 text-muted-foreground" />
+                <Banknote className="h-5 w-5 text-muted-foreground" />
                 Choose your selling price per card
             </Label>
             <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-2xl text-muted-foreground">
+                <span className="pointer-events-none absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 text-lg sm:text-2xl text-muted-foreground">
                     ₪
                 </span>
                 <Input
@@ -32,7 +32,7 @@ export function PriceInput({ value, onChange }: PriceInputProps) {
                             onChange(raw);
                         }
                     }}
-                    className="h-11 pl-11 text-3xl font-mono font-semibold tabular-nums"
+                    className="h-11 pl-8 sm:pl-11 text-xl sm:text-3xl font-mono font-semibold tabular-nums"
                 />
             </div>
         </div>

@@ -59,8 +59,8 @@ export function SellListingForm() {
     const isListingValid = !!selectedPrinting && price.trim().length > 0 && Number(price) > 0;
 
     return (
-        <form action={formAction} className="flex flex-row gap-8">
-            <div className="flex flex-col gap-2 w-full max-w-xl" key={formKey}>
+        <form action={formAction} className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+            <div className="flex flex-col gap-2 w-full lg:max-w-xl" key={formKey}>
                 <Label className="sell-page-label">
                     <Search className="h-5 w-5 text-muted-foreground"/>
                     Search for your card
@@ -97,7 +97,7 @@ export function SellListingForm() {
                 )}
             </div>
 
-            <div className="flex flex-col gap-24 flex-shrink-0">
+            <div className="flex flex-col items-center lg:items-stretch gap-6 lg:gap-24 lg:flex-shrink-0">
                 <Image
                     src={selectedPrinting ? getImageSource(selectedPrinting.image) : getImageSource(undefined)}
                     alt={selectedPrinting ? selectedPrinting.print : "temporary"}
@@ -105,11 +105,11 @@ export function SellListingForm() {
                     unoptimized
                     width={300}
                     height={418}
-                    className="w-[300px] h-[418px] rounded-xl shadow-lg sticky top-8"
+                    className="w-[220px] h-auto sm:w-[260px] lg:w-[300px] rounded-xl shadow-lg lg:sticky lg:top-8"
                 />
                 <Button
                     type="submit"
-                    className="cursor-pointer w-full"
+                    className="cursor-pointer w-full max-w-[220px] sm:max-w-[260px] lg:max-w-none"
                     disabled={!isListingValid || isPending}
                 >
                     {isPending ? "Creating..." : "Create listing"}
