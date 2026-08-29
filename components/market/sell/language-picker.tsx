@@ -23,7 +23,7 @@ export function LanguagePicker({ value, onChange }: LanguagePickerProps) {
                 <Globe className="h-5 w-5 text-muted-foreground" />
                 Choose the card&apos;s language
             </Label>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-nowrap sm:flex-wrap gap-1 sm:gap-2 overflow-x-auto sm:overflow-visible pt-1.5 pb-1 sm:pt-0 sm:pb-0 -mx-1 px-1 sm:mx-0 sm:px-0">
                 {languages.map((l) => {
                     const selected = l === value;
                     return (
@@ -35,7 +35,7 @@ export function LanguagePicker({ value, onChange }: LanguagePickerProps) {
                             aria-label={languageLabels[l]}
                             onClick={() => onChange(l)}
                             className={cn(
-                                "flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors",
+                                "flex items-center gap-1 sm:gap-1.5 rounded-lg border px-2 py-1 sm:px-3 sm:py-1.5 text-xs sm:text-sm font-medium transition-colors shrink-0",
                                 selected
                                 && "ring-2 ring-offset-background ring-primary"
                             )}
