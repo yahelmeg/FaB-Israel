@@ -8,9 +8,10 @@ import {getImageSource} from "@/lib/fab-utils";
 interface ListingModalProps {
     listing: Listing | null
     onClose: () => void;
+    mode: "buy" | "sell"
 }
 
-export function ListingModal({ listing, onClose }: ListingModalProps) {
+export function ListingModal({ listing, onClose, mode }: ListingModalProps) {
     return (
         <Dialog open={listing !== null} onOpenChange={onClose}>
             <DialogContent showCloseButton={false} maxWidth="sm:max-w-[600px] md:max-w-[700px]" className="w-[95vw] sm:w-[600px] md:w-[700px] h-[450px] md:h-[450px] p-4 md:p-0 overflow-hidden" initialFocus={false}>
@@ -27,7 +28,7 @@ export function ListingModal({ listing, onClose }: ListingModalProps) {
                             />
                         </div>
                         <div className="flex-1 h-full overflow-y-auto p-0 md:p-6">
-                            <ListingModalDetails listing={listing}/>
+                            <ListingModalDetails listing={listing} mode={mode}/>
                         </div>
                     </div>
                 )}

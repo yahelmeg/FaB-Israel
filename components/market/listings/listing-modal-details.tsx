@@ -12,10 +12,14 @@ import {LanguageFlag} from "@/components/general/badges/language-flag";
 
 interface ListingModalDetailsProps {
     listing: Listing
+    mode: "buy" | "sell"
 }
 
-export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
+export function ListingModalDetails({ listing, mode }: ListingModalDetailsProps) {
+    const isBuying = mode === "buy";
+    const actionLabel = isBuying ? "is buying" : "Sold by";
     return (
+
         <div className="flex flex-col gap-3 p-6 pl-0 flex-1">
             <div className="flex flex-col gap-1">
                 <h2 className="text-xl font-bold">{listing.cardName}</h2>
@@ -37,7 +41,12 @@ export function ListingModalDetails({ listing }: ListingModalDetailsProps) {
                         {listing.quantity} copies
                     </div>
                 )}
-                <p className="text-lg text-muted-foreground">Sold by {listing.sellerName}</p>
+                {isBuying && (
+                    <p className="text-lg text-muted-foreground"> {listing.sellerName} {actionLabel}</p>
+                )}
+                {!isBuying && (
+                    <p className="text-lg text-muted-foreground">{actionLabel} {listing.sellerName}  </p>
+                )}
             </div>
 
             <div className="flex flex-wrap gap-2">

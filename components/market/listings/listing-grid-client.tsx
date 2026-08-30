@@ -7,9 +7,10 @@ import {Listing} from "@/types/listings/Listing"
 
 interface ListingGridClientProps {
     listings: Listing[] | null;
+    mode: "sell" | "buy"
 }
 
-export function ListingGridClient({listings}: ListingGridClientProps) {
+export function ListingGridClient({listings, mode}: ListingGridClientProps) {
 
     const [selectedListing, setSelectedListing] = useState<Listing | null>(null);
 
@@ -29,7 +30,7 @@ export function ListingGridClient({listings}: ListingGridClientProps) {
                     <ListingCard key={listing.id} listing={listing} onClick={() => setSelectedListing(listing)}/>
                 ))}
             </div>
-            <ListingModal listing={selectedListing} onClose={() => setSelectedListing(null)}></ListingModal>
+            <ListingModal listing={selectedListing} mode={mode} onClose={() => setSelectedListing(null)}></ListingModal>
         </>
     )
 }

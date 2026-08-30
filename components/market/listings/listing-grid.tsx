@@ -28,5 +28,5 @@ export async function ListingGrid({ query, sortBy, sortOrder, tab }: ListingGrid
         return <p role="alert">{error}</p>
     }
 
-    return <ListingGridClient listings={listings} />
+    return <ListingGridClient listings={listings} mode={tab} />
 }
