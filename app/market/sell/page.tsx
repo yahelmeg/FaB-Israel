@@ -15,7 +15,7 @@ export default async function MarketSellPage() {
     await requireCompletedProfile()
 
     return (
-        <div className="flex flex-col gap-6 items-stretch px-4 py-12">
+        <div className="flex flex-col gap-6 items-stretch sm:items-center px-4 py-12">
             <h2 className="page-heading-text mb-8 text-center">
                 List a card for sale
             </h2>
