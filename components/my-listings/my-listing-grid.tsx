@@ -7,9 +7,10 @@ interface MyListingsGridProps {
     interactive: boolean
     emptyTitle?: string
     emptyMessage?: string
+    mode: "buy" | "sell"
 }
 
-export function MyListingsGrid({ listings, interactive, emptyTitle, emptyMessage }: MyListingsGridProps) {
+export function MyListingsGrid({ listings, interactive, emptyTitle, emptyMessage, mode }: MyListingsGridProps) {
     if (listings.length === 0) {
         return (
             <div className="flex flex-col items-center justify-center py-16 text-center gap-2 w-full">
@@ -24,7 +25,7 @@ export function MyListingsGrid({ listings, interactive, emptyTitle, emptyMessage
     return (
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
             {listings.map((listing) => (
-                <MyListingCard key={listing.id} listing={listing} interactive={interactive} />
+                <MyListingCard key={listing.id} listing={listing} interactive={interactive} mode={mode} />
             ))}
         </div>
     )

@@ -31,7 +31,7 @@ export default async function MyBuyListingsPage() {
     return (
         <div className="page-layout">
             <h1 className="page-heading-text">My Buy Listings</h1>
-            <MyListingsTabs active={active} sold={sold} error={error} />
+            <MyListingsTabs active={active} sold={sold} error={error} mode={"buy"} />
         </div>
     )
 }

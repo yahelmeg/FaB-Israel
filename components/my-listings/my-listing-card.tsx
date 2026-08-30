@@ -7,9 +7,10 @@ import { MyListingCardModal } from "@/components/my-listings/my-listing-card-mod
 interface MyListingCardProps {
     listing: Listing
     interactive: boolean
+    mode: "buy" | "sell"
 }
 
-export function MyListingCard({ listing, interactive }: MyListingCardProps) {
+export function MyListingCard({ listing, interactive, mode }: MyListingCardProps) {
     const [open, setOpen] = useState(false)
 
     if (!interactive) {
@@ -19,7 +20,7 @@ export function MyListingCard({ listing, interactive }: MyListingCardProps) {
     return (
         <>
             <ListingCard listing={listing} onClick={() => setOpen(true)} />
-            <MyListingCardModal listing={listing} open={open} onClose={() => setOpen(false)} />
+            <MyListingCardModal listing={listing} open={open} mode={mode} onClose={() => setOpen(false)} />
         </>
     )
 }

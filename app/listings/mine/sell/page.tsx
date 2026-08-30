@@ -25,13 +25,13 @@ async function loadMyListings(): Promise<{ active: Listing[]; sold: Listing[]; e
 }
 
 
-export default async function MyListingsPage() {
+export default async function MySellListingsPage() {
     const { active, sold, error } = await loadMyListings()
 
     return (
         <div className="page-layout">
             <h1 className="page-heading-text">My Listings</h1>
-            <MyListingsTabs active={active} sold={sold} error={error} />
+            <MyListingsTabs active={active} sold={sold} error={error} mode={"sell"} />
         </div>
     )
 }

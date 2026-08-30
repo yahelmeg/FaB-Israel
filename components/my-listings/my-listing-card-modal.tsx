@@ -14,14 +14,31 @@ interface MyListingActionsDialogProps {
     listing: Listing
     open: boolean
     onClose: () => void
+    mode: "buy" | "sell"
 }
 
-export function MyListingCardModal({ listing, open, onClose }: MyListingActionsDialogProps) {
+export function MyListingCardModal({ listing, open, onClose, mode }: MyListingActionsDialogProps) {
     const [price, setPrice] = useState(listing.price.toString())
     const [quantity, setQuantity] = useState(listing.quantity.toString())
     const [error, setError] = useState<string | null>(null)
     const [isSaving, setIsSaving] = useState(false)
     const [confirmingDelete, setConfirmingDelete] = useState(false)
+
+    const isBuying = mode === "buy"
+
+    const text = {
+        markFulfilledError: isBuying ? "Failed to mark as bought" : "Failed to mark as sold",
+        markFulfilledSuccess: isBuying ? "Listing marked as bought" : "Listing marked as sold",
+        markFulfilledButton: isBuying ? "Mark as bought" : "Mark as sold",
+        deleteError: isBuying ? "Failed to delete buy listing" : "Failed to delete sell listing",
+        deleteSuccess: isBuying ? "Buy listing deleted" : "Sell listing deleted",
+        deleteButton: isBuying ? "Delete buy listing" : "Delete sell listing",
+        deleteTitle: isBuying ? "Delete this buy listing?" : "Delete this sell listing?",
+        saveSuccess: isBuying ? "Buy listing updated" : "Sell listing updated",
+        deleteDescription: isBuying
+            ? `This will permanently remove ${listing.cardName} from your Buy Listings. This can't be undone.`
+            : `This will permanently remove ${listing.cardName} from your Sell Listings. This can't be undone.`
+    }
 
 
     const priceChanged = price !== listing.price.toString()
@@ -64,15 +81,15 @@ export function MyListingCardModal({ listing, open, onClose }: MyListingActionsD
             return
         }
 
-        toast.success("Listing updated")
+        toast.success(text.saveSuccess)
         onClose()
     }
 
     const handleMarkFulfilled = async () => {
         const success = await runAction(
             () => markFulfilledAction(listing.id),
-            "Failed to mark as sold",
-            "Listing marked as sold"
+            text.markFulfilledError,
+            text.markFulfilledSuccess,
         )
         if (success) {
             onClose()
@@ -82,8 +99,8 @@ export function MyListingCardModal({ listing, open, onClose }: MyListingActionsD
     const handleConfirmDelete  = async () => {
         const success = await runAction(
             () => deleteListingAction(listing.id),
-            "Failed to delete listing",
-            "Listing deleted"
+            text.deleteError,
+            text.deleteSuccess
         )
         setConfirmingDelete(false)
         if (success) {
@@ -136,13 +153,13 @@ export function MyListingCardModal({ listing, open, onClose }: MyListingActionsD
                             <Button
                                 onClick={handleMarkFulfilled}
                             >
-                                Mark as sold
+                                {text.markFulfilledButton}
                             </Button>
                             <Button
                                 variant="destructive"
                                 onClick={() => setConfirmingDelete(true) }
                             >
-                                Delete listing
+                                {text.deleteButton}
                             </Button>
                         </div>
                     </div>
@@ -152,9 +169,9 @@ export function MyListingCardModal({ listing, open, onClose }: MyListingActionsD
             <AlertDialog open={confirmingDelete} onOpenChange={setConfirmingDelete}>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                        <AlertDialogTitle>Delete this listing?</AlertDialogTitle>
+                        <AlertDialogTitle>{text.deleteTitle}</AlertDialogTitle>
                         <AlertDialogDescription>
-                            This will permanently remove {listing.cardName} from the marketplace. This can&apos;t be undone.
+                            {text.deleteDescription}
                         </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
