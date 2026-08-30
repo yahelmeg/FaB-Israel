@@ -6,16 +6,16 @@ import { Listing } from "@/types/listings/Listing"
 
 
 export const metadata: Metadata = {
-    title: "My Listings",
-    description: "Manage the cards you're currently selling on FaB-Israel.",
+    title: "My Sell Listings",
+    description: "Manage your Sell Listings on FaB-Israel.",
     robots: noIndex
 };
 
 async function loadMyListings(): Promise<{ active: Listing[]; sold: Listing[]; error: string | null }> {
     try {
         const [active, sold] = await Promise.all([
-            listingService.getMyListings("active"),
-            listingService.getMyListings("fulfilled"),
+            listingService.getMyListings("active", "sell"),
+            listingService.getMyListings("fulfilled", "sell"),
         ])
         return { active, sold, error: null }
     } catch (err) {
