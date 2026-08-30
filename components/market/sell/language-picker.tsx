@@ -4,9 +4,17 @@ import { Label } from "@/components/ui/label";
 import { Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LanguageTypes } from "@/types/LanguageTypes";
-import { LanguageFlag } from "@/components/general/badges/language-flag";
-import {LANGUAGE_COUNTRY_MAP, languageLabels} from "@/consts/languages";
-import {Button} from "@/components/ui/button";
+import { LANGUAGE_COUNTRY_MAP, languageLabels } from "@/consts/languages";
+import { Button } from "@/components/ui/button";
+
+import US from "country-flag-icons/react/3x2/US"
+import DE from "country-flag-icons/react/3x2/DE"
+import FR from "country-flag-icons/react/3x2/FR"
+import IT from "country-flag-icons/react/3x2/IT"
+import ES from "country-flag-icons/react/3x2/ES"
+import JP from "country-flag-icons/react/3x2/JP"
+
+const FLAG_COMPONENTS = { US, DE, FR, IT, ES, JP }
 
 interface LanguagePickerProps {
     value: LanguageTypes;
@@ -14,7 +22,6 @@ interface LanguagePickerProps {
 }
 
 const languages = Object.keys(LANGUAGE_COUNTRY_MAP) as LanguageTypes[];
-
 
 export function LanguagePicker({ value, onChange }: LanguagePickerProps) {
     return (
@@ -26,6 +33,8 @@ export function LanguagePicker({ value, onChange }: LanguagePickerProps) {
             <div className="flex flex-nowrap sm:flex-wrap gap-1 sm:gap-2 overflow-x-auto sm:overflow-visible pt-1.5 pb-1 sm:pt-0 sm:pb-0 -mx-1 px-1 sm:mx-0 sm:px-0">
                 {languages.map((l) => {
                     const selected = l === value;
+                    const countryCode = LANGUAGE_COUNTRY_MAP[l];
+                    const Flag = FLAG_COMPONENTS[countryCode as keyof typeof FLAG_COMPONENTS];
                     return (
                         <Button
                             key={l}
@@ -40,7 +49,15 @@ export function LanguagePicker({ value, onChange }: LanguagePickerProps) {
                                 && "ring-2 ring-offset-background ring-primary"
                             )}
                         >
-                            <LanguageFlag language={l} />
+                            {Flag && (
+                                <Flag
+                                    title={languageLabels[l]}
+                                    className={cn(
+                                        "w-6 rounded-sm",
+                                        countryCode === "JP" && "outline outline-border dark:outline-transparent"
+                                    )}
+                                />
+                            )}
                             {l}
                         </Button>
                     );
