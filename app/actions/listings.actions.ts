@@ -7,8 +7,8 @@ import { revalidatePath } from "next/cache"
 export type ListingFormState  = {
     fieldErrors: Record<string, string> | null
 }
-export async function createListingAction(_prevState:ListingFormState, formData: FormData): Promise<ListingFormState> {
-    const validation = parseAndValidateListingForm(formData)
+export async function createListingAction(_prevState:ListingFormState, formData: FormData, listingType: "buy" | "sell"): Promise<ListingFormState> {
+    const validation = parseAndValidateListingForm(formData, listingType)
     if (!validation.success) {
         return { fieldErrors: validation.error }
     }

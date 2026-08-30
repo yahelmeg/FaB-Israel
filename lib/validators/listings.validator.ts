@@ -36,6 +36,7 @@ const listingQuantityUpdateSchema = z.object({
 })
 
 export type CreateListingInput = {
+    listingType: "buy" | "sell"
     cardName: string
     setCode: string
     image: string
@@ -45,6 +46,7 @@ export type CreateListingInput = {
     language: typeof LANGUAGE_TYPES[number]
     tcgplayerUrl: string | null
     quantity: number
+
 }
 
 export type ListingFieldErrors = FieldErrors
@@ -71,7 +73,7 @@ export type UpdateListingInput = Partial<{
     status: "fulfilled"
 }>
 
-export function parseAndValidateListingForm(formData: FormData): ListingValidationResult {
+export function parseAndValidateListingForm(formData: FormData, listingType: "buy" | "sell"): ListingValidationResult {
     const raw = Object.fromEntries(formData.entries())
     const result = listingCreateFormSchema.safeParse(raw)
 
@@ -83,6 +85,7 @@ export function parseAndValidateListingForm(formData: FormData): ListingValidati
     return {
         success: true,
         data: {
+            listingType,
             cardName: data.cardName,
             setCode: data.setCode,
             image: data.image,

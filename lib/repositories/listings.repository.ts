@@ -14,6 +14,7 @@ export type ListingRowBase = {
     tcgplayer_url: string | null
     quantity: number
     status: "active" | "fulfilled"
+    listingType: "buy" | "sell"
     seller_id: string
     created_at: string
 }
@@ -54,17 +55,17 @@ export type ListingFilters = {
 
 const LISTING_WITH_SELLER_SELECT = `*, profiles (display_name, phone_number, discord_username)`
 
-export async function getActive(filters: ListingFilters = {}): Promise<ListingRow[]> {
+export async function getActive(listingType: "buy" | "sell" , filters: ListingFilters = {}): Promise<ListingRow[]> {
     const supabase = await createClient()
     let query = supabase
         .from("listings")
         .select(LISTING_WITH_SELLER_SELECT)
         .eq("status", "active")
+        .eq("listing_type", listingType)
 
     if (filters.search) {
         query = query.ilike("card_name", `%${filters.search}%`)
     }
-
 
     const sortBy = filters.sortBy ?? "created_at"
     const sortOrder = filters.sortOrder ?? "desc"
@@ -110,12 +111,13 @@ export async function getById(id: string): Promise<ListingRow | null> {
     return data ? mapRowWithProfile(data) : null
 }
 
-export async function getBySeller(sellerId: string, status: "active" | "fulfilled"): Promise<ListingRow[]> {
+export async function getBySeller(sellerId: string, status: "active" | "fulfilled", listingType: "buy" | "sell"): Promise<ListingRow[]> {
     const supabase = await createClient()
     const { data, error } = await supabase
         .from("listings")
         .select(LISTING_WITH_SELLER_SELECT)
         .eq("seller_id", sellerId)
+        .eq("listing_type", listingType)
         .eq("status", status)
 
     if (error) {
@@ -131,6 +133,7 @@ export async function insert(sellerId: string, input: CreateListingInput): Promi
         .from("listings")
         .insert({
             seller_id: sellerId,
+            listing_type: input.listingType,
             card_name: input.cardName,
             set_code: input.setCode,
             image: input.image,

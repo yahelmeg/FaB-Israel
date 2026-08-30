@@ -6,8 +6,8 @@ import {CreateListingInput} from "@/lib/validators/listings.validator";
 import {ListingFilters} from "@/lib/repositories/listings.repository";
 import { requireProfile} from "@/lib/auth/require-profile";
 
-export async function getListings(filters: ListingFilters): Promise<Listing[]> {
-    const rows = await listingRepository.getActive(filters)
+export async function getListings(filters: ListingFilters, listingType: "sell" | "buy"): Promise<Listing[]> {
+    const rows = await listingRepository.getActive(listingType, filters)
     return rows.map(toListing)
 }
 
@@ -23,9 +23,9 @@ export async function getById(id: string): Promise<Listing | null> {
 
 }
 
-export async function getMyListings(status: "active" | "fulfilled"): Promise<Listing[]> {
+export async function getMyListings(status: "active" | "fulfilled", listingType: "sell" | "buy"): Promise<Listing[]> {
     const { id: sellerId } = await requireProfile()
-    const rows = await listingRepository.getBySeller(sellerId, status)
+    const rows = await listingRepository.getBySeller(sellerId, status, listingType)
     return rows.map(toListing)
 }
 
