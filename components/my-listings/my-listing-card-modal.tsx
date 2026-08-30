@@ -7,7 +7,7 @@ import { toast } from "sonner"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Listing } from "@/types/listings/Listing"
 import { updatePriceAction, updateQuantityAction, markFulfilledAction, deleteListingAction, ListingFormState } from "@/app/actions/listings.actions"
-import { QuantityInput } from "@/components/market/sell/quantity-input"
+import { QuantityInput } from "@/components/market/form/quantity-input"
 import {AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction,} from "@/components/ui/alert-dialog"
 
 interface MyListingActionsDialogProps {

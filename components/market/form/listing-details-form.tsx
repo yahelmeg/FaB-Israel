@@ -2,10 +2,10 @@
 
 import { LanguageTypes } from "@/types/LanguageTypes";
 import { ConditionTypes } from "@/types/ConditionTypes";
-import { PriceInput } from "@/components/market/sell/price-input";
-import { ConditionPicker } from "@/components/market/sell/condition-picker";
-import { LanguagePicker } from "@/components/market/sell/language-picker";
-import { QuantityInput } from "@/components/market/sell/quantity-input";
+import { PriceInput } from "@/components/market/form/price-input";
+import { ConditionPicker } from "@/components/market/form/condition-picker";
+import { LanguagePicker } from "@/components/market/form/language-picker";
+import { QuantityInput } from "@/components/market/form/quantity-input";
 
 interface ListingDetailsFormProps {
     condition: ConditionTypes;

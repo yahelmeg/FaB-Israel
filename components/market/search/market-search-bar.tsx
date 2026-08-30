@@ -58,45 +58,47 @@ export function MarketSearchBar( {defaultValue = "" , defaultSortBy=DEFAULT_SORT
     }
 
     return (
-        <form onSubmit={handleSubmit} className="w-full max-w-3xl flex flex-col sm:flex-row gap-2 items-center">
-            <div className="flex gap-2 flex-1 w-full">
-                <Field orientation="horizontal" className="bg-muted rounded-lg">
-                    <Input type="search"
-                           placeholder="Search Flesh and Blood cards..."
-                           value={query}
-                           onChange={(e) => setQuery(e.target.value)}
-                           className="h-10 text-xs md:text-lg"
-                    />
-                </Field>
-                <Button type="submit" variant="outline" aria-label="Search"
-                        className="cursor-pointer bg-muted h-10 w-10">
-                    <FiSearch/>
-                </Button>
-            </div>
-            <div className="flex gap-2 flex-1">
-                <Select value={sortBy} onValueChange={handleSortByChange}>
-                    <SelectTrigger className="!h-10 !w-48 overflow-hidden">
-                        <SelectValue placeholder="Sort by"> {selectedLabel} </SelectValue>
-                    </SelectTrigger>
-                    <SelectContent alignItemWithTrigger={false}>
-                        {LISTING_SORT_OPTIONS.map((option) => (
-                            <SelectItem key={option.sortBy} value={option.sortBy}>
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-                <Button
-                    type="button"
-                    variant="outline"
-                    aria-label={sortOrder === "asc" ? "Sort ascending" : "Sort descending"}
-                    onClick={handleSortOrderChange}
-                    className="cursor-pointer bg-muted h-10 w-10"
-                >
-                    {sortOrder === "asc" ? <FiArrowUp/> : <FiArrowDown/>}
-                </Button>
-            </div>
-        </form>
+        <div className="flex justify-center items-center w-full">
+            <form onSubmit={handleSubmit} className="w-full max-w-3xl flex flex-col sm:flex-row gap-2 items-center">
+                <div className="flex gap-2 flex-1 w-full">
+                    <Field orientation="horizontal" className="bg-muted rounded-lg">
+                        <Input type="search"
+                               placeholder="Search Flesh and Blood cards..."
+                               value={query}
+                               onChange={(e) => setQuery(e.target.value)}
+                               className="h-10 text-xs md:text-lg"
+                        />
+                    </Field>
+                    <Button type="submit" variant="outline" aria-label="Search"
+                            className="cursor-pointer bg-muted h-10 w-10">
+                        <FiSearch/>
+                    </Button>
+                </div>
+                <div className="flex gap-2 flex-1">
+                    <Select value={sortBy} onValueChange={handleSortByChange}>
+                        <SelectTrigger className="!h-10 !w-48 overflow-hidden">
+                            <SelectValue placeholder="Sort by"> {selectedLabel} </SelectValue>
+                        </SelectTrigger>
+                        <SelectContent alignItemWithTrigger={false}>
+                            {LISTING_SORT_OPTIONS.map((option) => (
+                                <SelectItem key={option.sortBy} value={option.sortBy}>
+                                    {option.label}
+                                </SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                    <Button
+                        type="button"
+                        variant="outline"
+                        aria-label={sortOrder === "asc" ? "Sort ascending" : "Sort descending"}
+                        onClick={handleSortOrderChange}
+                        className="cursor-pointer bg-muted h-10 w-10"
+                    >
+                        {sortOrder === "asc" ? <FiArrowUp/> : <FiArrowDown/>}
+                    </Button>
+                </div>
+            </form>
+        </div>
     )
 }
 

@@ -1,4 +1,4 @@
-import {ListingForm} from "@/components/market/sell/listing-form";
+import {ListingForm} from "@/components/market/form/listing-form";
 import {requireCompletedProfile} from "@/lib/auth/require-completed-profile";
 import type {Metadata} from "next";
 import {noIndex} from "@/lib/metadata";
