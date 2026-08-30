@@ -16,16 +16,17 @@ interface ListingDetailsFormProps {
     onLanguageChange: (value: LanguageTypes) => void;
     onPriceChange: (value: string) => void;
     onQuantityChange: (value: string) => void;
+    mode: "buy" | "sell"
 }
 
-export function ListingDetailsForm({ condition, language, price, quantity, onConditionChange, onLanguageChange, onPriceChange, onQuantityChange }: ListingDetailsFormProps) {
+export function ListingDetailsForm({ condition, language, price, quantity, onConditionChange, onLanguageChange, onPriceChange, onQuantityChange, mode }: ListingDetailsFormProps) {
     return (
         <div className="space-y-6 pt-4">
             <ConditionPicker value={condition} onChange={onConditionChange} />
             <LanguagePicker value={language} onChange={onLanguageChange} />
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 <div className="flex-1">
-                    <PriceInput value={price} onChange={onPriceChange}/>
+                    <PriceInput value={price} onChange={onPriceChange} mode={mode} />
                 </div>
                 <QuantityInput quantity={quantity} onQuantityChange={onQuantityChange}/>
             </div>

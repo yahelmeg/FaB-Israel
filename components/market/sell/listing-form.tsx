@@ -19,7 +19,11 @@ import {TcgPlayerButton} from "@/components/market/listings/buttons/tcgplayer-bu
 
 const initialState: ListingFormState = { fieldErrors: null };
 
-export function SellListingForm() {
+interface ListingFormProps {
+    mode: "buy" | "sell"
+}
+
+export function ListingForm( {mode}: ListingFormProps) {
 
     const [formKey, setFormKey] = useState(0);
     const [selectedCard, setSelectedCard] = useState<Card | null>(null);
@@ -39,7 +43,7 @@ export function SellListingForm() {
 
     const [state, formAction, isPending] = useActionState(
         async(prevState: ListingFormState, formData: FormData) => {
-            const nextState = await createListingAction(prevState, formData)
+            const nextState = await createListingAction(prevState, formData, mode)
             if (nextState.fieldErrors === null) {
                 toast.success("Listing created.");
                 resetForm();
@@ -63,13 +67,13 @@ export function SellListingForm() {
             <div className="flex flex-col gap-2 w-full lg:max-w-xl" key={formKey}>
                 <Label className="sell-page-label">
                     <Search className="h-5 w-5 text-muted-foreground"/>
-                    Search for your card
+                    Search for the card
                 </Label>
                 <CardPicker onSelectCard={handleCardSelect}/>
                 <div className="space-y-1">
                     <Label className="sell-page-label">
                         <Layers className="h-5 w-5 text-muted-foreground"/>
-                        Choose your card&apos;s printing
+                        Choose the card&apos;s printing
                     </Label>
                     <PrintingPicker card={selectedCard} onSelect={setSelectedPrinting}/>
                     <div className="flex flex-wrap gap-2 pt-1">
@@ -88,6 +92,7 @@ export function SellListingForm() {
                     onLanguageChange={setLanguage}
                     onPriceChange={setPrice}
                     onQuantityChange={setQuantity}
+                    mode={mode}
                 />
 
                 {state.fieldErrors && (
@@ -105,7 +110,7 @@ export function SellListingForm() {
                     unoptimized
                     width={300}
                     height={418}
-                    className="w-[220px] h-auto sm:w-[260px] lg:w-[300px] rounded-xl shadow-lg lg:sticky lg:top-8"
+                    className="w-[220px] h-[307px] sm:w-[260px] sm:h-[362px] lg:w-[300px] lg:h-[418px] rounded-xl shadow-lg lg:sticky lg:top-8"
                 />
                 <Button
                     type="submit"
