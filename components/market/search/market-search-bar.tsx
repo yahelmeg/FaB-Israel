@@ -58,10 +58,11 @@ export function MarketSearchBar( {defaultValue = "" , defaultSortBy=DEFAULT_SORT
     }
 
     return (
-        <div className="flex justify-center items-center w-full">
-            <form onSubmit={handleSubmit} className="w-full max-w-3xl flex flex-col sm:flex-row gap-2 items-center">
+        <div className="w-full max-w-3xl flex justify-center items-center">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col sm:flex-row gap-2 items-center">
+
                 <div className="flex gap-2 flex-1 w-full">
-                    <Field orientation="horizontal" className="bg-muted rounded-lg">
+                    <Field orientation="horizontal" className="bg-muted rounded-lg flex-1">
                         <Input type="search"
                                placeholder="Search Flesh and Blood cards..."
                                value={query}
@@ -70,13 +71,14 @@ export function MarketSearchBar( {defaultValue = "" , defaultSortBy=DEFAULT_SORT
                         />
                     </Field>
                     <Button type="submit" variant="outline" aria-label="Search"
-                            className="cursor-pointer bg-muted h-10 w-10">
+                            className="cursor-pointer bg-muted h-10 w-10 shrink-0">
                         <FiSearch/>
                     </Button>
                 </div>
-                <div className="flex gap-2 flex-1">
+
+                <div className="flex gap-2 w-full sm:w-auto">
                     <Select value={sortBy} onValueChange={handleSortByChange}>
-                        <SelectTrigger className="!h-10 !w-48 overflow-hidden">
+                        <SelectTrigger className="!h-10 !w-full sm:!w-48 overflow-hidden">
                             <SelectValue placeholder="Sort by"> {selectedLabel} </SelectValue>
                         </SelectTrigger>
                         <SelectContent alignItemWithTrigger={false}>
@@ -92,14 +94,13 @@ export function MarketSearchBar( {defaultValue = "" , defaultSortBy=DEFAULT_SORT
                         variant="outline"
                         aria-label={sortOrder === "asc" ? "Sort ascending" : "Sort descending"}
                         onClick={handleSortOrderChange}
-                        className="cursor-pointer bg-muted h-10 w-10"
+                        className="cursor-pointer bg-muted h-10 w-10 shrink-0"
                     >
                         {sortOrder === "asc" ? <FiArrowUp/> : <FiArrowDown/>}
                     </Button>
                 </div>
+
             </form>
         </div>
     )
 }
-
-

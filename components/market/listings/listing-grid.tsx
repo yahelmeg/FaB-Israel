@@ -8,11 +8,12 @@ type ListingGridProps = {
     query?: string
     sortBy?: ListingSortField
     sortOrder?: SortOrder
+    tab: "buy" | "sell"
 }
 
-async function loadListings( {query, sortBy, sortOrder}: ListingGridProps) {
+async function loadListings( {query, sortBy, sortOrder, tab}: ListingGridProps) {
     try {
-        const listings = await listingService.getListings({ search:query, sortBy, sortOrder }, "sell")
+        const listings = await listingService.getListings({ search:query, sortBy, sortOrder }, tab )
         return { listings, error: null }
     } catch (err) {
         console.error("Failed to load listings:", err)
@@ -20,8 +21,8 @@ async function loadListings( {query, sortBy, sortOrder}: ListingGridProps) {
     }
 }
 
-export async function ListingGrid({ query, sortBy, sortOrder }: ListingGridProps) {
-    const { listings, error } = await loadListings({query, sortBy, sortOrder})
+export async function ListingGrid({ query, sortBy, sortOrder, tab }: ListingGridProps) {
+    const { listings, error } = await loadListings({query, sortBy, sortOrder, tab})
 
     if (error) {
         return <p role="alert">{error}</p>
