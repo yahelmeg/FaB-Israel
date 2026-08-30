@@ -32,23 +32,37 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
                     <NavigationMenuContent>
                         <ul className="w-48 p-1">
                             <li>
-                                <NavigationMenuLink href="/market" className="block rounded-md px-3 py-2 text-md hover:bg-accent">
-                                    Search Cards
+                                <NavigationMenuLink href="/market"
+                                                    className="block rounded-md px-3 py-2 text-md hover:bg-accent">
+                                    Browse Market
                                 </NavigationMenuLink>
                             </li>
                             <li>
-                                <NavigationMenuLink href="/market/sell" className="block rounded-md px-3 py-2 text-md hover:bg-accent">
-                                    Sell Cards
+                                <NavigationMenuLink href="/market/sell"
+                                                    className="block rounded-md px-3 py-2 text-md hover:bg-accent">
+                                    Post a Sell Listing
                                 </NavigationMenuLink>
                             </li>
+                            <li>
+                                <NavigationMenuLink href="/market/buy"
+                                                    className="block rounded-md px-3 py-2 text-md hover:bg-accent">
+                                    Post a Buy Listing
+                                </NavigationMenuLink>
+                            </li>
+                            {/*<li>*/}
+                            {/*    <NavigationMenuLink href="/market/request"*/}
+                            {/*                        className="block rounded-md px-3 py-2 text-md hover:bg-accent ">*/}
+                            {/*        Post a Card Request*/}
+                            {/*    </NavigationMenuLink>*/}
+                            {/*</li>*/}
                         </ul>
                     </NavigationMenuContent>
-                </NavigationMenuItem >
+                </NavigationMenuItem>
                 <NavigationMenuItem className="hidden md:flex">
                     <NavigationMenuLink href="/events" className="nav-link">Events</NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem className="hidden md:flex">
-                    <NavigationMenuLink href="/community" className="nav-link"> Community  </NavigationMenuLink>
+                <NavigationMenuLink href="/community" className="nav-link"> Community  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem className="hidden md:flex">
                     <NavigationMenuLink href="/learn" className="nav-link"> Learn  </NavigationMenuLink>
@@ -62,23 +76,38 @@ export function Navbar( {isLoggedIn, displayName }: NavbarProps) {
                             <NavigationMenuContent>
                                 <ul className="w-48 p-1">
                                     <li>
-                                        <NavigationMenuLink href="/profile" className="block rounded-md px-3 py-2 text-md hover:bg-accent">
+                                        <NavigationMenuLink href="/profile"
+                                                            className="block rounded-md px-3 py-2 text-md hover:bg-accent">
                                             Profile
                                         </NavigationMenuLink>
                                     </li>
                                     <li>
-                                        <NavigationMenuLink href="/listings/mine" className="block rounded-md px-3 py-2 text-md hover:bg-accent">
-                                            My Listings
+                                        <NavigationMenuLink href="/listings/mine/sell"
+                                                            className="block rounded-md px-3 py-2 text-md hover:bg-accent">
+                                            My Sell Listings
                                         </NavigationMenuLink>
                                     </li>
                                     <li>
-                                        <SignoutButton className="block rounded-md px-3 py-2 text-md hover:bg-accent" />
+                                        <NavigationMenuLink href="/listings/mine/buy"
+                                                            className="block rounded-md px-3 py-2 text-md hover:bg-accent">
+                                            My Buy Listings
+                                        </NavigationMenuLink>
+                                    </li>
+                                    {/*<li>*/}
+                                    {/*    <NavigationMenuLink href="/requests/mine"*/}
+                                    {/*                        className="block rounded-md px-3 py-2 text-md hover:bg-accent">*/}
+                                    {/*        My Card Requests*/}
+                                    {/*    </NavigationMenuLink>*/}
+                                    {/*</li>*/}
+                                    <li>
+                                        <SignoutButton className="block rounded-md px-3 py-2 text-md hover:bg-accent"/>
                                     </li>
                                 </ul>
                             </NavigationMenuContent>
                         </>
                     ) : (
-                        <Button variant="ghost" className="cursor-pointer nav-link font-medium" nativeButton={false} render={<Link href="/auth">Sign in</Link>} />
+                        <Button variant="ghost" className="cursor-pointer nav-link font-medium" nativeButton={false}
+                                render={<Link href="/auth">Sign in</Link>}/>
                     )}
                 </NavigationMenuItem>
 

@@ -40,8 +40,10 @@ export function MobileNav({ isLoggedIn, displayName }: MobileNavProps) {
                             </AccordionTrigger>
                             <AccordionContent className="no-underline">
                                 <div className="flex flex-col gap-3 ml-4 border-l border-border pl-4">
-                                    <Link href="/market" className="nav-link" onClick={() => setOpen(false)}>Search Cards</Link>
-                                    <Link href="/market/sell" className="nav-link" onClick={() => setOpen(false)}>Sell a Card</Link>
+                                    <Link href="/market" className="nav-link" onClick={() => setOpen(false)}>Browse Market</Link>
+                                    <Link href="/market/sell" className="nav-link" onClick={() => setOpen(false)}>Post a Sell Listing</Link>
+                                    <Link href="/market/buy" className="nav-link" onClick={() => setOpen(false)}>Post a Buy Listing</Link>
+                                    {/*<Link href="/market/request" className="nav-link" onClick={() => setOpen(false)}>Post a Card Request</Link>*/}
                                 </div>
                             </AccordionContent>
                         </AccordionItem>
@@ -59,7 +61,9 @@ export function MobileNav({ isLoggedIn, displayName }: MobileNavProps) {
                                 <AccordionContent className="no-underline">
                                     <div className="flex flex-col gap-3 ml-4 border-l border-border pl-4">
                                         <Link href="/profile" className="nav-link" onClick={() => setOpen(false)}>Profile</Link>
-                                        <Link href="/listings/mine" className="nav-link" onClick={() => setOpen(false)}>My Listings</Link>
+                                        <Link href="/listings/mine/sell" className="nav-link" onClick={() => setOpen(false)}>My Sell Listings</Link>
+                                        <Link href="/listings/mine/buy" className="nav-link" onClick={() => setOpen(false)}>My Buy Listings</Link>
+                                        {/*<Link href="/listings/mine/requests" className="nav-link" onClick={() => setOpen(false)}>My Card Requests</Link>*/}
                                         <SignoutButton onClick={() => setOpen(false)} className="nav-link" />
                                     </div>
                                 </AccordionContent>
