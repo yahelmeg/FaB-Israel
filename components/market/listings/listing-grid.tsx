@@ -12,7 +12,7 @@ type ListingGridProps = {
 
 async function loadListings( {query, sortBy, sortOrder}: ListingGridProps) {
     try {
-        const listings = await listingService.getListings({ search:query, sortBy, sortOrder })
+        const listings = await listingService.getListings({ search:query, sortBy, sortOrder }, "sell")
         return { listings, error: null }
     } catch (err) {
         console.error("Failed to load listings:", err)
