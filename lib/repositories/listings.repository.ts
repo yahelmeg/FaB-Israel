@@ -81,19 +81,27 @@ export async function getActive(listingType: "buy" | "sell" , filters: ListingFi
     return data.map(mapRowWithProfile)
 }
 
-export async function getRecentListings(limit = 100): Promise<ListingRowBase[]> {
+export async function getRecentListings(limit = 100): Promise<{
+    listings: ListingRowBase[];
+    listingType: "buy" | "sell";
+}> {
+    const listingType = Math.random() < 0.5 ? "buy" : "sell";
     const supabase = await createClient()
     const {data, error} = await supabase
         .from("listings")
         .select("*")
         .eq("status", "active")
+        .eq("listing_type", listingType)
         .order("created_at", {ascending: false})
         .limit(limit)
 
     if (error) {
         throw new Error(`Failed to fetch listings: ${error.message}`)
     }
-    return data
+    return {
+        listings: data || [],
+        listingType,
+    }
 }
 
 export async function getById(id: string): Promise<ListingRow | null> {

@@ -10,14 +10,14 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-    const listings = await getListingsForHomepageCarousel();
+    const {listings, listingType} = await getListingsForHomepageCarousel();
     const shuffledListings = shuffle(listings);
     return (
         <>
             <LoginSuccessToast/>
             <Logo/>
             <div>
-                <RecentListingsCarousel listings={shuffledListings}/>
+                <RecentListingsCarousel listings={shuffledListings} mode={listingType}/>
             </div>
         </>
     )

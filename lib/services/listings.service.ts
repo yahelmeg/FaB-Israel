@@ -11,9 +11,16 @@ export async function getListings(filters: ListingFilters, listingType: "sell" |
     return rows.map(toListing)
 }
 
-export async function getListingsForHomepageCarousel(): Promise<ListingBase[]> {
-    const rows = await listingRepository.getRecentListings()
-    return rows.map(toListingBase)
+export async function getListingsForHomepageCarousel(): Promise<{
+    listings:ListingBase[];
+    listingType: "buy" | "sell"
+}> {
+    const {listings, listingType} = await listingRepository.getRecentListings()
+    const mappedListings = listings.map(toListingBase);
+    return {
+        listings: mappedListings,
+        listingType
+    };
 }
 
 

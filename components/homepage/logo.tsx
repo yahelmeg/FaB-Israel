@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 export function Logo({ className }: { className?: string }) {
     return (
-        <div className={cn("flex flex-col items-center justify-center gap-3 sm:gap-4 py-12 sm:py-16 md:py-24 px-4", className)}>
+        <div className={cn("flex flex-col items-center justify-center gap-3 sm:gap-4 py-8 sm:py-12 md:py-16 px-4", className)}>
             <div className="flex items-center gap-3 sm:gap-4">
         <span className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 items-center justify-center rounded-xl sm:rounded-2xl rotate-45 bg-gradient-to-br from-orange-500 to-red-600 shadow-lg shadow-orange-500/20 shrink-0">
           <span className="-rotate-45 text-lg sm:text-xl md:text-3xl font-black text-white">F</span>
