@@ -7,15 +7,16 @@ import {SharedMarketButton} from "@/components/market/listings/buttons/shared-ma
 interface WhatsappButtonProps {
     phoneNumber: string
     cardName: string
+    mode: "buy" | "sell"
 }
 
-export function WhatsappButton({ phoneNumber, cardName }: WhatsappButtonProps) {
+export function WhatsappButton({ phoneNumber, cardName, mode }: WhatsappButtonProps) {
     return (
         <SharedMarketButton
             className="!bg-whatsapp hover:!bg-whatsapp-hover !text-black dark:!text-black"
             render={
                 <Link
-                    href={buildWhatsAppUrl(phoneNumber, cardName)}
+                    href={buildWhatsAppUrl(phoneNumber, cardName, mode)}
                     target="_blank"
                     rel="noopener noreferrer"
                 />

@@ -51,7 +51,7 @@ export function ListingModalDetails({ listing, mode }: ListingModalDetailsProps)
 
             <div className="flex flex-wrap gap-2">
                 {listing.sellerPhoneNumber && (
-                    <WhatsappButton phoneNumber={listing.sellerPhoneNumber} cardName={listing.cardName}/>
+                    <WhatsappButton phoneNumber={listing.sellerPhoneNumber} cardName={listing.cardName} mode={mode}/>
                 )}
                 {listing.sellerDiscord && (
                     <DiscordButton sellerDiscord={listing.sellerDiscord}/>
