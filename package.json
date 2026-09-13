@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
-    "@flesh-and-blood/cards": "^4.0.72",
+    "@flesh-and-blood/cards": "^5.1.1",
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.109.0",
     "class-variance-authority": "^0.7.1",
