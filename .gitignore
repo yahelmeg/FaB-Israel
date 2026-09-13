@@ -10,7 +10,8 @@
 
 # testing
 /coverage
-/scripts
+/scripts/legacy
+/data
 
 # next.js
 /.next/
