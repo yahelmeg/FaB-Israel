@@ -1,17 +1,23 @@
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Event } from "@/types/events/Event"
-import { Calendar, Clock, MapPin } from "lucide-react"
+import { Calendar, Clock, MapPin, Users } from "lucide-react"
 import {storeAddresses} from "@/consts/store";
 import {EventActionsMenu} from "@/components/events/event-actions-menu";
 import {EditEventButton} from "@/components/events/edit-event-button";
+import {AttendeesEventButton} from "@/components/events/attendees-event-button";
+import {EventJoinButton} from "@/components/events/event-join-button";
+
 
 interface EventCardProps {
     event: Event
     isAdmin?: boolean
+    attendeeCount: number
+    joined: boolean
+    loggedIn: boolean
 }
 
-export function EventCard({ event, isAdmin }: EventCardProps) {
+export function EventCard({ event, isAdmin, attendeeCount, joined, loggedIn }: EventCardProps) {
 
     const isStore = !!event.store;
     const [year, month, day] = event.date.split("-")
@@ -20,11 +26,13 @@ export function EventCard({ event, isAdmin }: EventCardProps) {
     const formattedTime = `${hours}:${minutes}`
 
     return (
-        <Card className="group relative rounded-2xl border bg-card text-card-foreground shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-5 flex flex-col justify-between h-full w-full max-w-md overflow-hidden">
+        <Card
+            className="group relative rounded-2xl border bg-card text-card-foreground shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg p-5 flex flex-col justify-between h-full w-full max-w-md overflow-hidden">
             {isAdmin && (
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <EditEventButton eventId={event.id} />
-                    <EventActionsMenu eventId={event.id} />
+                    <EditEventButton eventId={event.id}/>
+                    <AttendeesEventButton eventId={event.id}/>
+                    <EventActionsMenu eventId={event.id}/>
                 </div>
             )}
             <div className="flex flex-col gap-4">
@@ -43,24 +51,25 @@ export function EventCard({ event, isAdmin }: EventCardProps) {
                     </h3>
                 </div>
 
-                <div className="grid grid-cols-1 gap-2.5 text-sm font-medium text-muted-foreground bg-muted/30 rounded-xl p-3 my-1">
+                <div
+                    className="grid grid-cols-1 gap-2.5 text-sm font-medium text-muted-foreground bg-muted/30 rounded-xl p-3 my-1">
                     <div className="flex items-center gap-2.5">
                         <div className="p-1 rounded-md bg-background border text-muted-foreground flex-shrink-0">
-                            <Calendar size="16" />
+                            <Calendar size="16"/>
                         </div>
                         <span className="text-foreground">{formattedDate}</span>
                     </div>
 
                     <div className="flex items-center gap-2.5">
                         <div className="p-1 rounded-md bg-background border text-muted-foreground flex-shrink-0">
-                            <Clock size="16" />
+                            <Clock size="16"/>
                         </div>
                         <span className="text-foreground">{formattedTime}</span>
                     </div>
 
-                    <div className={`flex gap-2.5 min-w-0 ${isStore? "items-start" : "items-center"}`}>
+                    <div className={`flex gap-2.5 min-w-0 ${isStore ? "items-start" : "items-center"}`}>
                         <div className="p-1 mt-0.5 rounded-md bg-background border text-muted-foreground flex-shrink-0">
-                            <MapPin size="16" />
+                            <MapPin size="16"/>
                         </div>
 
                         <div className={`flex flex-col min-w-0 text-left ${isStore ? "" : "h-9 justify-center"}`}>
@@ -81,6 +90,12 @@ export function EventCard({ event, isAdmin }: EventCardProps) {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="flex items-center justify-between pt-2">
+                <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                    <Users size="16"/> {attendeeCount} joined
+                </span>
+                <EventJoinButton eventId={event.id} joined={joined} loggedIn={loggedIn}/>
             </div>
         </Card>
     )

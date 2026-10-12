@@ -1,4 +1,3 @@
-// components/events/edit-event-button.tsx
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Pencil } from "lucide-react"
