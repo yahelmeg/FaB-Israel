@@ -3,7 +3,6 @@ import { createClient } from "@/lib/supabase/server"
 export type EventAttendeeRowBase = {
     event_id: string
     user_id: string
-    created_at: string
 }
 
 export type EventAttendeeRow = EventAttendeeRowBase & {
@@ -35,7 +34,6 @@ export async function getByEvent(eventId: string): Promise<EventAttendeeRow[]> {
         .from("event_attendees")
         .select(ATTENDEE_WITH_PROFILE_SELECT)
         .eq("event_id", eventId)
-        .order("created_at", { ascending: true })
 
     if (error) {
         throw new Error(`Failed to fetch attendees for event ${eventId}: ${error.message}`)
@@ -44,36 +42,18 @@ export async function getByEvent(eventId: string): Promise<EventAttendeeRow[]> {
     return data.map(mapRowWithProfile)
 }
 
-// Returns the user's own row, or null if they haven't joined
-export async function getByEventAndUser(eventId: string, userId: string): Promise<EventAttendeeRowBase | null> {
+export async function getEventIdsByUser(userId: string): Promise<string[]> {
     const supabase = await createClient()
     const { data, error } = await supabase
         .from("event_attendees")
-        .select()
-        .eq("event_id", eventId)
+        .select("event_id")
         .eq("user_id", userId)
-        .maybeSingle()
 
     if (error) {
-        throw new Error(`Failed to fetch attendance for event ${eventId}: ${error.message}`)
+        throw new Error(`Failed to fetch joined events for user ${userId}: ${error.message}`)
     }
 
-    return data
-}
-
-export async function getCountByEvent(eventId: string): Promise<number> {
-    const supabase = await createClient()
-    const { data, error } = await supabase
-        .from("event_attendee_counts")
-        .select("attendee_count")
-        .eq("event_id", eventId)
-        .maybeSingle()
-
-    if (error) {
-        throw new Error(`Failed to fetch attendee count for event ${eventId}: ${error.message}`)
-    }
-
-    return data?.attendee_count ?? 0
+    return data.map((row) => row.event_id)
 }
 
 export async function getCountsByEvents(eventIds: string[]): Promise<Record<string, number>> {
