@@ -1,0 +1,1 @@
+grant select, insert, delete on public.event_attendees to authenticated;
