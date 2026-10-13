@@ -1,38 +1,34 @@
 import { createClient } from "@/lib/supabase/server"
 
-export type EventAttendeeRowBase = {
+export type EventAttendeeRow = {
     event_id: string
     user_id: string
-}
-
-export type EventAttendeeRow = EventAttendeeRowBase & {
     display_name: string
+    gem_id: string
 }
 
-type AttendeeProfile = {
-    display_name: string
+type RawAttendeeRow = {
+    event_id: string
+    user_id: string
+    profiles: { display_name: string | null; gem_id: string | null } | { display_name: string | null; gem_id: string | null }[] | null
 }
 
-type EventAttendeeRowWithProfileJoin = EventAttendeeRowBase & {
-    profiles: AttendeeProfile | AttendeeProfile[] | null
-}
-
-function mapRowWithProfile({ profiles, ...baseRow }: EventAttendeeRowWithProfileJoin): EventAttendeeRow {
-    const profile = Array.isArray(profiles) ? profiles[0] : profiles
+function mapRowWithProfile(row: RawAttendeeRow): EventAttendeeRow {
+    const profile = Array.isArray(row.profiles) ? row.profiles[0] : row.profiles
 
     return {
-        ...baseRow,
+        event_id: row.event_id,
+        user_id: row.user_id,
         display_name: profile?.display_name ?? "",
+        gem_id: profile?.gem_id ?? ""
     }
 }
-
-const ATTENDEE_WITH_PROFILE_SELECT = `*, profiles (display_name)`
 
 export async function getByEvent(eventId: string): Promise<EventAttendeeRow[]> {
     const supabase = await createClient()
     const { data, error } = await supabase
         .from("event_attendees")
-        .select(ATTENDEE_WITH_PROFILE_SELECT)
+        .select("*, profiles (display_name, gem_id)")
         .eq("event_id", eventId)
 
     if (error) {
