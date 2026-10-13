@@ -22,7 +22,7 @@ export default async function AttendeesPage({ params }: AttendeesPageProps) {
     const attendees = await eventAttendeesService.getAttendees(id)
 
     return (
-        <div className="page-layout">
+        <div className="page-layout space-y-6">
             <h1 className="page-heading-text">
                 {event.title}
             </h1>
@@ -34,11 +34,26 @@ export default async function AttendeesPage({ params }: AttendeesPageProps) {
             {attendees.length === 0 ? (
                 <p className="text-muted-foreground">Nobody has joined yet.</p>
             ) : (
-                <ul className="flex flex-col gap-2 text-lg">
-                    {attendees.map((a) => (
-                        <li key={a.userId}>{a.displayName}</li>
-                    ))}
-                </ul>
+                <div className="border rounded-md overflow-hidden bg-card">
+                    <table className="w-full text-left border-collapse">
+                        <thead className="bg-muted/50 border-b text-muted-foreground text-sm">
+                        <tr>
+                            <th className="py-3 px-4 font-medium">Display Name</th>
+                            <th className="py-3 px-4 font-medium">Gem ID</th>
+                        </tr>
+                        </thead>
+                        <tbody className="divide-y">
+                        {attendees.map((a) => (
+                            <tr key={a.userId} className="hover:bg-muted/50 transition-colors">
+                                <td className="py-3 px-4 font-medium">{a.displayName}</td>
+                                <td className="py-3 px-4 font-mono">
+                                    {a.gemId || "—"}
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
             )}
         </div>
     )
