@@ -7,6 +7,7 @@ const profileFormSchema = z.object({
     displayName: z.string().trim().min(1, "Display name is required"),
     phoneNumber: z.string().trim().regex(ISRAELI_PHONE_REGEX, "Enter a valid Israeli phone number").optional().or(z.literal("")),
     discordUsername: z.string().optional(),
+    gemId: z.string().trim().optional(),
 }).superRefine((data,ctx) => {
     if (!data.phoneNumber && !data.discordUsername) {
         ctx.addIssue({
@@ -21,6 +22,7 @@ export type UpdateProfileInput = {
     displayName: string
     phoneNumber: string | null
     discordUsername: string | null
+    gemId: string | null
 }
 
 export type ProfileFieldErrors = FieldErrors
@@ -45,6 +47,7 @@ export function parseAndValidateProfileForm(formData: FormData): ProfileValidati
             displayName: data.displayName,
             phoneNumber: data.phoneNumber || null,
             discordUsername: data.discordUsername || null,
+            gemId: data.gemId || null,
         }
     }
 }

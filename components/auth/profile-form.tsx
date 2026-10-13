@@ -6,7 +6,7 @@ import {Profile} from "@/types/Profile"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { User, Phone, MessageCircle } from "lucide-react"
+import { User, Phone, MessageCircle, Gem } from "lucide-react"
 import { toast } from "sonner";
 import { useRouter } from "next/navigation"
 
@@ -28,6 +28,7 @@ export function ProfileForm({ mode= "edit", profile }: ProfileFormProps) {
     const [displayName, setDisplayName] = useState(profile?.displayName ?? "")
     const [phoneNumber, setPhoneNumber] = useState(profile?.phoneNumber ?? "")
     const [discordUsername, setDiscordUsername] = useState(profile?.discordUsername ?? "")
+    const [gemId, setGemId] = useState(profile?.gemId ?? "")
 
     useEffect(() => {
         if (!hasSubmitted.current) {
@@ -52,7 +53,7 @@ export function ProfileForm({ mode= "edit", profile }: ProfileFormProps) {
         <form action={handleSubmit} className="space-y-6 w-full max-w-xl">
             <div className="space-y-2">
                 <Label htmlFor="displayName" className="sell-page-label">
-                    <User className="h-5 w-5 text-muted-foreground" />
+                    <User className="h-5 w-5 text-muted-foreground"/>
                     Display name
                 </Label>
                 <Input
@@ -71,7 +72,7 @@ export function ProfileForm({ mode= "edit", profile }: ProfileFormProps) {
 
             <div className="space-y-2">
                 <Label htmlFor="phoneNumber" className="sell-page-label">
-                    <Phone className="h-5 w-5 text-muted-foreground" />
+                    <Phone className="h-5 w-5 text-muted-foreground"/>
                     Phone number
                 </Label>
                 <Input
@@ -90,7 +91,7 @@ export function ProfileForm({ mode= "edit", profile }: ProfileFormProps) {
 
             <div className="space-y-2">
                 <Label htmlFor="discordUsername" className="sell-page-label">
-                    <MessageCircle className="h-5 w-5 text-muted-foreground" />
+                    <MessageCircle className="h-5 w-5 text-muted-foreground"/>
                     Discord username
                 </Label>
                 <Input
@@ -99,6 +100,24 @@ export function ProfileForm({ mode= "edit", profile }: ProfileFormProps) {
                     value={discordUsername}
                     onChange={(e) => setDiscordUsername(e.target.value)}
                     placeholder="username"
+                    className="h-11"
+                />
+                {state.fieldErrors?.discordUsername && (
+                    <p className="text-sm text-destructive">{state.fieldErrors.discordUsername}</p>
+                )}
+            </div>
+
+            <div className="space-y-2">
+                <Label htmlFor="gemId" className="sell-page-label">
+                    <Gem className="h-5 w-5 text-muted-foreground"/>
+                    Gem Id
+                </Label>
+                <Input
+                    id="gemId"
+                    name="gemId"
+                    value={gemId}
+                    onChange={(e) => setGemId(e.target.value)}
+                    placeholder="12345678"
                     className="h-11"
                 />
                 {state.fieldErrors?.discordUsername && (

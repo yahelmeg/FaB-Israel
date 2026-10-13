@@ -50,6 +50,9 @@ export async function update(profileId: string, input: UpdateProfileRepositoryIn
     if (input.discordUsername !== undefined) {
         updatePayload.discord_username = input.discordUsername
     }
+    if(input.gemId !== undefined) {
+        updatePayload.gem_id = input.gemId
+    }
 
     const { data, error } = await supabase
         .from("profiles")

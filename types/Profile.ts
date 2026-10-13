@@ -5,5 +5,6 @@ export interface Profile  {
     displayName: string
     phoneNumber?: string
     discordUsername?: string
+    gemId?: string
     onboardingCompleted: boolean
 }
