@@ -86,3 +86,16 @@ export async function markOnboardingCompleted(profileId: string): Promise<Profil
 }
 
 
+export async function updateGemId(userId: string, gemId: string): Promise<void> {
+    const supabase = await createClient()
+    const { error } = await supabase
+        .from("profiles")
+        .update({ gem_id: gemId })
+        .eq("id", userId)
+
+    if (error) {
+        throw new Error(`Failed to update GEM id for profile ${userId}: ${error.message}`)
+    }
+}
+
+

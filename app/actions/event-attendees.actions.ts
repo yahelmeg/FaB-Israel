@@ -7,9 +7,9 @@ export type EventAttendanceState = {
     fieldErrors: Record<string, string> | null
 }
 
-export async function joinEventAction(eventId: string): Promise<EventAttendanceState> {
+export async function joinEventAction(eventId: string, gemId?: string): Promise<EventAttendanceState> {
     try {
-        await eventAttendeesService.joinEvent(eventId)
+        await eventAttendeesService.joinEvent(eventId, gemId)
     } catch (err) {
         console.error("Failed to join event:", err)
         return { fieldErrors: { db: "Failed to join event. Please try again later." } }

@@ -1,6 +1,7 @@
 import { EventAttendee } from "@/types/events/EventAttendee"
 import * as eventAttendeesRepository from "@/lib/repositories/event-attendees.repository"
 import * as eventsService from "@/lib/services/events.service"
+import * as profileService from "@/lib/services/profiles.service"
 import { toEventAttendee } from "@/lib/mappers/event-attendees.mapper"
 import { requireProfile } from "@/lib/auth/require-profile"
 import { requireAdmin } from "@/lib/auth/require-admin"
@@ -10,8 +11,8 @@ function todayInIsrael(): string {
     return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Jerusalem" })
 }
 
-export async function joinEvent(eventId: string): Promise<void> {
-    const { id: userId } = await requireProfile()
+export async function joinEvent(eventId: string, gemId?: string): Promise<void> {
+    const profile = await requireProfile()
 
     const event = await eventsService.getEventById(eventId)
     if (!event) {
@@ -21,7 +22,14 @@ export async function joinEvent(eventId: string): Promise<void> {
         throw new Error("This event has already passed")
     }
 
-    await eventAttendeesRepository.insert(eventId, userId)
+    if (!profile.gemId) {
+        if (!gemId) {
+            throw new Error("A GEM id is required to join an event")
+        }
+        await profileService.updateGemId(profile.id, gemId)
+    }
+
+    await eventAttendeesRepository.insert(eventId, profile.id)
 }
 
 export async function leaveEvent(eventId: string): Promise<void> {
