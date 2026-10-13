@@ -7,6 +7,7 @@ export type ProfileRow = {
     phone_number: string | null
     discord_username: string | null
     onboarding_completed: boolean
+    gem_id: string | null
 }
 
 export type UpdateProfileRepositoryInput = Partial<UpdateProfileInput>

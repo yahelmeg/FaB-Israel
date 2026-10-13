@@ -8,5 +8,6 @@ export function toProfile(row: ProfileRow): Profile {
         phoneNumber: row.phone_number ?? undefined,
         discordUsername: row.discord_username ?? undefined,
         onboardingCompleted: row.onboarding_completed,
+        gemId: row.gem_id ?? undefined
     }
 }
