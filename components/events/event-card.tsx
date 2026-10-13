@@ -15,9 +15,10 @@ interface EventCardProps {
     attendeeCount: number
     joined: boolean
     loggedIn: boolean
+    userHasGemId: boolean
 }
 
-export function EventCard({ event, isAdmin, attendeeCount, joined, loggedIn }: EventCardProps) {
+export function EventCard({ event, isAdmin, attendeeCount, joined, loggedIn, userHasGemId }: EventCardProps) {
 
     const isStore = !!event.store;
     const [year, month, day] = event.date.split("-")
@@ -95,7 +96,7 @@ export function EventCard({ event, isAdmin, attendeeCount, joined, loggedIn }: E
                 <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
                     <Users size="16"/> {attendeeCount} joined
                 </span>
-                <EventJoinButton eventId={event.id} joined={joined} loggedIn={loggedIn}/>
+                <EventJoinButton eventId={event.id} joined={joined} loggedIn={loggedIn} userHasGemId={userHasGemId} />
             </div>
         </Card>
     )
