@@ -1,12 +1,13 @@
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Event } from "@/types/events/Event"
-import { Calendar, Clock, MapPin, Users } from "lucide-react"
+import { Calendar, Clock, MapPin, Users, ExternalLink } from "lucide-react"
 import {storeAddresses} from "@/consts/store";
 import {EventActionsMenu} from "@/components/events/event-actions-menu";
 import {EditEventButton} from "@/components/events/edit-event-button";
 import {AttendeesEventButton} from "@/components/events/attendees-event-button";
 import {EventJoinButton} from "@/components/events/event-join-button";
+import { Button } from "@/components/ui/button"
 
 
 interface EventCardProps {
@@ -96,7 +97,26 @@ export function EventCard({ event, isAdmin, attendeeCount, joined, loggedIn, use
                 <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
                     <Users size="16"/> {attendeeCount} joined
                 </span>
-                <EventJoinButton eventId={event.id} joined={joined} loggedIn={loggedIn} userHasGemId={userHasGemId} />
+                <div className="flex items-center gap-2">
+                    {event.registerUrl && joined && (
+                        <Button
+                            variant="default"
+                            size="sm"
+                            nativeButton={false}
+                            render={
+                                <a
+                                    href={event.registerUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                />
+                            }
+                        >
+                            <ExternalLink size="14" className="mr-1.5"/>
+                            Register
+                        </Button>
+                    )}
+                </div>
+                <EventJoinButton eventId={event.id} joined={joined} loggedIn={loggedIn} userHasGemId={userHasGemId}/>
             </div>
         </Card>
     )
