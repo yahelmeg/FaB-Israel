@@ -39,7 +39,8 @@ export function EventCard({ event, isAdmin, attendeeCount, joined, loggedIn, use
                 </div>
             )}
             <div className="flex flex-col gap-4">
-                <div className="flex flex-wrap gap-2">
+                <div
+                    className={`flex flex-col items-start gap-2 sm:flex-row sm:flex-wrap ${isAdmin ? "pr-28 sm:pr-0" : ""}`}>
                     <Badge variant="outline" className="font-medium tracking-wide text-foreground">
                         {event.tier}
                     </Badge>
@@ -94,11 +95,11 @@ export function EventCard({ event, isAdmin, attendeeCount, joined, loggedIn, use
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-between pt-2">
+            <div className="flex items-center justify-between gap-3 pt-2">
                 <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
                     <Users size="16"/> {attendeeCount} joined
                 </span>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center">
                     {event.registerUrl && joined && (
                         <Button
                             variant="default"
@@ -116,8 +117,9 @@ export function EventCard({ event, isAdmin, attendeeCount, joined, loggedIn, use
                             Register
                         </Button>
                     )}
+                    <EventJoinButton eventId={event.id} joined={joined} loggedIn={loggedIn}
+                                     userHasGemId={userHasGemId}/>
                 </div>
-                <EventJoinButton eventId={event.id} joined={joined} loggedIn={loggedIn} userHasGemId={userHasGemId}/>
             </div>
         </Card>
     )
